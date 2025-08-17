@@ -47,7 +47,7 @@ class CustomVerifyEmail extends Notification implements ShouldQueue
                 'user' => $notifiable,
                 'url' => $verificationUrl,
             ])
-            ->subject('Verify Your Ferix Account');
+            ->subject('Confirm Your Orbeva Account');
     }
 
     protected function verificationUrl($notifiable)

@@ -1,90 +1,112 @@
 @extends('layouts.fair')
 @section('content')
+    <main class="main-content  mt-0">
+        <section>
+            <div class="page-header min-vh-100">
+                <div class="container">
+                    <div class="row">
+                        <div
+                            class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
+                            <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center"
+                                style="background-image: url('{{ asset('images/img-1.jpg') }}'); background-size: cover;">
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
+                            <div class="card card-plain">
+                                <div class="card-header">
+                                    {{-- <h4 class="font-weight-bolder">Sign Up</h4> --}}
+                                    <h4 class="font-weight-bolder">
+                                        <i class="fa fa-layer-group me-2"></i>
+                                        <b>Orbeva.</b>
+                                    </h4>
+                                    <p class="mb-0 text-dark">Transporter Register Form</p>
 
-<div class="page page-center">
-    <div class="container container-tight py-4">
-        <div class="text-center mb-4 display-6">
-            <i class="fa fa-earth-asia"></i> <b>Ferix</b>
-        </div>
-        @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            <div class="alert-icon">
-                <i class="fa fa-exclamation-circle"></i>
-            </div>
-            <ul class="mb-0">
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-            <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
-        </div>
-        @endif
-        <form class="card card-md" action="{{ route('transporter.register') }}" method="POST" autocomplete="off"
-            novalidate="">
-            @csrf
-            <div class="card-body">
-                <h2 class="card-title text-center mb-4">Transporter Register Form</h2>
-                <div class="mb-3">
-                    <label class="form-label">Name</label>
-                    <input type="text" name="name" value="{{ old('name') }}" class="form-control"
-                        placeholder="Enter name" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Email address</label>
-                    <input type="email" name="email" value="{{ old('email') }}" class="form-control"
-                        placeholder="Enter email" required>
-                </div>
+                                    {{-- dismissable error messages here --}}
+                                    @if ($errors->any())
+                                        <div class="alert alert-primary alert-dismissible mt-3 text-white fade show"
+                                            role="alert">
+                                            <span class="alert-icon align-middle">
+                                                <i class="fa fa-exclamation-circle"></i>
+                                            </span>
+                                            <span class="alert-text">
+                                                <ul class="mb-0">
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </span>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    @endif
+                                    {{-- dismissable error messages here --}}
 
-                <!-- <div class="mb-3">
-                    <label class="form-label">Company</label>
-                    <input type="text" name="company" value="{{ old('company') }}" class="form-control"
-                        placeholder="Enter Company" required>
-                </div> -->
-
-                <div class="mb-3">
-                    <label class="form-label">Company</label>
-                    <select class="form-select" name="company">
-                        <option value="">-- select --</option>
-                        @foreach($records as $record)
-                        @if($record->type == 'transporter')
-                        <option value="{{ $record->id }}">{{ $record->name }}</option>
-                        @endif
-                        @endforeach
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Password</label>
-                    <div class="input-group input-group-flat">
-                        <input type="password" id="password" class="form-control" name="password" placeholder="Password"
-                            autocomplete="off" required>
-                        <x-password-toggle />
+                                </div>
+                                <div class="card-body">
+                                    <form role="form" action="{{ route('transporter.register') }}" method="POST"
+                                        autocomplete="off" novalidate="">
+                                        @csrf
+                                        <div class="input-group input-group-outline mb-3">
+                                            <label class="form-label">Name</label>
+                                            <input type="text" name="name" value="{{ old('name') }}"
+                                                class="form-control" required>
+                                        </div>
+                                        <div class="input-group input-group-outline mb-3">
+                                            <label class="form-label">Email</label>
+                                            <input type="email" name="email" value="{{ old('email') }}"
+                                                class="form-control" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="input-group input-group-static mb-3">Company</label>
+                                            <select class="form-select" name="company">
+                                                <option value="">-- select --</option>
+                                                @foreach ($records as $record)
+                                                    @if ($record->type == 'transporter')
+                                                        <option value="{{ $record->id }}">{{ $record->name }}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="input-group input-group-outline mb-3">
+                                            <label class="form-label">Password</label>
+                                            <input type="password" id="password" class="form-control" name="password"
+                                                autocomplete="off" required>
+                                            <x-password-toggle />
+                                        </div>
+                                        <div class="input-group input-group-outline mb-3">
+                                            <label class="form-label">Confirm Password</label>
+                                            <input type="password" class="form-control" id="password2"
+                                                name="password_confirmation" autocomplete="off" required>
+                                            <x-password-toggle2 />
+                                        </div>
+                                        <div class="form-check form-check-info text-start ps-0">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault" checked>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                I agree the <a href="javascript:;"
+                                                    class="text-dark font-weight-bolder">Terms and Conditions</a>
+                                            </label>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit"
+                                                class="btn btn-lg bg-gradient-dark btn-lg w-100 mt-4 mb-0">Sign Up</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                                    <p class="mb-2 text-sm mx-auto">
+                                        Already have an account?
+                                        <a href="{{ route('transporter.login') }}"
+                                            class="text-primary text-gradient font-weight-bold">Sign in</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Confirm Password</label>
-                    <div class="input-group input-group-flat">
-                        <input type="password" class="form-control" id="password2" name="password_confirmation"
-                            placeholder="Password" autocomplete="off" required>
-                        <x-password-toggle2 />
-                    </div>
-                </div>
-                <!-- <div class="mb-3">
-                    <label class="form-check">
-                        <input type="checkbox" class="form-check-input">
-                        <span class="form-check-label">Agree the <a href="./terms-of-service.html" tabindex="-1">terms
-                                and policy</a>.</span>
-                    </label>
-                </div> -->
-                <div class="form-footer">
-                    <button type="submit" class="btn btn-primary w-100">Create new account</button>
-                </div>
             </div>
-        </form>
-        <div class="text-center text-secondary mt-3">Already have account? <a href="{{ route('transporter.login') }}"
-                tabindex="-1">Sign
-                in</a></div>
-    </div>
-</div>
-
+        </section>
+    </main>
 @endsection

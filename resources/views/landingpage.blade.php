@@ -54,8 +54,8 @@
             <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <h1 class="sitename">
-                    <i class="fa fa-earth-asia"></i>
-                    <b>Ferix io.</b>
+                    <i class="fa fa-layer-group"></i>
+                    <b>Orbeva.</b>
                 </h1>
             </a>
 

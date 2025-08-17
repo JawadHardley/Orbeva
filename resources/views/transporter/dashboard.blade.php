@@ -1,113 +1,115 @@
 @extends('layouts.userlayout')
 @section('content')
-@php
-$tile1 = asset('images/designer.svg');
-$tile2 = asset('images/team.svg');
+    @php
+        $tile1 = asset('images/designer.svg');
+        $tile2 = asset('images/team.svg');
 
-$completed = 0;
-$pending = 0;
-$draft = 0;
-$waiting = 0;
-$today = 0;
-$total = 0;
+        $completed = 0;
+        $pending = 0;
+        $draft = 0;
+        $waiting = 0;
+        $today = 0;
+        $total = 0;
 
-if (!empty($feris)) {
-foreach ($feris as $feri) {
-if ($feri->status == 5) {
-$completed++;
-} elseif ($feri->status == 4) {
-$waiting++;
-} elseif ($feri->status == 3) {
-$draft++;
-} elseif ($feri->status == 1 || $feri->status == 2) {
-$pending++;
-}
+        if (!empty($feris)) {
+            foreach ($feris as $feri) {
+                if ($feri->status == 5) {
+                    $completed++;
+                } elseif ($feri->status == 4) {
+                    $waiting++;
+                } elseif ($feri->status == 3) {
+                    $draft++;
+                } elseif ($feri->status == 1 || $feri->status == 2) {
+                    $pending++;
+                }
 
-if ($feri->created_at->isToday()) {
-$today++;
-}
-$total++;
-}
-}
+                if ($feri->created_at->isToday()) {
+                    $today++;
+                }
+                $total++;
+            }
+        }
 
-// Prevent division by zero
-$rate = ($total > 0) ? ($completed / $total) * 100 : 0;
-$rate = number_format($rate, 0);
+        // Prevent division by zero
+        $rate = $total > 0 ? ($completed / $total) * 100 : 0;
+        $rate = number_format($rate, 0);
 
-if ($rate <= 50) { $bg="warning" ; } else { $bg="success" ; } @endphp<script
-    src="https://code.jquery.com/jquery-3.7.1.js">
-    </script>
+        if ($rate <= 50) {
+            $bg = 'warning';
+        } else {
+            $bg = 'success';
+    } @endphp
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.datatables.net/2.3.1/js/dataTables.js"></script>
+
     <div class="row fade-slide-in">
-        <div class="col-12 col-md-4 col-lg-3 mb-3">
-            <div class="card card-sm">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <span class="bg-success text-white avatar">
-                                <i class="fa fa-envelope-circle-check"></i>
-                            </span>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 order-4">
+            <div class="card">
+                <div class="card-header p-2 ps-3">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p class="text-sm mb-0 text-capitalize">Accomplished Entries</p>
+                            <h4 class="mb-0">{{ $completed }}</h4>
                         </div>
-                        <div class="col">
-                            <div class="font-weight-medium">{{ $completed }}</div>
-                            <div class="text-secondary">Completed Applications</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-4 col-lg-3 mb-3">
-            <div class="card card-sm">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <span class="bg-danger text-white avatar">
-                                <i class="fa fa-database"></i>
-                            </span>
-                        </div>
-                        <div class="col">
-                            <div class="font-weight-medium">{{ $pending }}</div>
-                            <div class="text-secondary">Pending Applications</div>
+                        <div
+                            class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+                            <i class="opacity-10 fa fa-circle-check"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-4 col-lg-3 mb-3">
-            <div class="card card-sm">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <span class="bg-warning text-white avatar">
-                                <i class="fa fa-clock"></i>
-                            </span>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 order-3">
+            <div class="card">
+                <div class="card-header p-2 ps-3">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p class="text-sm mb-0 text-capitalize">Applications in Progress</p>
+                            <h4 class="mb-0">{{ $pending }}</h4>
                         </div>
-                        <div class="col">
-                            <div class="font-weight-medium">{{ $draft }}</div>
-                            <div class="text-secondary">Pending Approval</div>
+                        <div
+                            class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+                            <i class="opacity-10 fa fa-spinner"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-4 col-lg-3 mb-3">
-            <div class="card card-sm">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <span class="bg-primary text-white avatar">
-                                <i class="fa fa-clock"></i>
-                            </span>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 order-2">
+            <div class="card">
+                <div class="card-header p-2 ps-3">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p class="text-sm mb-0 text-capitalize">Awaiting Approval</p>
+                            <h4 class="mb-0">{{ $draft }}</h4>
                         </div>
-                        <div class="col">
-                            <div class="font-weight-medium">{{ $waiting }}</div>
-                            <div class="text-secondary">Waiting Certificate</div>
+                        <div
+                            class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+                            <i class="opacity-10 fa fa-user-clock"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 order-1">
+            <div class="card">
+                <div class="card-header p-2 ps-3">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p class="text-sm mb-0 text-capitalize">Pending Certificate</p>
+                            <h4 class="mb-0">{{ $waiting }}</h4>
+                        </div>
+                        <div
+                            class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+                            <i class="opacity-10 fa fa-user-clock"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    {{-- the old code starts here --}}
 
     <div class="row fade-slide-in">
         <div class="col-12 col-md-6 mb-3">
@@ -151,7 +153,8 @@ if ($rate <= 50) { $bg="warning" ; } else { $bg="success" ; } @endphp<script
                         <div>Completion rate</div>
                     </div>
                     <div class="progress progress-sm">
-                        <div class="progress-bar bg-{{ $bg }}" style="width: {{ $rate }}%" role="progressbar">
+                        <div class="progress-bar bg-{{ $bg }}" style="width: {{ $rate }}%"
+                            role="progressbar">
                         </div>
                     </div>
                 </div>
@@ -161,7 +164,7 @@ if ($rate <= 50) { $bg="warning" ; } else { $bg="success" ; } @endphp<script
 
     <div class="row fade-slide-in">
         <div class="col-sm-12 col-md-12 col-lg-4 mb-3">
-            <a href="{{  route(Auth::user()->role . '.applyferi') }}" class="card card-link" data-bs-toggle="modal"
+            <a href="{{ route(Auth::user()->role . '.applyferi') }}" class="card card-link" data-bs-toggle="modal"
                 data-bs-target="#ask">
                 <div class="card">
                     <div class="card-body">
@@ -174,7 +177,7 @@ if ($rate <= 50) { $bg="warning" ; } else { $bg="success" ; } @endphp<script
             </a>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-4 mb-3">
-            <a href="{{  route(Auth::user()->role . '.sampcalculator') }}" class="card card-link">
+            <a href="{{ route(Auth::user()->role . '.sampcalculator') }}" class="card card-link">
                 <div class="card">
                     <div class="card-body">
                         <h3 class="card-title text-center p-5">
@@ -186,7 +189,7 @@ if ($rate <= 50) { $bg="warning" ; } else { $bg="success" ; } @endphp<script
             </a>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-4 mb-3">
-            <a href="{{  route(Auth::user()->role . '.showApps') }}" class="card card-link">
+            <a href="{{ route(Auth::user()->role . '.showApps') }}" class="card card-link">
                 <div class="card">
                     <div class="card-body">
                         <h3 class="card-title text-center p-5">
@@ -213,7 +216,7 @@ if ($rate <= 50) { $bg="warning" ; } else { $bg="success" ; } @endphp<script
                     <div class="row">
 
                         <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
-                            <a href="{{  route('transporter.applyferi') }}" class="card card-link">
+                            <a href="{{ route('transporter.applyferi') }}" class="card card-link">
                                 <div class="card">
                                     <div class="card-body">
                                         <h3 class="card-title text-center p-5">
@@ -226,7 +229,7 @@ if ($rate <= 50) { $bg="warning" ; } else { $bg="success" ; } @endphp<script
                         </div>
 
                         <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
-                            <a href="{{  route('transporter.continueferi') }}" class="card card-link">
+                            <a href="{{ route('transporter.continueferi') }}" class="card card-link">
                                 <div class="card">
                                     <div class="card-body">
                                         <h3 class="card-title text-center p-5">
@@ -247,41 +250,41 @@ if ($rate <= 50) { $bg="warning" ; } else { $bg="success" ; } @endphp<script
 
 
     <script>
-    new DataTable('#linework', {
-        initComplete: function() {
-            // Use the existing advanced-table-search input for global search
-            const api = this.api();
-            const advInput = document.getElementById('advanced-table-search');
-            if (advInput) {
-                advInput.addEventListener('keyup', function() {
-                    api.search(this.value).draw();
+        new DataTable('#linework', {
+            initComplete: function() {
+                // Use the existing advanced-table-search input for global search
+                const api = this.api();
+                const advInput = document.getElementById('advanced-table-search');
+                if (advInput) {
+                    advInput.addEventListener('keyup', function() {
+                        api.search(this.value).draw();
+                    });
+                }
+
+                // Always hide divs with class dt-layout-row
+                document.querySelectorAll('.dt-search').forEach(function(el) {
+                    el.style.display = 'none';
                 });
+
+                // Always hide divs with class dt-layout-row
+                document.querySelectorAll('.dt-info').forEach(function(el) {
+                    el.style.display = 'none';
+                });
+
+                // Move the dt-length dropdown into your card header if you want
+                const dtLength = document.querySelector('.dt-length');
+                const cardHeader = document.querySelector('.card-header .btn-list');
+                if (dtLength && cardHeader) {
+                    cardHeader.appendChild(dtLength);
+                }
+
+                // Move the DataTables pagination into the card-footer
+                const dtPagination = document.querySelector('nav[aria-label="pagination"]');
+                const cardFooter = document.querySelector('.card-footer.d-flex.align-items-center');
+                if (dtPagination && cardFooter) {
+                    cardFooter.appendChild(dtPagination);
+                }
             }
-
-            // Always hide divs with class dt-layout-row
-            document.querySelectorAll('.dt-search').forEach(function(el) {
-                el.style.display = 'none';
-            });
-
-            // Always hide divs with class dt-layout-row
-            document.querySelectorAll('.dt-info').forEach(function(el) {
-                el.style.display = 'none';
-            });
-
-            // Move the dt-length dropdown into your card header if you want
-            const dtLength = document.querySelector('.dt-length');
-            const cardHeader = document.querySelector('.card-header .btn-list');
-            if (dtLength && cardHeader) {
-                cardHeader.appendChild(dtLength);
-            }
-
-            // Move the DataTables pagination into the card-footer
-            const dtPagination = document.querySelector('nav[aria-label="pagination"]');
-            const cardFooter = document.querySelector('.card-footer.d-flex.align-items-center');
-            if (dtPagination && cardFooter) {
-                cardFooter.appendChild(dtPagination);
-            }
-        }
-    });
+        });
     </script>
-    @endsection
+@endsection
