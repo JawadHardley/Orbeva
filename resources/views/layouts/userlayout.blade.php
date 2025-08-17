@@ -26,6 +26,102 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ asset('assets/css/material-dashboard.css') }}" rel="stylesheet" />
+
+    <style>
+        .sidebar.sidebar-mini {
+            width: 70px !important;
+        }
+
+        .sidebar.sidebar-mini .nav-link-text {
+            display: none !important;
+        }
+
+        .sidebar.sidebar-mini .nav-link {
+            justify-content: center;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            text-align: center;
+        }
+
+        .sidebar.sidebar-mini .nav-link i {
+            margin-right: 0 !important;
+            font-size: 1.25rem;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            transition: margin-left 0.2s;
+        }
+
+        .sidebar.sidebar-mini~.main-content,
+        .main-content.main-mini {
+            margin-left: 70px !important;
+        }
+
+        @media (max-width: 991.98px) {
+            .sidebar {
+                left: -250px;
+                width: 250px;
+                transition: left 0.2s;
+            }
+
+            .sidebar.sidebar-mobile-open {
+                left: 0;
+            }
+
+            .main-content {
+                margin-left: 0 !important;
+            }
+        }
+
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1039;
+            transition: opacity 0.2s;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 250px;
+            z-index: 1040;
+            transition: width 0.2s, left 0.2s;
+            background: #212529 !important;
+        }
+
+        @media (max-width: 991.98px) {
+            body {
+                overflow-x: hidden;
+            }
+
+            .sidebar {
+                left: -250px !important;
+                width: 250px;
+                transition: left 0.2s;
+            }
+
+            .sidebar.sidebar-mobile-open {
+                left: 0 !important;
+            }
+        }
+
+        /* Hide pseudo-element arrows in mini sidebar mode */
+        .sidebar.sidebar-mini .nav-link::after,
+        .sidebar.sidebar-mini .nav-link::before {
+            display: none !important;
+            opacity: 0 !important;
+            content: none !important;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -45,7 +141,7 @@
     <div class="page">
 
         {{-- start sidebar --}}
-        <aside
+        {{-- <aside
             class="sidenav navbar navbar-vertical navbar-expand-xs border-radius-lg fixed-start ms-2  bg-gradient-dark my-2"
             data-bs-theme="dark" id="sidenav-main">
             <div class="sidenav-header">
@@ -145,15 +241,141 @@
                     <a class="btn bg-gradient-dark w-100" href="#" type="button">Updates soon</a>
                 </div>
             </div>
-        </aside>
+        </aside> --}}
         {{-- end sidebar --}}
+
+        <!-- Offcanvas Sidebar -->
+        <aside
+            class="sidenav navbar navbar-vertical navbar-expand-xs border-radius-lg fixed-start ms-2 bg-gradient-dark my-2 sidebar"
+            id="sidenav-main">
+            <div class="sidenav-header text-center">
+                <h1 class="navbar-brand navbar-brand-autodark mt-2 mx-auto">
+                    <a href="/" class="text-decoration-none text-white">
+                        <i class="fa fa-layer-group fs-4 text-danger"></i> <span class="ms-2 nav-link-text">
+                            ORBEVA</span>
+                    </a>
+                    <button type="button" class="btn btn-sm btn-danger ms-4 my-auto d-lg-none" id="sidebarCloseBtn">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </h1>
+            </div>
+            <hr class="horizontal dark mt-0 mb-2">
+            <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
+                <ul class="navbar-nav text-white">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active bg-gradient-dark"
+                                href="{{ route(Auth::user()->role . '' . '.dashboard') }}">
+                                <i class="fa fa-chart-line me-2 opacity-5"></i>
+                                <span class="nav-link-text ms-1">Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#applyferi" role="button"
+                                aria-expanded="false" aria-controls="applyferi">
+                                <i class="fa fa-compress me-2 opacity-5"></i>
+                                <span class="nav-link-text ms-1">Apply for Feri</span>
+                            </a>
+
+                            <div class="collapse mx-3" id="applyferi">
+                                <div class="m-2 p-2 rounded bg-dark">
+                                    <a class="dropdown-item small mb-2" href="{{ route('transporter.importapply') }}">
+                                        Quick Apply
+                                    </a>
+                                    <a class="dropdown-item small mb-2" href="{{ route('transporter.applyferi') }}">
+                                        Regional-Feri
+                                    </a>
+                                    <a class="dropdown-item small mb-2" href="{{ route('transporter.continueferi') }}">
+                                        Continuance-Feri
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#ferientries" role="button"
+                                aria-expanded="false" aria-controls="ferientries">
+                                <i class="fa fa-bars me-2 opacity-5"></i>
+                                <span class="nav-link-text ms-1">Feri Entries</span>
+                            </a>
+
+                            <div class="collapse mx-3" id="ferientries">
+                                <div class="m-2 p-2 rounded bg-dark">
+                                    <a class="dropdown-item small mb-2" href="{{ route('transporter.showApps') }}">
+                                        All Entries
+                                    </a>
+                                    <a class="dropdown-item small mb-2" href="{{ route('transporter.rejectedapps') }}">
+                                        Rejected Entries
+                                    </a>
+                                    <a class="dropdown-item small mb-2"
+                                        href="{{ route('transporter.completedapps') }}">
+                                        Completed Entries
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#assets" role="button"
+                                aria-expanded="false" aria-controls="assets">
+                                <i class="fa fa-compass-drafting me-2 opacity-5"></i>
+                                <span class="nav-link-text ms-1">Assets</span>
+                            </a>
+
+                            <div class="collapse mx-3" id="assets">
+                                <div class="m-2 p-2 rounded bg-dark">
+                                    <a class="dropdown-item small mb-2"
+                                        href="{{ route('transporter.sampcalculator') }}">
+                                        Orbeva Calculator
+                                    </a>
+                                    <a class="dropdown-item small mb-2" href="#">
+                                        Coming soon
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fa fa-gears me-2 opacity-5"></i>
+                                <span class="nav-link-text ms-1 ">
+                                    Automations <span class="small">(coming soon)</span>
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </ul>
+            </div>
+        </aside>
+        <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
             <!-- Navbar -->
             <nav class="navbar bg-gradient-dark mt-2 navbar-main navbar-expand-lg px-0 mx-3 shadow-none border-radius-xl sticky-top"
                 id="navbarBlur" data-scroll="true">
                 <div class="container-fluid py-1 px-3">
-                    <nav aria-label="breadcrumb">
+
+                    <!-- Sidebar Mini Toggle Button -->
+                    <button class="btn btn-dark me-3 my-auto d-none d-lg-block" id="sidebarMiniToggle"
+                        type="button">
+                        <i class="fa fa-angle-left"></i>
+                    </button>
+
+                    <!-- Sidebar Toggle Button -->
+                    <button class="bg-danger btn btn-dark me-3 my-auto d-lg-none" id="sidebarMobileToggle"
+                        type="button">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <!-- Add this before <div class="collapse navbar-collapse ..."> -->
+                    <button class="bg-dark navbar-toggler d-lg-none p-2" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <i class="fa fa-ellipsis-vertical text-white"></i>
+                    </button>
+
+                    <nav class="d-none d-lg-block" aria-label="breadcrumb">
                         <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                             <li class="breadcrumb-item text-sm">Pages</li>
                             <li class="breadcrumb-item text-sm" aria-current="page">Dashboard</li>
@@ -294,6 +516,102 @@
     <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var sidebar = document.getElementById('sidenav-main');
+            var toggleBtn = document.getElementById('sidebarMiniToggle');
+            var mainContent = document.querySelector('.main-content');
+
+            if (toggleBtn && sidebar) {
+                toggleBtn.addEventListener('click', function() {
+                    sidebar.classList.toggle('sidebar-mini');
+                    if (mainContent) {
+                        mainContent.classList.toggle('main-mini');
+                    }
+                    this.querySelector('i').classList.toggle('fa-angle-right');
+                    this.querySelector('i').classList.toggle('fa-angle-left');
+                });
+            }
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var sidebar = document.getElementById('sidenav-main');
+            var mainContent = document.querySelector('.main-content');
+            var navLinks = sidebar.querySelectorAll('.nav-link');
+
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    // Only expand sidebar if in mini mode and on desktop
+                    if (sidebar.classList.contains('sidebar-mini') && window.innerWidth >= 992) {
+                        sidebar.classList.remove('sidebar-mini');
+                        if (mainContent) mainContent.classList.remove('main-mini');
+                        var toggleBtn = document.getElementById('sidebarMiniToggle');
+                        if (toggleBtn) {
+                            var icon = toggleBtn.querySelector('i');
+                            icon.classList.remove('fa-angle-right');
+                            icon.classList.add('fa-angle-left');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var sidebar = document.getElementById('sidenav-main');
+            var mobileToggle = document.getElementById('sidebarMobileToggle');
+            var overlay = document.getElementById('sidebarOverlay');
+
+            function openSidebar() {
+                sidebar.classList.add('sidebar-mobile-open');
+                overlay.classList.add('active');
+            }
+
+            function closeSidebar() {
+                sidebar.classList.remove('sidebar-mobile-open');
+                overlay.classList.remove('active');
+            }
+
+            if (mobileToggle && sidebar && overlay) {
+                mobileToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    openSidebar();
+                });
+                overlay.addEventListener('click', function() {
+                    closeSidebar();
+                });
+            }
+
+            // Optional: close sidebar on ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeSidebar();
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var sidebar = document.getElementById('sidenav-main');
+            var overlay = document.getElementById('sidebarOverlay');
+            var closeBtn = document.getElementById('sidebarCloseBtn');
+
+            if (closeBtn && sidebar && overlay) {
+                closeBtn.addEventListener('click', function() {
+                    sidebar.classList.remove('sidebar-mobile-open');
+                    overlay.classList.remove('active');
+                });
+            }
+        });
+    </script>
+
+
+
     <script>
         var ctx = document.getElementById("chart-bars").getContext("2d");
 

@@ -43,8 +43,8 @@
     <script src="https://cdn.datatables.net/2.3.1/js/dataTables.js"></script>
 
     <div class="row fade-slide-in">
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 order-4">
-            <div class="card">
+        <div class="col-sm-6 mb-xl-0 mb-4 order-4">
+            <div class="card mb-2">
                 <div class="card-header p-2 ps-3">
                     <div class="d-flex justify-content-between">
                         <div>
@@ -59,8 +59,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 order-3">
-            <div class="card">
+        <div class="col-sm-6 mb-xl-0 mb-4 order-3">
+            <div class="card mb-2">
                 <div class="card-header p-2 ps-3">
                     <div class="d-flex justify-content-between">
                         <div>
@@ -75,8 +75,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 order-2">
-            <div class="card">
+        <div class="col-sm-6 mb-xl-0 mb-4 order-2">
+            <div class="card mb-2">
                 <div class="card-header p-2 ps-3">
                     <div class="d-flex justify-content-between">
                         <div>
@@ -91,8 +91,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 order-1">
-            <div class="card">
+        <div class="col-sm-6 mb-xl-0 mb-4 order-1">
+            <div class="card mb-2">
                 <div class="card-header p-2 ps-3">
                     <div class="d-flex justify-content-between">
                         <div>
@@ -101,7 +101,7 @@
                         </div>
                         <div
                             class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
-                            <i class="opacity-10 fa fa-user-clock"></i>
+                            <i class="opacity-10 fa fa-clock"></i>
                         </div>
                     </div>
                 </div>
@@ -109,9 +109,92 @@
         </div>
     </div>
 
+    <div class="row mt-5">
+        <div class="card-group mt-5">
+
+            <div class="card shadow-lg m-2" data-animation="true">
+                <div class="card-header bg-primary p-0 position-relative mt-n4 mx-3 z-index-2"
+                    style="height:200px; overflow:hidden;">
+                    <a class="d-block blur-shadow-image">
+                        <img src="{{ asset('images/lop1.svg') }}" alt="img-blur-shadow"
+                            class="img-fluid shadow border-radius-lg">
+                    </a>
+                </div>
+                <a href="{{ route(Auth::user()->role . '.showApps') }}" class="">
+                    <div class="card-body text-center">
+                        <h5 class="fs-6 mt-3">
+                            Show All Feri Entries
+                        </h5>
+                    </div>
+                </a>
+            </div>
+
+            <div class="card shadow-lg m-2" data-animation="true">
+                <div class="card-header bg-primary p-0 position-relative mt-n4 mx-3 z-index-2"
+                    style="height:200px; overflow:hidden;">
+                    <a class="d-block blur-shadow-image">
+                        <img src="{{ asset('images/lop2.svg') }}" alt="img-blur-shadow"
+                            class="img-fluid shadow border-radius-lg">
+                    </a>
+                </div>
+                <a href="{{ route(Auth::user()->role . '.applyferi') }}" class="" data-bs-toggle="modal"
+                    data-bs-target="#ask">
+                    <div class="card-body text-center">
+                        <h5 class="fs-6 mt-3">
+                            Apply for Feri
+                        </h5>
+                    </div>
+                </a>
+            </div>
+
+            <div class="card shadow-lg m-2" data-animation="true">
+                <div class="card-header bg-primary p-0 position-relative mt-n4 mx-3 z-index-2"
+                    style="height:200px; overflow:hidden;">
+                    <a class="d-block blur-shadow-image">
+                        <img src="{{ asset('images/lop3.svg') }}" alt="img-blur-shadow"
+                            class="img-fluid shadow border-radius-lg">
+                    </a>
+                </div>
+                <a href="{{ route(Auth::user()->role . '.sampcalculator') }}" class="">
+                    <div class="card-body text-center">
+                        <h5 class="fs-6 mt-3">
+                            Orbeva Calculator
+                        </h5>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col shadow-lg m-2 p-3">
+            <h3>Features Coming soon</h3>
+            <p class="small text-danger">
+                dont wait up, this will load soon, we are working on it
+            </p>
+            <div class="card" aria-hidden="true">
+                {{-- <img src="..." class="card-img-top" alt="..."> --}}
+                <div class="card-body">
+                    <h5 class="card-title placeholder-glow">
+                        <span class="placeholder col-6"></span>
+                    </h5>
+                    <p class="card-text placeholder-glow">
+                        <span class="placeholder col-7"></span>
+                        <span class="placeholder col-4"></span>
+                        <span class="placeholder col-4"></span>
+                        <span class="placeholder col-6"></span>
+                        <span class="placeholder col-8"></span>
+                    </p>
+                    <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {{-- the old code starts here --}}
 
-    <div class="row fade-slide-in">
+    {{-- <div class="row fade-slide-in">
         <div class="col-12 col-md-6 mb-3">
             <div class="card">
                 <div class="card-body">
@@ -160,9 +243,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
-    <div class="row fade-slide-in">
+    {{-- <div class="row fade-slide-in">
         <div class="col-sm-12 col-md-12 col-lg-4 mb-3">
             <a href="{{ route(Auth::user()->role . '.applyferi') }}" class="card card-link" data-bs-toggle="modal"
                 data-bs-target="#ask">
@@ -200,16 +283,16 @@
                 </div>
             </a>
         </div>
-    </div>
+    </div> --}}
 
 
 
     <!-- Modal -->
     <div class="modal fade" id="ask" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-4" id="exampleModalLabel">Feri Application Type</h1>
+                    <h1 class="modal-title text-center fs-5" id="exampleModalLabel">Type of Feri</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -217,12 +300,9 @@
 
                         <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
                             <a href="{{ route('transporter.applyferi') }}" class="card card-link">
-                                <div class="card">
+                                <div class="card shadow-lg">
                                     <div class="card-body">
-                                        <h3 class="card-title text-center p-5">
-                                            <i class="fa fa-mountain-city display-4"></i>
-                                        </h3>
-                                        <p class="card-title text-center">Regional</p>
+                                        <p class="card-title text-center text-success">Regional</p>
                                     </div>
                                 </div>
                             </a>
@@ -230,12 +310,9 @@
 
                         <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
                             <a href="{{ route('transporter.continueferi') }}" class="card card-link">
-                                <div class="card">
+                                <div class="card shadow-lg">
                                     <div class="card-body">
-                                        <h3 class="card-title text-center p-5">
-                                            <i class="fa fa-truck-fast display-4"></i>
-                                        </h3>
-                                        <p class="card-title text-center">Continuance</p>
+                                        <p class="card-title text-center text-primary">Continuance</p>
                                     </div>
                                 </div>
                             </a>
