@@ -2,14 +2,14 @@
     <div class="row p-5">
 
         <h1 class="mb-2 text-center display-6">Certificate Cost Calculator</h1>
-        <h2 class="mb-5 text-center ">Presis Consultancy Ltd</h2>
+        <h2 class="mb-5 text-center ">Mikhanyi Logistics</h2>
         <hr>
 
         <div class="col-12 col-md-4 mb-3">
             From:
         </div>
         <div class="col-12 col-md-8 mb-3">
-            Ferix io Services
+            Orbeva Services
         </div>
         <div class="col-12 col-md-4 mb-3">
             Estimate date:
@@ -147,170 +147,174 @@
 </div>
 
 <script>
-window.tzRate = {{$eur}};
+    window.tzRate = {{ $eur }};
 </script>
 
 <script>
-window.tshRate = {{$tz}};
+    window.tshRate = {{ $tz }};
 </script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const generalInputs = document.querySelectorAll('.general input, .general select');
-    const freightDiv = document.querySelector('.freight');
-    const freightInputs = document.querySelectorAll('.freight input, .freight select');
-    const answersDiv = document.querySelector('.answers');
-    const calcBtn = document.querySelector('.call');
-    const resetBtn = document.querySelector('.reseter');
-    const regionalRow = document.querySelector('.regional');
+    document.addEventListener('DOMContentLoaded', function() {
+        const generalInputs = document.querySelectorAll('.general input, .general select');
+        const freightDiv = document.querySelector('.freight');
+        const freightInputs = document.querySelectorAll('.freight input, .freight select');
+        const answersDiv = document.querySelector('.answers');
+        const calcBtn = document.querySelector('.call');
+        const resetBtn = document.querySelector('.reseter');
+        const regionalRow = document.querySelector('.regional');
 
-    // Helper to check if all inputs in a NodeList are filled
-    function allFilled(inputs) {
-        return Array.from(inputs).every(input => {
-            if (input.type === 'radio') {
-                const group = document.getElementsByName(input.name);
-                return Array.from(group).some(r => r.checked);
+        // Helper to check if all inputs in a NodeList are filled
+        function allFilled(inputs) {
+            return Array.from(inputs).every(input => {
+                if (input.type === 'radio') {
+                    const group = document.getElementsByName(input.name);
+                    return Array.from(group).some(r => r.checked);
+                }
+                return input.value && input.value.trim() !== '';
+            });
+        }
+
+        // Fade helpers
+        function fadeShow(el) {
+            el.classList.add('show');
+        }
+
+        function fadeHide(el) {
+            el.classList.remove('show');
+        }
+
+        // Hide freight, answers, and regional row initially
+        fadeHide(freightDiv);
+        fadeHide(answersDiv);
+        if (regionalRow) regionalRow.classList.add('d-none');
+
+        // Show/hide freight based on general inputs
+        function checkGeneral() {
+            if (allFilled(generalInputs)) {
+                fadeShow(freightDiv);
+            } else {
+                fadeHide(freightDiv);
+                fadeHide(answersDiv);
+                if (regionalRow) regionalRow.classList.add('d-none');
             }
-            return input.value && input.value.trim() !== '';
-        });
-    }
-
-    // Fade helpers
-    function fadeShow(el) {
-        el.classList.add('show');
-    }
-
-    function fadeHide(el) {
-        el.classList.remove('show');
-    }
-
-    // Hide freight, answers, and regional row initially
-    fadeHide(freightDiv);
-    fadeHide(answersDiv);
-    if (regionalRow) regionalRow.classList.add('d-none');
-
-    // Show/hide freight based on general inputs
-    function checkGeneral() {
-        if (allFilled(generalInputs)) {
-            fadeShow(freightDiv);
-        } else {
-            fadeHide(freightDiv);
-            fadeHide(answersDiv);
-            if (regionalRow) regionalRow.classList.add('d-none');
         }
-    }
 
-    // Enable/disable calculate button based on all inputs
-    function checkAll() {
-        if (allFilled(generalInputs) && allFilled(freightInputs)) {
-            calcBtn.disabled = false;
-        } else {
-            calcBtn.disabled = true;
-            fadeHide(answersDiv);
-            if (regionalRow) regionalRow.classList.add('d-none');
+        // Enable/disable calculate button based on all inputs
+        function checkAll() {
+            if (allFilled(generalInputs) && allFilled(freightInputs)) {
+                calcBtn.disabled = false;
+            } else {
+                calcBtn.disabled = true;
+                fadeHide(answersDiv);
+                if (regionalRow) regionalRow.classList.add('d-none');
+            }
         }
-    }
 
-    // Attach listeners to general and freight inputs
-    generalInputs.forEach(input => {
-        input.addEventListener('input', function() {
-            checkGeneral();
-            checkAll();
-        });
-        if (input.type === 'radio') {
-            input.addEventListener('change', function() {
+        // Attach listeners to general and freight inputs
+        generalInputs.forEach(input => {
+            input.addEventListener('input', function() {
                 checkGeneral();
                 checkAll();
             });
-        }
+            if (input.type === 'radio') {
+                input.addEventListener('change', function() {
+                    checkGeneral();
+                    checkAll();
+                });
+            }
+        });
+        freightInputs.forEach(input => {
+            input.addEventListener('input', checkAll);
+        });
+
+        // Calculate button logic
+        calcBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const typeSelect = document.querySelector('.general select[name="type"]');
+            const typeValue = typeSelect ? typeSelect.options[typeSelect.selectedIndex].text
+                .toLowerCase() : '';
+            const ucostInput = document.querySelector('.freight input[name="ucost"]');
+            const grossInput = document.querySelector('.freight input[name="gross"]');
+            const volumeInput = document.querySelector('.freight input[name="volume"]');
+            const currencySelect = document.querySelector('.general select[name="currency"]');
+            const currencyValue = currencySelect ? currencySelect.value : '1';
+            const ucost = parseFloat(ucostInput ? ucostInput.value : '');
+            const gross = parseFloat(grossInput ? grossInput.value : '');
+            const volume = parseFloat(volumeInput ? volumeInput.value : '');
+
+            // Always hide regional row first
+            if (regionalRow) regionalRow.classList.add('d-none');
+
+            let finalAns2 = 0;
+            let finalCurrency = 'USD';
+
+            if (typeValue === 'continuance' && !isNaN(ucost)) {
+                document.querySelector('.fcost').textContent = ucost.toFixed(2);
+                const ans1 = +(ucost * 0.018).toFixed(2);
+                document.querySelector('.ans1').textContent = ans1.toFixed(2);
+                finalAns2 = ans1 + 20;
+
+                // Reset the fields to their "continuance" values
+                document.querySelector('.disc1').textContent = 'ADMIN-COD-Continuance';
+                document.querySelector('.disc1-c').textContent = 'USD';
+                document.querySelector('.disc1-d').textContent = '20.00';
+                document.querySelector('.codunit').textContent = '20.00';
+                document.querySelector('.callunit').textContent = '1.00';
+                document.querySelector('.calltotal').textContent = '20.00';
+
+                fadeShow(answersDiv);
+            } else if (typeValue === 'regional' && !isNaN(gross) && !isNaN(volume) && !isNaN(ucost)) {
+                // Show the regional row
+                if (regionalRow) regionalRow.classList.remove('d-none');
+                // Step 1: m = gross / 1000
+                const m = gross / 1000;
+                // Step 2: use max(volume, m)
+                const x = (volume >= m) ? volume : m;
+                // Step 3: (x * 4 + 40) * 1.15
+                const regionalResult = ((x * 4) + 40) * window.tzRate;
+                // Step 4: ucost * 1.18%
+                const ans1 = +(ucost * 0.018).toFixed(2);
+                document.querySelector('.fcost').textContent = ucost.toFixed(2);
+                document.querySelector('.ans1').textContent = ans1.toFixed(2);
+                // Step 5: add regionalResult + ans1
+                finalAns2 = regionalResult + ans1;
+
+                // Set your requested fields for regional
+                document.querySelector('.disc1').textContent = 'Feri/COD Admin Fee';
+                document.querySelector('.disc1-c').textContent = 'EUR';
+                document.querySelector('.disc1-d').textContent = '40.00';
+                document.querySelector('.codunit').textContent = '40.00';
+                document.querySelector('.callunit').textContent = x.toFixed(2);
+                document.querySelector('.calltotal').textContent = (x * 4).toFixed(2);
+
+                fadeShow(answersDiv);
+            } else {
+                fadeHide(answersDiv);
+                if (regionalRow) regionalRow.classList.add('d-none');
+            }
+
+            // Currency conversion for ans2
+            if (!isNaN(finalAns2) && finalAns2 > 0) {
+                if (currencyValue === '2') { // EUR
+                    finalAns2 = finalAns2 / window.tzRate;
+                    finalCurrency = 'EUR';
+                } else if (currencyValue === '3') { // TZS
+                    finalAns2 = finalAns2 * window.tshRate;
+                    finalCurrency = 'TZS';
+                }
+                document.querySelector('.ans2').textContent = finalAns2.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                }) + ' ' + finalCurrency;
+            }
+
+        });
+
+        // Reset button logic
+        resetBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.reload();
+        });
     });
-    freightInputs.forEach(input => {
-        input.addEventListener('input', checkAll);
-    });
-
-    // Calculate button logic
-    calcBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    const typeSelect = document.querySelector('.general select[name="type"]');
-    const typeValue = typeSelect ? typeSelect.options[typeSelect.selectedIndex].text.toLowerCase() : '';
-    const ucostInput = document.querySelector('.freight input[name="ucost"]');
-    const grossInput = document.querySelector('.freight input[name="gross"]');
-    const volumeInput = document.querySelector('.freight input[name="volume"]');
-    const currencySelect = document.querySelector('.general select[name="currency"]');
-    const currencyValue = currencySelect ? currencySelect.value : '1';
-    const ucost = parseFloat(ucostInput ? ucostInput.value : '');
-    const gross = parseFloat(grossInput ? grossInput.value : '');
-    const volume = parseFloat(volumeInput ? volumeInput.value : '');
-
-    // Always hide regional row first
-    if (regionalRow) regionalRow.classList.add('d-none');
-
-    let finalAns2 = 0;
-    let finalCurrency = 'USD';
-
-    if (typeValue === 'continuance' && !isNaN(ucost)) {
-        document.querySelector('.fcost').textContent = ucost.toFixed(2);
-        const ans1 = +(ucost * 0.018).toFixed(2);
-        document.querySelector('.ans1').textContent = ans1.toFixed(2);
-        finalAns2 = ans1 + 20;
-
-        // Reset the fields to their "continuance" values
-        document.querySelector('.disc1').textContent = 'ADMIN-COD-Continuance';
-        document.querySelector('.disc1-c').textContent = 'USD';
-        document.querySelector('.disc1-d').textContent = '20.00';
-        document.querySelector('.codunit').textContent = '20.00';
-        document.querySelector('.callunit').textContent = '1.00';
-        document.querySelector('.calltotal').textContent = '20.00';
-
-        fadeShow(answersDiv);
-    } else if (typeValue === 'regional' && !isNaN(gross) && !isNaN(volume) && !isNaN(ucost)) {
-        // Show the regional row
-        if (regionalRow) regionalRow.classList.remove('d-none');
-        // Step 1: m = gross / 1000
-        const m = gross / 1000;
-        // Step 2: use max(volume, m)
-        const x = (volume >= m) ? volume : m;
-        // Step 3: (x * 4 + 40) * 1.15
-        const regionalResult = ((x * 4) + 40) * window.tzRate;
-        // Step 4: ucost * 1.18%
-        const ans1 = +(ucost * 0.018).toFixed(2);
-        document.querySelector('.fcost').textContent = ucost.toFixed(2);
-        document.querySelector('.ans1').textContent = ans1.toFixed(2);
-        // Step 5: add regionalResult + ans1
-        finalAns2 = regionalResult + ans1;
-
-        // Set your requested fields for regional
-        document.querySelector('.disc1').textContent = 'Feri/COD Admin Fee';
-        document.querySelector('.disc1-c').textContent = 'EUR';
-        document.querySelector('.disc1-d').textContent = '40.00';
-        document.querySelector('.codunit').textContent = '40.00';
-        document.querySelector('.callunit').textContent = x.toFixed(2);
-        document.querySelector('.calltotal').textContent = (x * 4).toFixed(2);
-
-        fadeShow(answersDiv);
-    } else {
-        fadeHide(answersDiv);
-        if (regionalRow) regionalRow.classList.add('d-none');
-    }
-
-    // Currency conversion for ans2
-    if (!isNaN(finalAns2) && finalAns2 > 0) {
-        if (currencyValue === '2') { // EUR
-            finalAns2 = finalAns2 / window.tzRate;
-            finalCurrency = 'EUR';
-        } else if (currencyValue === '3') { // TZS
-            finalAns2 = finalAns2 * window.tshRate;
-            finalCurrency = 'TZS';
-        }
-        document.querySelector('.ans2').textContent = finalAns2.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' ' + finalCurrency;
-    }
-
-});
-
-    // Reset button logic
-    resetBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.location.reload();
-    });
-});
 </script>

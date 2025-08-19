@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Ferix io</title>
+    <title>Orbeva</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.3.2/dist/css/tabler.min.css" />
     <!-- <link rel="stylesheet" href="https://unpkg.com/@tabler/core@latest/dist/css/tabler.min.css" /> -->
@@ -37,7 +37,7 @@
                 </button>
                 <h1 class="navbar-brand navbar-brand-autodark">
                     <a href="/" class="text-decoration-none">
-                        <i class="fa fa-earth-asia"></i> <b>Ferix</b>
+                        <i class="fa fa-layer-group text-danger"></i> <b>Orbeva</b>
                     </a>
                 </h1>
                 <div class="collapse navbar-collapse" id="navbarNav">

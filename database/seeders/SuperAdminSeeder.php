@@ -17,7 +17,7 @@ class SuperAdminSeeder extends Seeder
     {
         // Ensure the company exists (or create a default one)
         $company = Company::firstOrCreate(
-            ['name' => 'Ferix io'],
+            ['name' => 'Orbeva'],
             [
                 'type' => 'admin',
                 'email' => 'jawadcharls@gmail.com',

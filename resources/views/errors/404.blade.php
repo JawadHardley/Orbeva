@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Ferix io</title>
+    <title>Orbeva</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.3.2/dist/css/tabler.min.css" />
@@ -21,8 +21,8 @@
             <h1 class="display-4 mb-2">404</h1>
             <h2 class="mb-3">Page not Found</h2>
             {{-- <p class="mb-4">Sorry, you don't have permission to access this page.</p> --}}
-            <button class="btn btn-primary" onclick="window.history.back();">
-                <i class="fa fa-arrow-left me-2"></i>Go Back
+            <button class="btn btn-warning" onclick="window.history.back();">
+                <i class="fa fa-angle-left me-2"></i>Back
             </button>
         </div>
     </div>

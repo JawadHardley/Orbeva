@@ -6,54 +6,56 @@
     <div class="row">
         <div class="col-12">
             <x-errorshow />
-            <div class="card fade-slide-in">
-                <div class="card-header">
+            <div class="card fade-slide-in mb-4">
+                <div class="border p-3">
                     <div class="row w-full">
                         <div class="col">
-                            <h3 class="card-title mb-0">List of Applications</h3>
-                            <p class="text-secondary m-0">
-                                with extensive search
+                            <h5 class="card-title text-primary mb-0">List of Entries</h5>
+                            <p class="text-secondary small m-0">
+                                This is the list of all your applications. You can search, filter, and manage them
+                                here.
                             </p>
                         </div>
                         <div class="col-md-auto col-sm-12 d-flex">
-                            <div class="input-group mb-3 mx-2">
+                            <div class="input-group input-group-static mx-2">
                                 <span class="input-group-text"><i class="fa fa-search"></i></span>
                                 <input id="advanced-table-search" type="text" class="form-control" placeholder="Search">
                             </div>
-                            <div class="input-group mb-3 mx-2">
-                                <select class="form-select">
+                            {{-- <div class="input-group input-group-static mb-3 mx-2">
+                                <select class="form-control">
                                     <option selected>10</option>
                                     <option value="1">20</option>
                                     <option value="2">50</option>
                                     <option value="3">100</option>
                                 </select>
-                            </div>
+                            </div> --}}
+
                         </div>
-                        <div class="col-md-auto col-sm-12 d-flex">
+                        {{-- <div class="col-md-auto col-sm-12 d-flex">
                             <div class="input-group mb-3">
                                 <a href="{{ route('transporter.exportapps') }}" class="btn btn-outline-success">
                                     <i class="fa fa-circle-down me-2"></i> Export
                                 </a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
+            </div>
+            <div class="card fade-slide-in border p-3">
                 <div class="table-respnsive">
-                    <table id="linework"
-                        class="table table-selectable card-table table-vcenter text-nowrap datatable display">
+                    <table id="linework" class="table datatable text-center mb-0">
                         <thead>
                             <tr>
-                                <th>
+                                <th class="text-secondary font-weight-bolder opacity-7">
                                     ID
                                 </th>
-                                <th>Reference</th>
-                                <th>Applicant</th>
+                                <th>App Reference</th>
                                 <th>Date</th>
                                 <th>PO</th>
                                 <th>Type</th>
                                 <th>Customs No</th>
-                                <th>Feri Cert NO</th>
-                                <th>Document</th>
+                                {{-- <th>Feri Cert NO</th>
+                                <th>Document</th> --}}
                                 <th>Status</th>
                                 <th>Query</th>
                                 <th></th>
@@ -62,24 +64,22 @@
                         <tbody>
                             @foreach ($records as $record)
                                 <tr>
-                                    <td><span class="text-secondary">{{ $record->id }}</span></td>
-                                    <td><a href="{{ route('transporter.showApp', ['id' => $record->id]) }}"
+                                    <td><span>{{ $record->id }}</span></td>
+                                    <td class="text-info"><a
+                                            href="{{ route('transporter.showApp', ['id' => $record->id]) }}"
                                             class="text-reset" tabindex="-1">
                                             {{ ucfirst($record->company_ref) }}
                                         </a></td>
                                     <td>
-                                        {{ $record->applicant }}
-                                    </td>
-                                    <td>
-                                        {{ $record->created_at->format('j F Y') }}
+                                        {{ $record->created_at->format('d/m/Y') }}
 
                                     </td>
                                     <td>
                                         @if (is_numeric($record->po))
-                                            <span class="badge bg-teal-lt text-teal-lt-fg">{{ $record->po }}</span>
+                                            <span class="text-success">{{ $record->po }}</span>
                                         @else
                                             <span class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                title="to be added">TBS</span>
+                                                title="NIL">NIL</span>
                                         @endif
                                     </td>
                                     <td>
@@ -88,10 +88,10 @@
                                     <td>
                                         {{ ucfirst($record->customs_decl_no) }}
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         {{ $record->feri_cert_no ? ucfirst($record->feri_cert_no) : '...' }}
-                                    </td>
-                                    <td class="text-start">
+                                    </td> --}}
+                                    {{-- <td class="text-start">
                                         @if ($record->status == 1 || $record->status == 2)
                                             <i class="fa fa-spinner" data-bs-toggle="tooltip" data-bs-placement="top"
                                                 title="In progress"></i>
@@ -122,21 +122,20 @@
                                                     data-bs-placement="top" title="Invoice"></i>
                                             </a>
                                         @endif
-                                    </td>
+                                    </td> --}}
                                     <td>
                                         @if ($record->status == 1)
-                                            <span class="badge bg-danger me-1"></span> Pending
+                                            <span class="badge text-xxs bg-danger me-1">Pending</span>
                                         @elseif ($record->status == 2)
-                                            <span class="badge bg-warning me-1"></span> Pending
+                                            <span class="badge text-xxs bg-warning me-1">Pending</span>
                                         @elseif ($record->status == 3)
-                                            <span class="status-dot status-dot-animated status-cyan me-1"></span> Draft
-                                            Approval
+                                            <span class="badge text-xxs text-info me-1">Draft Approval</span>
                                         @elseif ($record->status == 4)
-                                            <span class="badge bg-primary me-1"></span> In progress
+                                            <span class="badge text-xxs bg-info me-1">In progress</span>
                                         @elseif ($record->status == 5)
-                                            <span class="status-dot status-dot-animated status-green me-1"></span> Complete
+                                            <span class="badge text-xxs text-success me-1">Complete</span>
                                         @elseif ($record->status == 6)
-                                            <span class="status-dot status-dot-animated status-danger me-1"></span> Rejected
+                                            <span class="badge text-xxs text-danger me-1">Rejected</span>
                                         @endif
                                     </td>
                                     <td class="">
@@ -188,31 +187,14 @@
                                 </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>
-                                    ID
-                                </th>
-                                <th>Reference</th>
-                                <th>Applicant</th>
-                                <th>Date</th>
-                                <th>PO</th>
-                                <th>Manifest</th>
-                                <th>Type</th>
-                                <th>Document</th>
-                                <th>Status</th>
-                                <th>Query</th>
-                                <th></th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
-                <div class="card-footer d-flex align-items-center">
-                    <p class="m-0 text-secondary">Entries</p>
-                    <ul class="pagination m-0 ms-auto">
+            </div>
+            <div class="card-footer fade-slide-in  rounded border mt-3 p-3 d-flex align-items-center">
+                <p class="m-0 text-secondary small">Applications</p>
+                <ul class="pagination m-0 ms-auto">
 
-                    </ul>
-                </div>
+                </ul>
             </div>
         </div>
     </div>
@@ -253,8 +235,7 @@
                                                                                 <div class="col chat-bubble-author">
                                                                                     {{ Auth::user()->name }}
                                                                                 </div>
-                                                                                <div
-                                                                                    class="col-auto chat-bubble-date fs-4">
+                                                                                <div class="col-auto chat-bubble-date fs-4">
                                                                                     {{ $chat->formatted_date }}
                                                                                 </div>
                                                                             </div>

@@ -15,7 +15,7 @@ class CompanySeeder extends Seeder
     {
         Company::insert([
             [
-                'name' => 'Ferix io',
+                'name' => 'Orbeva',
                 'type' => 'admin',
                 'email' => 'jawadcharls@gmail.com',
                 'address' => 'Kinondoni, Dar es Salaam',
@@ -23,10 +23,10 @@ class CompanySeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'name' => 'Presis Consultancy',
+                'name' => 'Mikhanyi Logistics',
                 'type' => 'vendor',
-                'email' => 'giraldinen@presisfinace.co.tz',
-                'address' => 'P.O BOX 75391, Dar es Salaam, Avocado Street, Kawe',
+                'email' => 'ilungam@mikhanyi.co.za',
+                'address' => 'P.O BOX 1322',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
