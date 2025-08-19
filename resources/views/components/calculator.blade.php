@@ -1,148 +1,149 @@
-<div class="container general mb-3 card">
-    <div class="row p-5">
+<div class="col-12 col-lg-3">
+    <div class="container general mb-3 card">
+        <div class="row">
 
-        <h1 class="mb-2 text-center display-6">Certificate Cost Calculator</h1>
-        <h2 class="mb-5 text-center ">Mikhanyi Logistics</h2>
-        <hr>
+            <h5 class="my-3 py-2 text-center text-primary border-bottom">Mikhanyi Logistics <br /> Cost Calculator</h5>
 
-        <div class="col-12 col-md-4 mb-3">
-            From:
-        </div>
-        <div class="col-12 col-md-8 mb-3">
-            Orbeva Services
-        </div>
-        <div class="col-12 col-md-4 mb-3">
-            Estimate date:
-        </div>
-        <div class="col-12 col-md-8 mb-3">
-            {{ Carbon\Carbon::now()->format('d M Y') }}
-        </div>
-        <div class="col-12 col-md-4 mb-3">
-            Currency:
-        </div>
-        <div class="col-12 col-md-8 mb-3">
-            <select class="form-select" name="currency">
-                <option selected value="1">USD</option>
-                <option value="2">EUR</option>
-                <option value="3">TZS</option>
-            </select>
-        </div>
-        <div class="col-12 col-md-4 mb-3">
-            Transport Type:
-        </div>
-        <div class="col-12 col-md-8 mb-3">
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="ttype" id="radioDefault1">
-                <label class="form-check-label" for="radioDefault1">
-                    Road
-                </label>
+            <div class="col-12 mb-3">
+                <div class="input-group input-group-static mb-4">
+                    <label>Date</label>
+                    <input type="text" value="{{ Carbon\Carbon::now()->format('d M Y') }}" class="form-control"
+                        disabled>
+                </div>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="ttype" id="radioDefault1">
-                <label class="form-check-label" for="radioDefault1">
-                    Rail
-                </label>
+
+            <div class="col-12 mb-3">
+                <div class="input-group input-group-static mb-4">
+                    <label for="exampleFormControlSelect1" class="ms-0">Currency</label>
+                    <select class="form-control" name="currency">
+                        <option selected value="1">USD</option>
+                        <option value="2">EUR</option>
+                        <option value="3">TZS</option>
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="col-12 col-md-4 mb-3">
-            <!-- Currency: -->
-        </div>
-        <div class="col-12 col-md-8 mb-3">
-            <select class="form-select" name="type">
-                <option selected value="2">Continuance</option>
-                <option value="1">regional</option>
-            </select>
+
+            <div class="col-12 mb-3">
+                <div class="input-group input-group-static mb-4">
+                    <label for="exampleFormControlSelect1" class="ms-0">Feri Type</label>
+                    <select class="form-control" name="type">
+                        <option selected value="2">Continuance</option>
+                        <option value="1">regional</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-12 mb-3">
+                <div class="input-group input-group-static mb-4">
+                    <label>Transport Type</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="ttype" id="radioDefault1">
+                        <label class="form-check-label" for="radioDefault1">
+                            Road
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="ttype" id="radioDefault1">
+                        <label class="form-check-label" for="radioDefault1">
+                            Rail
+                        </label>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
 
-<div class="container freight mb-3  card fade-section">
-    <div class="row p-5">
-        <h1 class="mb-5">Freight Details</h1>
-        <div class="col-12 col-md-4 mb-3">
-            Gross weight (Kg):
-        </div>
-        <div class="col-12 col-md-8 mb-3">
-            <div class="mb-3">
-                <!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> -->
-                <input type="number" class="form-control" name="gross" placeholder="Eg 1000">
+<div class="col-12 col-lg-3">
+    <div class="container freight mb-3  card fade-section">
+        <div class="row">
+
+            <h5 class="my-3 py-2 text-center border-bottom">Additional <br /> Freight Details</h5>
+
+            <div class="col-12 mb-3">
+                <div class="input-group input-group-static mb-4">
+                    <label>Gross weight: kg</label>
+                    <input type="number" class="form-control" name="gross" placeholder="Eg 1000">
+                </div>
             </div>
-        </div>
-        <div class="col-12 col-md-4 mb-3">
-            Volume (m3):
-        </div>
-        <div class="col-12 col-md-8 mb-3">
-            <div class="mb-3">
-                <!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> -->
-                <input type="number" class="form-control" name="volume" placeholder="Eg 1000">
+
+            <div class="col-12 mb-3">
+                <div class="input-group input-group-static mb-4">
+                    <label>Volume: m3</label>
+                    <input type="number" class="form-control" name="volume" placeholder="Eg 1000">
+                </div>
             </div>
-        </div>
-        <div class="col-12 col-md-4 mb-3">
-            Freight cost:
-        </div>
-        <div class="col-12 col-md-4 mb-3">
-            <!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> -->
-            <input type="number" class="form-control" name="ucost" placeholder="Eg 250">
-        </div>
-        <div class="col-12 col-md-4 mb-3">
-            <select class="form-select" name="currency2" aria-label="Default select example">
-                <option selected value="1">USD</option>
-            </select>
-        </div>
-        <div class="col-12 col-md-4 mb-3">
-            <!-- Freight cost: -->
-        </div>
-        <div class="col-12 col-md-8 mb-3">
-            <button class="btn btn-primary call">Calculate</button>
-            <button class="btn btn-danger reseter">Reset</button>
+
+            <div class="col-6 mb-3">
+                <div class="input-group input-group-static mb-4">
+                    <label>Freight cost</label>
+                    <input type="number" class="form-control" name="ucost" placeholder="Eg 250">
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div class="input-group input-group-static mb-4">
+                    <label for="exampleFormControlSelect1" class="ms-0">Currency</label>
+                    <select class="form-control" name="currency2">
+                        <option selected value="1">USD</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-12 mb-3 text-end">
+                <button class="btn btn-success call">Calculate</button>
+                <button class="btn btn-danger reseter">Reset</button>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="container answers mb-3 fade-section card">
-    <div class="row p-5">
-        <h1 class="mb-5">Cost Estimate</h1>
+<div class="col-12 col-lg-6">
+    <div class="container answers mb-3 fade-section card">
+        <div class="row">
+            <h5 class="my-3 py-2 text-center border-bottom">Cost Estimation <br /> ~ </h5>
 
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col" colspan="">Description</th>
-                    <th scope="col">Currency</th>
-                    <th scope="col">Unit Price</th>
-                    <th scope="col">Units</th>
-                    <th scope="col">Line Totals</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="d-none regional">
-                    <td>Bulk or/Ton or/Cbm VRAC 4</td>
-                    <td>EUR</td>
-                    <td>4.00</td>
-                    <td class="callunit">1.00</td>
-                    <td class="calltotal">20.00</td>
-                </tr>
-                <tr>
-                    <td class="disc1">ADMIN-COD-Continuance</td>
-                    <td class="disc1-c">USD</td>
-                    <td class="codunit">20.0</td>
-                    <td>1.00</td>
-                    <td class="disc1-d">20.00</td>
-                </tr>
-                <tr>
-                    <td>USD1.8% OF FREIGHT COST</td>
-                    <td>USD</td>
-                    <td>1.8%</td>
-                    <td class="fcost">222.00</td>
-                    <td class="ans1">4.00</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="4" class="text-end h4">Total Estimated Cost</td>
-                    <td class="ans2">24.00 USD</td>
-                </tr>
-        </table>
+            <table class="table mt-5 pt-5 table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="">Description</th>
+                        <th scope="col">Currency</th>
+                        <th scope="col">Unit Price</th>
+                        <th scope="col">Units</th>
+                        <th scope="col">Line Totals</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center small">
+                    <tr class="d-none regional">
+                        <td>Bulk or/Ton or/Cbm VRAC 4</td>
+                        <td>EUR</td>
+                        <td>4.00</td>
+                        <td class="callunit">1.00</td>
+                        <td class="calltotal">20.00</td>
+                    </tr>
+                    <tr>
+                        <td class="disc1">ADMIN-COD-Continuance</td>
+                        <td class="disc1-c">USD</td>
+                        <td class="codunit">20.0</td>
+                        <td>1.00</td>
+                        <td class="disc1-d">20.00</td>
+                    </tr>
+                    <tr>
+                        <td>USD1.8% OF FREIGHT COST</td>
+                        <td>USD</td>
+                        <td>1.8%</td>
+                        <td class="fcost">222.00</td>
+                        <td class="ans1">4.00</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" class="text-end h5">Total Estimated Cost:</td>
+                        <td class="text-info ans2">24.00 USD</td>
+                    </tr>
+            </table>
 
+        </div>
     </div>
 </div>
 
