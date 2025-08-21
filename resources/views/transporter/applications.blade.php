@@ -43,7 +43,7 @@
             </div>
             <div class="card fade-slide-in border p-3">
                 <div class="table-respnsive">
-                    <table id="linework" class="table datatable text-center mb-0">
+                    <table id="linework" class="table datatable table-striped text-center mb-0">
                         <thead>
                             <tr>
                                 <th class="text-secondary font-weight-bolder opacity-7">
@@ -63,7 +63,7 @@
                         </thead>
                         <tbody>
                             @foreach ($records as $record)
-                                <tr>
+                                <tr class="align-middle">
                                     <td><span>{{ $record->id }}</span></td>
                                     <td class="text-info"><a
                                             href="{{ route('transporter.showApp', ['id' => $record->id]) }}"
@@ -149,7 +149,7 @@
 
                                         <a href="#" class="text-decoration-none" data-bs-toggle="modal"
                                             data-bs-target="#chat{{ $record->id }}">
-                                            <i class="fa fa-comment-dots"></i>
+                                            <i class="fa fa-bell"></i>
 
                                             @if ($unreadChats->isNotEmpty())
                                                 <span class="badge bg-red mb-2"></span>

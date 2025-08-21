@@ -25,13 +25,11 @@
                     <div class="col mx-3 mt-2 rounded">
                         <div class="tab-content">
                             {{-- this is for profile --}}
-                            <div class="tab-pane fade show active shadow-lg mt-4 p-3" id="profile-tabs-simple"
+                            <div class="tab-pane fade show active border rounded mt-4 p-3" id="profile-tabs-simple"
                                 role="tabpanel">
                                 <form action="{{ route(Auth::user()->role . '.updateProfile') }}" method="POST">
                                     @csrf
-
-                                    <h4 class="mb-4">My Account</h4>
-                                    <div class="row align-items-center p-3 rounded shadow-lg mb-4">
+                                    <div class="row align-items-center p-3 shadow-lg pt-0 rounded mb-4">
                                         <div class="col-md-1 text-center">
                                             <span class="avatar avatar-md text-white bg-gradient-dark">
                                                 <i class="fa fa-user"></i>
@@ -113,7 +111,7 @@
                                     </div>
 
                                 </form>
-                                <div class="card-footer bg-transparent mt-auto">
+                                <div class="card-footer bg-transparent mt-5">
                                     <div class="btn-list justify-content-end">
                                         <a href="#" class="btn btn-1"> Cancel </a>
                                         <a href="#" class="btn btn-primary btn-2" data-bs-toggle="modal"
@@ -125,7 +123,7 @@
                             </div>
 
                             {{-- this is for password change --}}
-                            <div class="tab-pane fade shadow-lg mt-4 p-3" id="dashboard-tabs-simple" role="tabpanel">
+                            <div class="tab-pane fade border rounded mt-4 p-3" id="dashboard-tabs-simple" role="tabpanel">
                                 <form action="{{ route(Auth::user()->role . '.changePassword') }}" method="POST">
                                     @csrf
                                     <h4 class="mb-4">Change Password</h4>
@@ -136,20 +134,27 @@
 
                                     <div class="row g-3">
                                         <div class="col-12">
-                                            <div class="form-label">Current Password</div>
-                                            <input type="password" name="current_password" class="form-control">
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Current Password</label>
+                                                <input type="password" name="current_password" class="form-control">
+                                            </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-label">New Password</div>
-                                            <input type="password" name="new_password" class="form-control">
+                                            <div class="input-group input-group-static mb-4">
+                                                <label class="form-label">New Password</label>
+                                                <input type="password" name="new_password" class="form-control">
+                                            </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-label">Confirm Password</div>
-                                            <input type="password" name="new_password_confirmation" class="form-control">
+                                            <div class="input-group input-group-static mb-4">
+                                                <div class="form-label">Confirm Password</div>
+                                                <input type="password" name="new_password_confirmation"
+                                                    class="form-control">
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="card-footer bg-transparent mt-auto">
+                                    <div class="card-footer bg-transparent mt-5">
                                         <div class="btn-list justify-content-end">
                                             <a href="#" class="btn btn-1"> Cancel </a>
                                             <a href="#" class="btn btn-primary btn-2" data-bs-toggle="modal"

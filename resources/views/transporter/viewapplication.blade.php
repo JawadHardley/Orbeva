@@ -179,11 +179,11 @@
 
                     </ul>
 
-                    <div class="row shadow-lg border mt-3 mx-2">
+                    <div class="row shadow-lg border rounded mt-3 mx-2">
                         <form action="{{ route('transporter.editApp', ['id' => $record->id]) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
-                            <div class="col-12 tab-content">
+                            <div class="col-12 tab-content p-3">
 
                                 <div class="tab-pane fade active show" id="t1" role="tabpanel">
                                     <div class="row m-2">
@@ -327,10 +327,12 @@
                                     <div class="row m-2">
 
                                         <div class="col-12 mb-3 col-lg-12">
-                                            <div class="form-label">Importer Name</div>
-                                            <input type="text" name="importer_name" class="form-control"
-                                                value="{{ $record->importer_name }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Importer Name</label>
+                                                <input type="text" name="importer_name" class="form-control"
+                                                    value="{{ $record->importer_name }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-6">
                                             <div class="form-label">Importer Phone</div>
