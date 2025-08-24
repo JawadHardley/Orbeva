@@ -4,454 +4,618 @@
     $profile_pic = asset('images/profile.jpg');
     $front = asset('images/img-1.jpg');
 @endphp
-<html lang="en" data-bs-theme="light">
+
+<html lang="en-US">
+
+
+<!-- home-100:13-->
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Orbeva</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-    <link rel="stylesheet" href="{{ asset('css/ferixstyle.css') }}" />
-
-    <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <meta name="author" content="Nile-Theme">
+    <meta name="robots" content="index follow">
+    <meta name="googlebot" content="index follow">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="keywords"
+        content="cargo, clean, contractor, corporate, freight, industry, localization, logistics, modern, shipment, transport, transportation, truck, trucking">
+    <meta name="description" content="Transportation and Logistics Responsive HTML5 Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- google fonts -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800%7CPoppins:300i,300,400,500,600,700,400i,500%7CDancing+Script:700%7CDancing+Script:700%7CGreat+Vibes:400%7CPoppins:400%7CDosis:800%7CRaleway:400,700,800&amp;subset=latin-ext"
         rel="stylesheet">
-
-    <!-- Vendor CSS Files -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.3.2/dist/css/tabler.min.css" />
-    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}s" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}s" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-
-    <!-- Main CSS File -->
-    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+    <!-- animate -->
+    <link rel="stylesheet" href="{{ asset('assets2/css/animate.css') }}" />
+    <!-- owl Carousel assets -->
+    <link href="{{ asset('assets2/css/owl.carousel.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets2/css/owl.theme.css') }}" rel="stylesheet">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="{{ asset('assets2/css/bootstrap.min.css') }}">
+    <!-- hover anmation -->
+    <link rel="stylesheet" href="{{ asset('assets2/css/hover-min.css') }}">
+    <!-- flag icon -->
+    <link rel="stylesheet" href="{{ asset('assets2/css/flag-icon.min.css') }}">
+    <!-- main style -->
+    <link rel="stylesheet" href="{{ asset('assets2/css/style.css') }}">
+    <!-- elegant icon -->
+    <link rel="stylesheet" href="{{ asset('assets2/css/elegant_icon.css') }}">
+    <!-- fontawesome  -->
+    <link rel="stylesheet" href="{{ asset('assets2/fonts/font-awesome/css/font-awesome.min.css') }}">
+    <!-- REVOLUTION STYLE SHEETS -->
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('assets2/rslider/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('assets2/rslider/fonts/font-awesome/css/font-awesome.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/rslider/css/settings.css') }}">
 </head>
 
-<body class="index-page">
+<body>
+    <header>
+        <div id="fixed-header-dark" class="header-output fixed-header">
+            <div class="header-output">
+                <div class="container header-in">
 
-    <!-- Loading Spinner Overlay -->
-    <div id="pageLoader"
-        style="
-    position: fixed;
-    z-index: 9999;
-    background: rgba(255,255,255,0.85);
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    display: flex; align-items: center; justify-content: center;">
-        <div class="spinner-grow text-primary" style="width: 4rem; height: 4rem;" role="status"></div>
-    </div>
+                    <!-- // Up Head -->
 
-    <header id="header" class="header d-flex align-items-center fixed-top">
-        <div class="container position-relative d-flex align-items-center justify-content-between">
-
-            <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
-                <!-- Uncomment the line below if you also wish to use an image logo -->
-                <h1 class="sitename">
-                    <i class="fa fa-layer-group"></i>
-                    <b>Orbeva.</b>
-                </h1>
-            </a>
-
-            <nav id="navmenu" class="navmenu">
-                <ul>
-                    <li><a href="#hero" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
-
-                    @if (Route::has('transporter.login'))
-                        @auth
-                            <li class="dropdown text-start">
-                                <a href="#">
-                                    <span class="text-teal px-2">
-                                        <i class="fa fa-user fs-4"></i>
-                                    </span>
-                                    <span>{{ Auth::user()->name }}</span>
-                                    <i class="bi bi-chevron-down toggle-dropdown"></i>
+                    <div class="position-relative">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-12">
+                                <a id="logo" href="home-1.html"
+                                    class="d-inline-block margin-tb-15px h2 text-light">
+                                    <i class="fa fa-layer-group mr-2"></i>
+                                    Orbeva
                                 </a>
-                                <ul>
-                                    <li><a href="{{ route(Auth::user()->role . '.dashboard') }}">Dashboard</a></li>
-                                    <li><a href="{{ route(Auth::user()->role . '.showProfile') }}">Profile</a></li>
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                        <li><a href="route('logout')"
-                                                onclick="event.preventDefault();
+                                <a class="mobile-toggle padding-15px background-second-color border-radius-3"
+                                    href="#"><i class="fa fa-bars"></i></a>
+                            </div>
+                            <div class="col-lg-7 col-md-12 position-inherit">
+                                <ul id="menu-main"
+                                    class="nav-menu float-xl-left text-lg-center link-padding-tb-25px white-link dropdown-dark">
+                                    <li class="has-]"><a href="#">Home</a>
+                                        {{-- <ul class="sub-menu">
+                                            <li><a href="home-1.html">Home - Main Demo</a></li>
+                                            <li><a href="home-2.html">Home - Classic Layout</a></li>
+                                            <li><a href="home-3.html">Home - Modern Layout</a></li>
+                                            <li><a href="home-4.html">Home - Marine Transport</a></li>
+                                            <li><a href="home-5.html">Home - Moving Co</a></li>
+                                            <li><a href="home-6.html">Home - Company</a></li>
+                                        </ul> --}}
+                                    </li>
+                                    @if (Route::has('transporter.login'))
+                                        @auth
+                                            <li class="has-dropdown">
+                                                <a href="#">
+                                                    <span class="text-teal px-2">
+                                                        <i class="fa fa-user fs-4"></i>
+                                                    </span>
+                                                    <span>{{ Auth::user()->name }}</span>
+                                                    <i class="bi bi-chevron-down toggle-dropdown"></i>
+                                                </a>
+                                                <ul class="sub-menu">
+                                                    <li><a
+                                                            href="{{ route(Auth::user()->role . '.dashboard') }}">Dashboard</a>
+                                                    </li>
+                                                    <li><a
+                                                            href="{{ route(Auth::user()->role . '.showProfile') }}">Profile</a>
+                                                    </li>
+                                                    <form method="POST" action="{{ route('logout') }}">
+                                                        @csrf
+                                                        <li><a href="route('logout')"
+                                                                onclick="event.preventDefault();
                                         this.closest('form').submit();">Log
-                                                Out</a></li>
-                                    </form>
-                                    <!-- <li><a href="#">Deep Dropdown 4</a></li> -->
+                                                                Out</a></li>
+                                                    </form>
+                                                    <!-- <li><a href="#">Deep Dropdown 4</a></li> -->
+                                                </ul>
+                                            </li>
+                                        @else
+                                            <li class="has-dropdown"><a href="#"><span>Login/Register</span> <i
+                                                        class="bi bi-chevron-down toggle-dropdown"></i></a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="{{ route('transporter.login') }}">Login</a></li>
+                                                    <li><a href="{{ route('transporter.register') }}">Register</a></li>
+                                                </ul>
+                                            </li>
+                                        @endauth
+                                    @endif
+
                                 </ul>
-                            </li>
-                        @else
-                            <li class="dropdown"><a href="#"><span>Login/Register</span> <i
-                                        class="bi bi-chevron-down toggle-dropdown"></i></a>
-                                <ul>
-                                    <li><a href="{{ route('transporter.login') }}">Login</a></li>
-                                    <li><a href="{{ route('transporter.register') }}">Register</a></li>
-                                </ul>
-                            </li>
-                        @endauth
-                    @endif
-                </ul>
-                <i class="mobile-nav-toggle d-xl-none fa fa-bars"></i>
 
 
-            </nav>
+                                {{-- <div class="d-none d-xl-block search-link pull-right model-link margin-top-15px">
+                                    <a id="search-header"
+                                        class="h4 model-link margin-right-0px text-white opacity-hover-8"
+                                        href="#search">
+                                        <i class="fa fa-circle-user"></i>
+                                    </a>
+                                </div> --}}
 
-
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
+    <!-- // Header  -->
 
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero section">
+    <div id="rev_slider_3_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="nile-logistics-1"
+        data-source="gallery"
+        style="margin:0px auto;background:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
+        <!-- START REVOLUTION SLIDER 5.4.8 fullwidth mode -->
+        <div id="rev_slider_3_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.4.8">
+            <ul>
+                <!-- SLIDE  -->
+                <li data-index="rs-3" data-transition="fade" data-slotamount="default" data-hideafterloop="0"
+                    data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300"
+                    data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
+                    data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8=""
+                    data-param9="" data-param10="" data-description="">
+                    <!-- MAIN IMAGE -->
+                    <img src="{{ asset('assets2/rslider/assets/5ec5e-slider-1.jpg') }}"alt=""
+                        data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"
+                        class="rev-slidebg" data-no-retina>
+                    <!-- LAYERS -->
 
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="row align-items-center mb-5">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <div class="badge-wrapper mb-3">
-                        <div class="d-inline-flex align-items-center rounded-pill border border-accent-light">
-                            <div class="icon-circle me-2">
-                                <i class="fa fa-bell"></i>
-                            </div>
-                            <span class="badge-text me-3">Digital Trade Facilitation</span>
-                        </div>
+                    <!-- LAYER NR. 1 -->
+                    <div class="tp-caption   tp-resizeme" id="slide-3-layer-1"
+                        data-x="['left','left','left','center']" data-hoffset="['0','41','45','0']"
+                        data-y="['middle','middle','middle','middle']" data-voffset="['-111','-143','-186','-36']"
+                        data-width="461" data-height="173" data-whitespace="nowrap" data-type="text"
+                        data-responsive_offset="on"
+                        data-frames='[{"delay":10,"speed":1140,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                        data-textAlign="['inherit','inherit','inherit','center']" data-paddingtop="[0,0,0,0]"
+                        data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
+                        style="z-index: 5; min-width: 461px; max-width: 461px; max-width: 173px; max-width: 173px; white-space: nowrap; font-size: 50px; line-height: 59px; font-weight: 400; color: #ffffff; letter-spacing: -4px;font-family:Poppins;">
+                        Making<br> Feri Applications
+                        <br> Fast & Savy
                     </div>
 
-                    <h1 class="hero-title mb-4">Accelerating Cross-Border Trade with FERI Solutions </h1>
+                    <!-- LAYER NR. 2 -->
+                    <div class="tp-caption rev-btn " id="slide-3-layer-2" data-x="['left','left','left','center']"
+                        data-hoffset="['0','41','45','0']" data-y="['top','top','top','top']"
+                        data-voffset="['453','372','435','471']" data-width="none" data-height="none"
+                        data-whitespace="nowrap" data-type="button" data-responsive_offset="on"
+                        data-responsive="off"
+                        data-frames='[{"delay":640,"speed":1120,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"0","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgb(255,255,255);bg:transparent;bc:rgb(255,255,255);"}]'
+                        data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[12,12,12,12]"
+                        data-paddingright="[35,35,35,35]" data-paddingbottom="[12,12,12,12]"
+                        data-paddingleft="[35,35,35,35]"
+                        style="z-index: 6; white-space: nowrap; font-size: 14px; line-height: 17px; font-weight: 500; color: rgba(255,255,255,1); letter-spacing: 0px;font-family:Poppins;background-color:rgb(229,57,53);border-color:rgb(229,57,53);border-style:solid;border-width:2px 2px 2px 2px;border-radius:30px 30px 30px 30px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">
+                        Contact Us </div>
+                </li>
+                <!-- SLIDE  -->
+                <li data-index="rs-4" data-transition="fade" data-slotamount="default" data-hideafterloop="0"
+                    data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300"
+                    data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
+                    data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8=""
+                    data-param9="" data-param10="" data-description="">
+                    <!-- MAIN IMAGE -->
+                    <img src="{{ asset('assets2/rslider/assets/c92f5-slider-2.jpg') }}"alt=""
+                        data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"
+                        class="rev-slidebg" data-no-retina>
+                    <!-- LAYERS -->
 
-                    <p class="hero-description mb-4">Ferix streamlines the application, management, and tracking of
-                        FERI
-                        certificates for transporters, vendors, and logistics companies moving goods into and within
-                        the
-                        DRC. Our platform ensures compliance, transparency, and efficiency for all your freight
-                        documentation needs.</p>
-
-                    <div class="cta-wrapper">
-                        <a href="{{ route('transporter.login') }}" class="btn btn-primary">Get Started</a>
+                    <!-- LAYER NR. 3 -->
+                    <div class="tp-caption   tp-resizeme" id="slide-4-layer-1"
+                        data-x="['left','left','left','center']" data-hoffset="['0','41','45','0']"
+                        data-y="['middle','middle','middle','middle']" data-voffset="['-111','-143','-186','-36']"
+                        data-width="461" data-height="173" data-whitespace="nowrap" data-type="text"
+                        data-responsive_offset="on"
+                        data-frames='[{"delay":10,"speed":1140,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                        data-textAlign="['inherit','inherit','inherit','center']" data-paddingtop="[0,0,0,0]"
+                        data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
+                        style="z-index: 5; min-width: 461px; max-width: 461px; max-width: 173px; max-width: 173px; white-space: nowrap; font-size: 50px; line-height: 59px; font-weight: 400; color: #ffffff; letter-spacing: -4px;font-family:Poppins;">
+                        Making<br> Feri Applications
+                        <br> Fast & Savy
                     </div>
-                </div>
 
-                <div class="col-lg-6">
-                    <div class="hero-image">
-                        <img src="{{ asset('images/program.svg') }}" alt="Business Growth" class="img-fluid"
-                            loading="lazy">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row feature-boxes">
-                <div class="col-lg-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
-                    <div class="feature-box">
-                        <div class="feature-icon me-sm-4 mb-3 mb-sm-0">
-                            <i class="fa fa-gear"></i>
-                        </div>
-                        <div class="feature-content">
-                            <h3 class="feature-title">Easy Process</h3>
-                            <p class="feature-text">Set up your FERI applications and documentation in minutes. Our
-                                intuitive platform lets you upload, manage, and track all required documents with
-                                ease.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="300">
-                    <div class="feature-box">
-                        <div class="feature-icon me-sm-4 mb-3 mb-sm-0">
-                            <i class="fa fa-shield-halved"></i>
-                        </div>
-                        <div class="feature-content">
-                            <h3 class="feature-title">Advanced Security</h3>
-                            <p class="feature-text">Your data and documents are protected with industry-standard
-                                encryption and secure cloud storage, ensuring confidentiality and integrity at every
-                                step.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="feature-box">
-                        <div class="feature-icon me-sm-4 mb-3 mb-sm-0">
-                            <i class="fa fa-headset"></i>
-                        </div>
-                        <div class="feature-content">
-                            <h3 class="feature-title">Dedicated Support</h3>
-                            <p class="feature-text">Our support team is available to assist you with any queries or
-                                issues, ensuring your freight documentation process is smooth and hassle-free.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+                    <!-- LAYER NR. 4 -->
+                    <div class="tp-caption rev-btn " id="slide-4-layer-2" data-x="['left','left','left','center']"
+                        data-hoffset="['0','41','45','0']" data-y="['top','top','top','top']"
+                        data-voffset="['453','372','435','471']" data-width="none" data-height="none"
+                        data-whitespace="nowrap" data-type="button" data-responsive_offset="on"
+                        data-responsive="off"
+                        data-frames='[{"delay":640,"speed":1120,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"0","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgb(255,255,255);bg:transparent;bc:rgb(255,255,255);"}]'
+                        data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[12,12,12,12]"
+                        data-paddingright="[35,35,35,35]" data-paddingbottom="[12,12,12,12]"
+                        data-paddingleft="[35,35,35,35]"
+                        style="z-index: 6; white-space: nowrap; font-size: 14px; line-height: 17px; font-weight: 500; color: rgba(255,255,255,1); letter-spacing: 0px;font-family:Poppins;background-color:rgb(229,57,53);border-color:rgb(229,57,53);border-style:solid;border-width:2px 2px 2px 2px;border-radius:30px 30px 30px 30px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">
+                        Contact Us </div>
+                </li>
+            </ul>
+            <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
         </div>
+    </div>
+    <!-- END REVOLUTION SLIDER -->
 
-    </section><!-- /Hero Section -->
+    <div class="service-section-1 container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="service layout-1">
+                    <div class="clearfix">
+                        <div class="icon"><img src="{{ asset('assets2/icons/service-light-1.png') }}"alt=""></div>
+                        <a href="{{ route('transporter.login') }}" class="title">Regional Feri</a>
+                    </div>
+                    <div class="dis clearfix">
+                        For shipments heading to DRC borders.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service layout-1">
+                    <div class="clearfix">
+                        <div class="icon"><img src="{{ asset('assets2/icons/service-light-2.png') }}"alt=""></div>
+                        <a href="{{ route('transporter.login') }}" class="title">Continuance Feri</a>
+                    </div>
+                    <div class="dis clearfix">
+                        For shipments coming back from DRC areas.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-
-    <!-- About Section -->
-    <section id="about" class="about section">
-
+    <!--============= About Us =============-->
+    <div class="nile-about-section">
         <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
 
-            <div class="row gy-4">
+                    <div class="section-title-right text-main-color clearfix">
+                        <div class="icon"><img src="{{ asset('assets2/icons/title-icon-1.png') }}"alt=""></div>
+                        <h2 class="title-text">Who We Are ?</h2>
+                    </div>
+                    <div class="about-text margin-tb-25px">
+                        With Orbeva, transporters, vendors, and logistics companies can effortlessly apply for, manage,
+                        and track FERI certificates for shipments into and across the DRC. Our platform is built to
+                        deliver compliance, clarity, and efficiency in all your freight documentation.
+                    </div>
+                    <a href="#" class="nile-bottom sm">Read More</a>
 
-                <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
-                    <p class="who-we-are">Who We Are</p>
-                    <h3>Empowering Trade with Technology </h3>
-                    <p class="fst-italic">
-                        Ferix io is a digital platform dedicated to simplifying and securing the FERI Certificate
-                    </p>
-                    <ul>
-                        <li><i class="fa fa-check-circle"></i> <span>Automated FERI application and approval
-                                workflow.</span></li>
-                        <li><i class="fa fa-check-circle"></i> <span>Real-time tracking and status updates for all
-                                your
-                                applications.</span></li>
-                        <li><i class="fa fa-check-circle"></i> <span>Integrated document management for invoices
-                                and
-                                certificates.</span></li>
-                    </ul>
-                    <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-                </div>
 
-                <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
-                    <div class="row gy-4">
-                        <div class="col-lg-6">
-                            <img src="{{ asset('images/feri1.jpg') }}" class="img-fluid" alt="">
+                    <div id="accordion" class="nile-accordion margin-top-80px sm-mb-45px">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-block btn-link active" data-toggle="collapse"
+                                        data-target="#collapseOne" aria-expanded="true"
+                                        aria-controls="collapseOne"><i class="fa fa-info-circle"></i> Why us
+                                        ?</button>
+                                </h5>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                data-parent="#accordion">
+                                <div class="card-body">
+                                    Set up your FERI applications and documentation in minutes. Our intuitive platform
+                                    lets you upload, manage, and track all required documents with ease. </div>
+                            </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="row gy-4">
-                                <div class="col-lg-12">
-                                    <img src="{{ asset('images/feri2.jpg') }}" class="img-fluid" alt="">
-                                </div>
-                                <div class="col-lg-12">
-                                    <img src="{{ asset('images/feri3.jpg') }}" class="img-fluid" alt="">
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-block btn-link collapsed" data-toggle="collapse"
+                                        data-target="#collapseTwo" aria-expanded="false"
+                                        aria-controls="collapseTwo"><i class="fa fa-shield-halved"></i> Advanced
+                                        Security</button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                data-parent="#accordion">
+                                <div class="card-body">
+                                    Your data and documents are protected with industry-standard encryption and secure
+                                    cloud storage, ensuring confidentiality and integrity at every step. </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-block btn-link collapsed" data-toggle="collapse"
+                                        data-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree"><i class="fa fa-headset"></i> Dedicated
+                                        Support</button>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                data-parent="#accordion">
+                                <div class="card-body">
+                                    Our support team is available to assist you with any queries or
+                                    issues, ensuring your freight documentation process is smooth and hassle-free.
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                </div>
 
+
+                </div>
+                <div class="col-lg-6">
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <a href="#"><img src="{{ asset('assets2/img/cart-2.jpg') }}"alt=""></a>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="cart-service background-main-color">
+                                <div class="icon"><img
+                                        src="{{ asset('assets2/icons/service-light-2.png') }}"alt=""></div>
+                                <h2>Air Freight</h2>
+                                <hr>
+                                <div class="text">Coming soon in our system, stay put for all upcoming features
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="cart-service background-main-color">
+                                <div class="icon"><img
+                                        src="{{ asset('assets2/icons/service-light-3.png') }}"alt=""></div>
+                                <h2>Sea Freight</h2>
+                                <hr>
+                                <div class="text">Coming soon in our system, stay put for all upcoming features
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="#"><img src="{{ asset('assets2/img/cart-1.jpg') }}"alt=""></a>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-
         </div>
-    </section><!-- /About Section -->
+    </div>
+    <!--============= //About Us =============-->
 
 
-    <!-- Services Section -->
-    <section id="services" class="services section">
 
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Services</h2>
-            <p>Ferix io offers a comprehensive suite of tools for managing FERI certificates and related logistics
-                documentation for all modes of transport.</p>
-        </div><!-- End Section Title -->
-
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="row justify-content-center g-5">
-
-                <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
-                    <div class="service-item">
-                        <div class="service-icon">
-                            <i class="fa fa-truck-front fs-2"></i>
+    <div class="call-action ba-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 padding-tb-15px">
+                    <h2>Unbeatable Ease of Applying for FERI</h2>
+                    <div class="text">Designed to save time and reduce errors, you will apply and feel more comfy
+                        that anyone else</div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 sm-mb-45px">
+                            <a href="#" class="action-bottom layout-1">
+                                <img src="{{ asset('assets2/icons/small-icon-1.png') }}"alt="">
+                                <h4>Tell Friend</h4>
+                            </a>
                         </div>
-                        <div class="service-content">
-                            <h3>Road Freight</h3>
-                            <p>Apply for and manage FERI certificates for road shipments. Upload required documents,
-                                track application status, and receive notifications on approvals.</p>
-                            <a href="{{ route('transporter.applyferi') }}" class="service-link">
-                                <span>Apply Now</span>
-                                <i class="bi bi-arrow-right"></i>
+                        <div class="col-lg-4 col-md-4 sm-mb-45px">
+                            <a href="#" class="action-bottom layout-1">
+                                <img src="{{ asset('assets2/icons/small-icon-2.png') }}"alt="">
+                                <h4>Read More</h4>
+                            </a>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <a href="#" class="action-bottom layout-1">
+                                <img src="{{ asset('assets2/icons/small-icon-3.png') }}"alt="">
+                                <h4>Contact Us</h4>
                             </a>
                         </div>
                     </div>
-                </div><!-- End Service Item -->
-
-                <div class="col-md-6" data-aos="fade-left" data-aos-delay="100">
-                    <div class="service-item">
-                        <div class="service-icon">
-                            <i class="fa fa-ferry fs-2"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>Maritime Freight</h3>
-                            <p>Coming soon: Full support for maritime FERI applications, including vessel
-                                documentation
-                                and port clearance integration.</p>
-                            <a href="#" class="service-link">
-                                <span>Coming Soon ...</span>
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div><!-- End Service Item -->
-
-                <div class="col-md-6" data-aos="fade-right" data-aos-delay="200">
-                    <div class="service-item">
-                        <div class="service-icon">
-                            <i class="fa fa-train-tram fs-2"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>Rail Freight</h3>
-                            <p>Coming soon: Streamlined FERI processing for rail cargo, with integration to major
-                                rail
-                                operators in the region.</p>
-                            <a href="#" class="service-link">
-                                <span>Coming Soon ...</span>
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div><!-- End Service Item -->
-
-                <div class="col-md-6" data-aos="fade-left" data-aos-delay="200">
-                    <div class="service-item">
-                        <div class="service-icon">
-                            <i class="fa fa-plane fs-2"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>Air Freight</h3>
-                            <p>Coming soon: Digital FERI solutions for air cargo, ensuring compliance and fast
-                                turnaround for urgent shipments.</p>
-                            <a href="#" class="service-link">
-                                <span>Coming Soon ...</span>
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div><!-- End Service Item -->
-
+                </div>
             </div>
-
         </div>
+    </div>
 
-    </section><!-- /Services Section -->
 
+    <div class="section padding-tb-100px section-ba-1">
+        <div class="container">
+            <!-- Title -->
+            <div class="section-title margin-bottom-40px">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="icon text-main-color"><i class="fa fa-truck"></i></div>
+                        <div class="h2">Our Service</div>
+                        <div class="des">Orbeva offers a comprehensive suite of tools for managing FERI certificates
+                            and related logistics
+                            documentation for all modes of transport </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // End Title -->
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
+            <div class="row">
 
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Contact</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-        </div><!-- End Section Title -->
-
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="row gy-4 mb-5">
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="info-card">
-                        <div class="icon-box">
-                            <i class="fa fa-location-dot"></i>
-                        </div>
-                        <h3>Our Address</h3>
-                        <p>P.O. Box 75391 Avocado street, Dar es Salaam</p>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-icon-box">
+                        <div class="icon"><img src="{{ asset('assets2/icons/service-dark-1.png') }}"alt=""></div>
+                        <a href="#" class="title h2">Road Freight</a>
+                        <div class="des">Apply for and manage FERI certificates for road shipments. Upload required
+                            documents,
+                            track application status, and receive notifications on approvals</div>
                     </div>
                 </div>
 
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="info-card">
-                        <div class="icon-box">
-                            <i class="fa fa-phone"></i>
-                        </div>
-                        <h3>Contact Number</h3>
-                        <p>Mobile: +255 753 123 283<br>
-                            Email: diane.presisfinance@gmail.com</p>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-icon-box">
+                        <div class="icon"><img src="{{ asset('assets2/icons/service-dark-2.png') }}"alt=""></div>
+                        <a href="#" class="title h2">Air Freight</a>
+                        <div class="des">Coming soon: Digital FERI solutions for air cargo, ensuring compliance and
+                            fast
+                            turnaround for urgent shipments.</div>
                     </div>
                 </div>
 
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="info-card">
-                        <div class="icon-box">
-                            <i class="fa fa-clock"></i>
-                        </div>
-                        <h3>Opening Hour</h3>
-                        <p>Monday - Tuesda: 8:00 - 16:30 EAT<br>
-                            Sunday: Closed</p>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-icon-box">
+                        <div class="icon"><img src="{{ asset('assets2/icons/service-dark-3.png') }}"alt=""></div>
+                        <a href="#" class="title h2">Ocean Freight</a>
+                        <div class="des">Coming soon: Full support for maritime FERI applications, including vessel
+                            documentation
+                            and port clearance integration.</div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-icon-box">
+                        <div class="icon"><img src="{{ asset('assets2/icons/service-dark-4.png') }}"alt=""></div>
+                        <a href="#" class="title h2">Rail Freight</a>
+                        <div class="des">Coming soon: Streamlined FERI processing for rail cargo, with integration
+                            to major
+                            rail
+                            operators in the region.</div>
                     </div>
                 </div>
             </div>
 
+
+            <div class="text-center">
+                <a href="#" class="nile-bottom md">Show all <i class="fa fa-arrow-right"></i> </a>
+            </div>
+
         </div>
-    </section><!-- /Contact Section -->
+    </div>
 
-    <footer id="footer" class="footer light-background">
 
-        <div class="container copyright text-center mt-4">
-            <p>© <span>Copyright</span> <strong class="px-1 sitename">Ferix io</strong> {{ today()->format('Y') }}
-                <span>All Rights
-                    Reserved</span>
-            </p>
-            <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you've purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-                <a href="{{ route('vendor.login') }}" class="text-decoration-none bg-transparent border-0 p-0 m-0"
-                    style="color: inherit; cursor: default; outline: none;">
-                    Designed
-                </a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    <footer class="layout-dark">
+        {{-- <div class="container padding-tb-100px">
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="about-us sm-mb-45px">
+                        <div class="logo-footer margin-bottom-35px">
+                            <a href="#"><img src="{{ asset('assets2/img/logo-1.png') }}"alt=""></a>
+                        </div>
+                        <div class="text margin-bottom-35px">
+                            Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt
+                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                        </div>
+                        <a href="#" class="nile-bottom sm">Read More</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="nile-widget widget_nav_menu sm-mb-45px">
+                        <h2 class="title">Our Services</h2>
+                        <ul class="footer-menu">
+                            <li><a href="#">Cargo Transportation </a></li>
+                            <li><a href="#">Air Freight </a></li>
+                            <li><a href="#">Ocean Freight </a></li>
+                            <li><a href="#">Packaging & Storage </a></li>
+                            <li><a href="#">Air Freight </a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="nile-widget widget_nav_menu sm-mb-45px">
+                        <h2 class="title">Site Pages</h2>
+                        <ul class="footer-menu">
+                            <li><a href="#">Cargo Transportation </a></li>
+                            <li><a href="#">Air Freight </a></li>
+                            <li><a href="#">Ocean Freight </a></li>
+                            <li><a href="#">Packaging & Storage </a></li>
+                            <li><a href="#">Air Freight </a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="nile-widget">
+                        <div class="margin-bottom-60px">
+                            <h2 class="title">Location</h2>
+                            <div class="contact-info opacity-9">
+                                <div class="icon margin-top-5px"><span class="icon_pin_alt"></span></div>
+                                <div class="text">
+                                    <span class="title-in">Location :</span> <br>
+                                    <span class="font-weight-500 text-uppercase">US - Los Angeles</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="call_center">
+                            <h2 class="title">Call Center</h2>
+                            <div class="contact-info opacity-9">
+                                <div class="icon  margin-top-5px"><span class="icon_phone"></span></div>
+                                <div class="text">
+                                    <span class="title-in">Call Us :</span><br>
+                                    <span class="font-weight-500 text-uppercase">00222123333019</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div> --}}
+        <div class="copy-right">
+            <div class="container padding-tb-50px">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="copy-right-text text-lg-left text-center sm-mb-15px">
+                            &copy; Orbeva {{ today()->format('Y') }},
+                            <a href="{{ route('vendor.login') }}"
+                                class="text-decoration-none bg-transparent border-0 p-0 m-0"
+                                style="color: inherit; cursor: default; outline: none;">
+                                Designed
+                            </a> with <i class="fa fa-herat text-danger"></i> by <a target="_blank"
+                                href="https://www.templateshub.net">Templates Hub</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <!--  Social -->
+                        <ul class="social-media list-inline text-lg-right text-center margin-0px text-white">
+                            {{-- <li class="list-inline-item"><a class="facebook" href="#"><i
+                                        class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li class="list-inline-item"><a class="youtube" href="#"><i
+                                        class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                            <li class="list-inline-item"><a class="linkedin" href="#"><i
+                                        class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                            <li class="list-inline-item"><a class="google" href="#"><i
+                                        class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            <li class="list-inline-item"><a class="twitter" href="#"><i class="fa fa-twitter"
+                                        aria-hidden="true"></i></a></li> --}}
+                            <li class="list-inline-item"><a class="rss" href="#"><i class="fa fa-rss"
+                                        aria-hidden="true"></i></a></li>
+                        </ul>
+                        <!-- // Social -->
+                    </div>
+                </div>
             </div>
         </div>
-
     </footer>
 
 
-    <!-- Scroll Top -->
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-            class="fa fa-arrow-up fs-5"></i></a>
+    <!-- jquery library  -->
+    <script src="{{ asset('assets2/js/nile-slider.js') }}"></script>
+    <script src="{{ asset('assets2/js/jquery-3.2.1.min.js') }}"></script>
+    <!-- REVOLUTION JS FILES -->
+    <script src="{{ asset('assets2/rslider/js/jquery.themepunch.tools.min.js') }}"></script>
+    <script src="{{ asset('assets2/rslider/js/jquery.themepunch.revolution.min.js') }}"></script>
+    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS -->
+    <script src="{{ asset('assets2/rslider/js/extensions/revolution.extension.actions.min.js') }}"></script>
+    <script src="{{ asset('assets2/rslider/js/extensions/revolution.extension.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets2/rslider/js/extensions/revolution.extension.kenburn.min.js') }}"></script>
+    <script src="{{ asset('assets2/rslider/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
+    <script src="{{ asset('assets2/rslider/js/extensions/revolution.extension.migration.min.js') }}"></script>
+    <script src="{{ asset('assets2/rslider/js/extensions/revolution.extension.navigation.min.js') }}"></script>
+    <script src="{{ asset('assets2/rslider/js/extensions/revolution.extension.parallax.min.js') }}"></script>
+    <script src="{{ asset('assets2/rslider/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
+    <script src="{{ asset('assets2/rslider/js/extensions/revolution.extension.video.min.js') }}"></script>
+    <script src="{{ asset('assets2/js/YouTubePopUp.jquery.js') }}"></script>
+    <script src="{{ asset('assets2/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets2/js/imagesloaded.min.js') }}"></script>
+    <script src="{{ asset('assets2/js/custom.js') }}"></script>
+    <script src="{{ asset('assets2/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets2/js/bootstrap.min.js') }}"></script>
 
-    <!-- Preloader -->
-    <!-- <div id="preloader"></div> -->
-
-    <script>
-        window.addEventListener('load', function() {
-            var loader = document.getElementById('pageLoader');
-            if (loader) loader.style.display = 'none';
-        });
-
-        // Show loader on any form submit, but only if valid
-        document.addEventListener('DOMContentLoaded', function() {
-            var loader = document.getElementById('pageLoader');
-            document.querySelectorAll('form').forEach(function(form) {
-                form.addEventListener('submit', function(e) {
-                    if (form.checkValidity()) {
-                        if (loader) loader.style.display = 'flex';
-                    } else {
-                        if (loader) loader.style.display = 'none';
-                    }
-                });
-            });
-        });
-    </script>
-
-    <!-- Vendor JS Files -->
-    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
-    <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
-    <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-
-    <!-- Main JS File -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
-
-
-    <script src="{{ asset('js/ferixstyle.js') }}"></script>
 </body>
+
+
+<!-- home-100:30-->
 
 </html>

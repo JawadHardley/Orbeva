@@ -112,11 +112,11 @@
     <div class="row mt-5">
         <div class="card-group mt-5">
 
-            <div class="card shadow-lg m-2" data-animation="true">
-                <div class="card-header bg-primary p-0 position-relative mt-n4 mx-3 z-index-2"
+            <div class="card border m-2" data-animation="true">
+                <div class="card-header bg-primary p-0 position-relative mt-n4 mx-3 z-index-2 rounded"
                     style="height:200px; overflow:hidden;">
                     <a class="d-block blur-shadow-image">
-                        <img src="{{ asset('images/lop1.svg') }}" alt="img-blur-shadow"
+                        <img src="{{ asset('images/post1.png') }}" alt="img-blur-shadow"
                             class="img-fluid shadow border-radius-lg">
                     </a>
                 </div>
@@ -129,11 +129,11 @@
                 </a>
             </div>
 
-            <div class="card shadow-lg m-2" data-animation="true">
-                <div class="card-header bg-primary p-0 position-relative mt-n4 mx-3 z-index-2"
+            <div class="card border m-2" data-animation="true">
+                <div class="card-header bg-primary p-0 position-relative mt-n4 mx-3 z-index-2 rounded"
                     style="height:200px; overflow:hidden;">
                     <a class="d-block blur-shadow-image">
-                        <img src="{{ asset('images/lop2.svg') }}" alt="img-blur-shadow"
+                        <img src="{{ asset('images/post2.png') }}" alt="img-blur-shadow"
                             class="img-fluid shadow border-radius-lg">
                     </a>
                 </div>
@@ -147,11 +147,11 @@
                 </a>
             </div>
 
-            <div class="card shadow-lg m-2" data-animation="true">
-                <div class="card-header bg-primary p-0 position-relative mt-n4 mx-3 z-index-2"
+            <div class="card border m-2" data-animation="true">
+                <div class="card-header bg-primary p-0 position-relative mt-n4 mx-3 z-index-2 rounded"
                     style="height:200px; overflow:hidden;">
                     <a class="d-block blur-shadow-image">
-                        <img src="{{ asset('images/lop3.svg') }}" alt="img-blur-shadow"
+                        <img src="{{ asset('images/post3.png') }}" alt="img-blur-shadow"
                             class="img-fluid shadow border-radius-lg">
                     </a>
                 </div>
@@ -167,7 +167,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mt-5">
         <div class="col shadow-lg m-2 p-3">
             <h3>Features Coming soon</h3>
             <p class="small text-danger">

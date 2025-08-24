@@ -165,10 +165,10 @@
                                                 Actions
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-start">
-                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                {{-- <a class="dropdown-item" href="#" data-bs-toggle="modal"
                                                     data-bs-target="#mXX">
                                                     <i class="fa fa-comment-dots pe-2"></i>Query
-                                                </a>
+                                                </a> --}}
                                                 <a class="dropdown-item"
                                                     href="{{ route('transporter.showApp', ['id' => $record->id]) }}">
                                                     <i class="fa fa-eye pe-2"></i>View
@@ -201,7 +201,11 @@
 
     @foreach ($records as $record)
         <!-- Modal -->
-        <div class="modal fade" id="chat{{ $record->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+        {{-- until chat feature is fixed --}}
+        {{-- until chat feature is fixed --}}
+        {{-- until chat feature is fixed --}}
+
+        {{-- <div class="modal fade" id="chat{{ $record->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -338,7 +342,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     @endforeach
 
     @foreach ($records as $record)

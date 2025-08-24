@@ -224,7 +224,7 @@
                                 text-indent: 0pt;
                                 text-align: left;
                             ">
-                        P.O BOX 75391
+                        P.O BOX xxxx
                     </p>
                     <p
                         style="
@@ -234,8 +234,8 @@
                                 line-height: 112%;
                                 text-align: left;
                             ">
-                        Dar es Salaam, Avocado Street, Kawe <br />
-                        <span class="h3">TIN: </span>141-853-023
+                        Somewhere, there street <br />
+                        <span class="h3">TIN: </span>xx-xx-xx
                     </p>
                     <h3
                         style="
@@ -244,7 +244,7 @@
                                 line-height: 12pt;
                                 text-align: left;
                             ">
-                        CELL: <span class="p">+255 753 123 283</span>
+                        CELL: <span class="p">+2xxxxxxx</span>
                     </h3>
                     <p
                         style="
@@ -253,7 +253,7 @@
                                 text-indent: 0pt;
                                 text-align: left;
                             ">
-                        <a href="mailto:giraldinen@presisfinace.co.tz">giraldinen@presisfinace.co.tz</a>
+                        <a href="mailto:XXXXX@XXXXX.co.tz">lorem@something.com</a>
                     </p>
                 </div>
             </td>
@@ -267,7 +267,7 @@
                                 line-height: 59pt;
                                 text-align: left;
                             ">
-                        PRESIS
+                        COMPANY
                     </h1>
                     <p class="s2"
                         style="
@@ -276,7 +276,7 @@
                                 line-height: 19pt;
                                 text-align: left;
                             ">
-                        CONSULTANCY LTD
+                        SOMETHING LTD
                     </p>
                 </div>
             </td>
@@ -293,7 +293,7 @@
     </p>
     <table style="border-collapse: collapse" cellspacing="0">
         <tr style="height: 25pt">
-            <td style="width: 322pt" bgcolor="#3F4A7E">
+            <td style="width: 322pt" bgcolor="#9d0208">
                 <p class="s3"
                     style="
                             padding-top: 9pt;
@@ -324,7 +324,7 @@
             </td>
         </tr>
         <tr style="height: 17pt">
-            <td style="width: 322pt" bgcolor="#3F4A7E">
+            <td style="width: 322pt" bgcolor="#9d0208">
                 <p class="s5"
                     style="
                             padding-top: 3pt;
@@ -333,7 +333,7 @@
                             line-height: 12pt;
                             text-align: left;
                         ">
-                    ALISTAIR JAMES COMPANY Ltd.
+                    TRANSPORTER COMPANY Ltd.
                 </p>
             </td>
             <td style="width: 274pt" bgcolor="#FFF">
@@ -348,14 +348,14 @@
             </td>
         </tr>
         <tr style="height: 41pt">
-            <td style="width: 322pt" bgcolor="#3F4A7E">
+            <td style="width: 322pt" bgcolor="#9d0208">
                 <p class="s5"
                     style="
                             padding-left: 62pt;
                             text-indent: 0pt;
                             text-align: left;
                         ">
-                    P.O. Box 4543
+                    P.O. Box XXX
                 </p>
                 <p class="s5"
                     style="
@@ -365,7 +365,7 @@
                             line-height: 14pt;
                             text-align: left;
                         ">
-                    Kurasini Temeke Dar es salaam
+                    Somwhere, there street
                 </p>
             </td>
             <td style="width: 274pt" bgcolor="#FFF">
@@ -389,14 +389,14 @@
             </td>
         </tr>
         <tr style="height: 24pt">
-            <td style="width: 322pt" bgcolor="#3F4A7E">
+            <td style="width: 322pt" bgcolor="#9d0208">
                 <p
                     style="
                             padding-left: 62pt;
                             text-indent: 0pt;
                             text-align: left;
                         ">
-                    <a href="mailto:payables@alistairgroup.com" class="s7">payables@alistairgroup.com</a>
+                    <a href="mailto:payables@alistairgroup.com" class="s7">lorem@something.com</a>
                 </p>
             </td>
             <td style="
@@ -436,7 +436,7 @@
         @foreach ($invoice as $record)
             <tr class="theonetable" style="height: 25pt">
                 <td class="hrr">{{ \Carbon\Carbon::parse($record->invoice_date)->format('j/n/Y') }}</td>
-                <td class="hrr">PRES-2025-P{{ $record->id }}</td>
+                <td class="hrr">ORB-2025-{{ $record->id }}</td>
                 <td class="hrr">{{ $record->certificate_no }}</td>
                 <td class="hrr">{{ $record->customer_ref }}</td>
                 <td class="hrr">{{ $record->po }}</td>
@@ -498,7 +498,7 @@
                 text-indent: 0pt;
                 text-align: left;
             ">
-        Account Name: <span class="p">PRESIS CONSULTANCY LIMITED</span>
+        Account Name: <span class="p">COMPANY LIMITED</span>
     </h3>
     <h3
         style="
@@ -507,7 +507,7 @@
                 text-indent: 0pt;
                 text-align: left;
             ">
-        Banker: <span class="p">CRDB BANK PLC</span>
+        Banker: <span class="p">SOME BANK PLC</span>
     </h3>
     <h3
         style="
@@ -516,7 +516,7 @@
                 text-indent: 0pt;
                 text-align: left;
             ">
-        Bank Branch: <span class="p">MIKOCHENI</span>
+        Bank Branch: <span class="p">SOMEWHERE</span>
     </h3>
     <h3
         style="
@@ -525,7 +525,7 @@
                 text-indent: 0pt;
                 text-align: left;
             ">
-        Account Number: <span class="p">0150828197600 - TZS</span> | <span class="p">0250828197600 -
+        Account Number: <span class="p">XXXXXXXXXXX -
             USD</span>
     </h3>
     <h3
@@ -535,7 +535,7 @@
                 text-indent: 0pt;
                 text-align: left;
             ">
-        Branch Code: <span class="p">003074 - TZS</span> | <span class="p">003374 - USD</span>
+        Branch Code: <span class="p">XXXX - USD</span>
     </h3>
     <h3
         style="
@@ -544,13 +544,13 @@
                 text-indent: 0pt;
                 text-align: left;
             ">
-        Swift Code: <span class="p">CORUTZTZ</span>
+        Swift Code: <span class="p">XXXXX</span>
     </h3>
 
     <br>
     <br>
 
-    <div style="background-color: #3f4a7e; height: 55px; color: #3f4a7e">
+    <div style="background-color: #9d0208; height: 55px; color: #9d0208">
         s
     </div>
 </body>

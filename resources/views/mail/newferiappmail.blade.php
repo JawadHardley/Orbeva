@@ -353,7 +353,7 @@
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                             <tr>
                                 <td class="logo" style="text-align: left; background-color: #f1f1f1;">
-                                    <h1><a href="#">Ferix io</a></h1>
+                                    <h1><a href="#">Orbeva</a></h1>
                                 </td>
                             </tr>
                         </table>
@@ -399,7 +399,7 @@
                 style="margin: auto;">
                 <tr>
                     <td class="bg_light" style="text-align: center; background-color: #f1f1f1; padding: 2em;">
-                        <p>© All rights reserved. 2025 ferix io</p>
+                        <p>© All rights reserved. 2025 Orbeva</p>
                     </td>
                 </tr>
             </table>

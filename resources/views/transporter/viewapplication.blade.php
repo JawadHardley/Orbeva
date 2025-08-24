@@ -335,28 +335,36 @@
                                             </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-6">
-                                            <div class="form-label">Importer Phone</div>
-                                            <input type="text" name="importer_phone" class="form-control"
-                                                value="{{ $record->importer_phone }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Importer Phone</label>
+                                                <input type="text" name="importer_phone" class="form-control"
+                                                    value="{{ $record->importer_phone }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-6">
-                                            <div class="form-label">Importer Email</div>
-                                            <input type="text" name="importer_email" class="form-control"
-                                                value="{{ $record->importer_email }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Importer Email</label>
+                                                <input type="text" name="importer_email" class="form-control"
+                                                    value="{{ $record->importer_email }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-6">
-                                            <div class="form-label">Importer Address</div>
-                                            <input type="text" name="importer_address" class="form-control"
-                                                value="{{ $record->importer_address }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Importer Address</label>
+                                                <input type="text" name="importer_address" class="form-control"
+                                                    value="{{ $record->importer_address }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-6">
-                                            <div class="form-label">Fix Number</div>
-                                            <input type="text" name="fix_number" class="form-control"
-                                                value="{{ $record->fix_number }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Fix Number</label>
+                                                <input type="text" name="fix_number" class="form-control"
+                                                    value="{{ $record->fix_number }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -366,123 +374,137 @@
                                     <div class="row m-2">
 
                                         <div class="col-12 mb-3 col-lg-4">
-                                            <div class="form-label">Exporter Name</div>
-                                            <input type="text" name="exporter_name" class="form-control"
-                                                value="{{ $record->exporter_name }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Exporter Name</label>
+                                                <input type="text" name="exporter_name" class="form-control"
+                                                    value="{{ $record->exporter_name }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-4">
-                                            <div class="form-label">Exporter Phone</div>
-                                            <input type="text" name="exporter_phone" class="form-control"
-                                                value="{{ $record->exporter_phone }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Exporter Phone</label>
+                                                <input type="text" name="exporter_phone" class="form-control"
+                                                    value="{{ $record->exporter_phone }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-4">
-                                            <div class="form-label">Exporter Email</div>
-                                            <input type="text" name="exporter_email" class="form-control"
-                                                value="{{ $record->exporter_email }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Exporter Email</label>
+                                                <input type="text" name="exporter_email" class="form-control"
+                                                    value="{{ $record->exporter_email }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
 
                                         <div class="col-12 mb-3 col-lg-12">
-                                            <label class="form-label">CF Agent</label>
-                                            <select class="form-select" name="cf_agent"
-                                                {{ $record->status > 1 ? 'disabled' : '' }} required>
-                                                <option value="" {{ !$record->cf_agent ? 'selected' : '' }}>--
-                                                    select --
-                                                </option>
-                                                <option value="AGL" {{ $record->cf_agent == 'AGL' ? 'selected' : '' }}>
-                                                    AGL
-                                                </option>
-                                                <option value="CARGO CONGO"
-                                                    {{ $record->cf_agent == 'CARGO CONGO' ? 'selected' : '' }}>CARGO
-                                                    CONGO</option>
-                                                <option value="CONNEX"
-                                                    {{ $record->cf_agent == 'CONNEX' ? 'selected' : '' }}>
-                                                    CONNEX
-                                                </option>
-                                                <option value="African Logistics"
-                                                    {{ $record->cf_agent == 'African Logistics' ? 'selected' : '' }}>
-                                                    African
-                                                    Logistics
-                                                </option>
-                                                <option value="Afritac"
-                                                    {{ $record->cf_agent == 'Afritac' ? 'selected' : '' }}>
-                                                    Afritac
-                                                </option>
-                                                <option value="Amicongo"
-                                                    {{ $record->cf_agent == 'Amicongo' ? 'selected' : '' }}>
-                                                    Amicongo
-                                                </option>
-                                                <option value="Aristote"
-                                                    {{ $record->cf_agent == 'Aristote' ? 'selected' : '' }}>
-                                                    Aristote
-                                                </option>
-                                                <option value="Bollore"
-                                                    {{ $record->cf_agent == 'Bollore' ? 'selected' : '' }}>
-                                                    Bollore
-                                                </option>
-                                                <option value="Brasimba"
-                                                    {{ $record->cf_agent == 'Brasimba' ? 'selected' : '' }}>
-                                                    Brasimba
-                                                </option>
-                                                <option value="Brasimba S.A"
-                                                    {{ $record->cf_agent == 'Brasimba S.A' ? 'selected' : '' }}>
-                                                    Brasimba S.A</option>
-                                                <option value="Chemaf"
-                                                    {{ $record->cf_agent == 'Chemaf' ? 'selected' : '' }}>
-                                                    Chemaf
-                                                </option>
-                                                <option value="Comexas Afrique"
-                                                    {{ $record->cf_agent == 'Comexas Afrique' ? 'selected' : '' }}>Comexas
-                                                    Afrique
-                                                </option>
-                                                <option value="Comexas"
-                                                    {{ $record->cf_agent == 'Comexas' ? 'selected' : '' }}>
-                                                    Comexas
-                                                </option>
-                                                <option value="DCG" {{ $record->cf_agent == 'DCG' ? 'selected' : '' }}>
-                                                    DCG
-                                                </option>
-                                                <option value="Evele & Co"
-                                                    {{ $record->cf_agent == 'Evele & Co' ? 'selected' : '' }}>
-                                                    Evele &
-                                                    Co</option>
-                                                <option value="Gecotrans"
-                                                    {{ $record->cf_agent == 'Gecotrans' ? 'selected' : '' }}>
-                                                    Gecotrans
-                                                </option>
-                                                <option value="Global Logistics"
-                                                    {{ $record->cf_agent == 'Global Logistics' ? 'selected' : '' }}>Global
-                                                    Logistics
-                                                </option>
-                                                <option value="Malabar"
-                                                    {{ $record->cf_agent == 'Malabar' ? 'selected' : '' }}>
-                                                    Malabar
-                                                </option>
-                                                <option value="Polytra"
-                                                    {{ $record->cf_agent == 'Polytra' ? 'selected' : '' }}>
-                                                    Polytra
-                                                </option>
-                                                <option value="Spedag"
-                                                    {{ $record->cf_agent == 'Spedag' ? 'selected' : '' }}>
-                                                    Spedag
-                                                </option>
-                                                <option value="Tradecorp"
-                                                    {{ $record->cf_agent == 'Tradecorp' ? 'selected' : '' }}>
-                                                    Tradecorp
-                                                </option>
-                                                <option value="Trade Service"
-                                                    {{ $record->cf_agent == 'Trade Service' ? 'selected' : '' }}>
-                                                    Trade Service</option>
-                                            </select>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label class="ms-0">CF Agent</label>
+                                                <select class="form-control" name="cf_agent"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }} required>
+                                                    <option value="" {{ !$record->cf_agent ? 'selected' : '' }}>--
+                                                        select --
+                                                    </option>
+                                                    <option value="AGL"
+                                                        {{ $record->cf_agent == 'AGL' ? 'selected' : '' }}>
+                                                        AGL
+                                                    </option>
+                                                    <option value="CARGO CONGO"
+                                                        {{ $record->cf_agent == 'CARGO CONGO' ? 'selected' : '' }}>CARGO
+                                                        CONGO</option>
+                                                    <option value="CONNEX"
+                                                        {{ $record->cf_agent == 'CONNEX' ? 'selected' : '' }}>
+                                                        CONNEX
+                                                    </option>
+                                                    <option value="African Logistics"
+                                                        {{ $record->cf_agent == 'African Logistics' ? 'selected' : '' }}>
+                                                        African
+                                                        Logistics
+                                                    </option>
+                                                    <option value="Afritac"
+                                                        {{ $record->cf_agent == 'Afritac' ? 'selected' : '' }}>
+                                                        Afritac
+                                                    </option>
+                                                    <option value="Amicongo"
+                                                        {{ $record->cf_agent == 'Amicongo' ? 'selected' : '' }}>
+                                                        Amicongo
+                                                    </option>
+                                                    <option value="Aristote"
+                                                        {{ $record->cf_agent == 'Aristote' ? 'selected' : '' }}>
+                                                        Aristote
+                                                    </option>
+                                                    <option value="Bollore"
+                                                        {{ $record->cf_agent == 'Bollore' ? 'selected' : '' }}>
+                                                        Bollore
+                                                    </option>
+                                                    <option value="Brasimba"
+                                                        {{ $record->cf_agent == 'Brasimba' ? 'selected' : '' }}>
+                                                        Brasimba
+                                                    </option>
+                                                    <option value="Brasimba S.A"
+                                                        {{ $record->cf_agent == 'Brasimba S.A' ? 'selected' : '' }}>
+                                                        Brasimba S.A</option>
+                                                    <option value="Chemaf"
+                                                        {{ $record->cf_agent == 'Chemaf' ? 'selected' : '' }}>
+                                                        Chemaf
+                                                    </option>
+                                                    <option value="Comexas Afrique"
+                                                        {{ $record->cf_agent == 'Comexas Afrique' ? 'selected' : '' }}>
+                                                        Comexas
+                                                        Afrique
+                                                    </option>
+                                                    <option value="Comexas"
+                                                        {{ $record->cf_agent == 'Comexas' ? 'selected' : '' }}>
+                                                        Comexas
+                                                    </option>
+                                                    <option value="DCG"
+                                                        {{ $record->cf_agent == 'DCG' ? 'selected' : '' }}>
+                                                        DCG
+                                                    </option>
+                                                    <option value="Evele & Co"
+                                                        {{ $record->cf_agent == 'Evele & Co' ? 'selected' : '' }}>
+                                                        Evele &
+                                                        Co</option>
+                                                    <option value="Gecotrans"
+                                                        {{ $record->cf_agent == 'Gecotrans' ? 'selected' : '' }}>
+                                                        Gecotrans
+                                                    </option>
+                                                    <option value="Global Logistics"
+                                                        {{ $record->cf_agent == 'Global Logistics' ? 'selected' : '' }}>
+                                                        Global
+                                                        Logistics
+                                                    </option>
+                                                    <option value="Malabar"
+                                                        {{ $record->cf_agent == 'Malabar' ? 'selected' : '' }}>
+                                                        Malabar
+                                                    </option>
+                                                    <option value="Polytra"
+                                                        {{ $record->cf_agent == 'Polytra' ? 'selected' : '' }}>
+                                                        Polytra
+                                                    </option>
+                                                    <option value="Spedag"
+                                                        {{ $record->cf_agent == 'Spedag' ? 'selected' : '' }}>
+                                                        Spedag
+                                                    </option>
+                                                    <option value="Tradecorp"
+                                                        {{ $record->cf_agent == 'Tradecorp' ? 'selected' : '' }}>
+                                                        Tradecorp
+                                                    </option>
+                                                    <option value="Trade Service"
+                                                        {{ $record->cf_agent == 'Trade Service' ? 'selected' : '' }}>
+                                                        Trade Service</option>
+                                                </select>
+                                            </div>
                                         </div>
 
                                         <div class="col-12 mb-3 col-lg-12">
-                                            <div class="form-label">CF Agent Contact</div>
-                                            <input type="text" name="cf_agent_contact" class="form-control"
-                                                value="{{ $record->cf_agent_contact }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>CF Agent Contact</label>
+                                                <input type="text" name="cf_agent_contact" class="form-control"
+                                                    value="{{ $record->cf_agent_contact }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -492,28 +514,36 @@
                                     <div class="row m-2">
 
                                         <div class="col-12 mb-3 col-lg-12">
-                                            <div class="form-label">Cargo Description</div>
-                                            <input type="text" name="cargo_description" class="form-control"
-                                                value="{{ $record->cargo_description }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Cargo Description</label>
+                                                <input type="text" name="cargo_description" class="form-control"
+                                                    value="{{ $record->cargo_description }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-6">
-                                            <div class="form-label">HS Code</div>
-                                            <input type="text" name="hs_code" class="form-control"
-                                                value="{{ $record->hs_code }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>HS Code</label>
+                                                <input type="text" name="hs_code" class="form-control"
+                                                    value="{{ $record->hs_code }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-6">
-                                            <div class="form-label">Package Type</div>
-                                            <input type="text" name="package_type" class="form-control"
-                                                value="{{ $record->package_type }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Package Type</label>
+                                                <input type="text" name="package_type" class="form-control"
+                                                    value="{{ $record->package_type }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-12">
-                                            <div class="form-label">Quantity</div>
-                                            <input type="text" name="quantity" class="form-control"
-                                                value="{{ $record->quantity }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Quantity</label>
+                                                <input type="text" name="quantity" class="form-control"
+                                                    value="{{ $record->quantity }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -523,46 +553,61 @@
                                     <div class="row m-2">
 
                                         <div class="col-12 mb-3 col-lg-2">
-                                            <div class="form-label">PO Number</div>
-                                            <input type="text" name="po" class="form-control"
-                                                value="{{ $record->po }}" {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>PO Number</label>
+                                                <input type="text" name="po" class="form-control"
+                                                    value="{{ $record->po }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
 
                                         <div class="col-12 mb-3 col-lg-2">
-                                            <div class="form-label">Company Ref</div>
-                                            <input type="text" name="company_ref" class="form-control"
-                                                value="{{ $record->company_ref }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Company Ref</label>
+                                                <input type="text" name="company_ref" class="form-control"
+                                                    value="{{ $record->company_ref }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-4">
-                                            <div class="form-label">Cargo Origin</div>
-                                            <input type="text" name="cargo_origin" class="form-control"
-                                                value="{{ $record->cargo_origin }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Cargo Origin</label>
+                                                <input type="text" name="cargo_origin" class="form-control"
+                                                    value="{{ $record->cargo_origin }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-4">
-                                            <div class="form-label">Customs Decl No</div>
-                                            <input type="text" name="customs_decl_no" class="form-control"
-                                                value="{{ $record->customs_decl_no }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Customs Decl No</label>
+                                                <input type="text" name="customs_decl_no" class="form-control"
+                                                    value="{{ $record->customs_decl_no }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-6">
-                                            <div class="form-label">Manifest No</div>
-                                            <input type="text" name="manifest_no" class="form-control"
-                                                value="{{ $record->manifest_no }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Manifest No</label>
+                                                <input type="text" name="manifest_no" class="form-control"
+                                                    value="{{ $record->manifest_no }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-6">
-                                            <div class="form-label">OCC Bivac</div>
-                                            <input type="text" name="occ_bivac" class="form-control"
-                                                value="{{ $record->occ_bivac }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>OCC Bivac</label>
+                                                <input type="text" name="occ_bivac" class="form-control"
+                                                    value="{{ $record->occ_bivac }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-12">
-                                            <div class="form-label">Instructions</div>
-                                            <input type="text" name="instructions" class="form-control"
-                                                value="{{ $record->instructions }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Instructions</label>
+                                                <input type="text" name="instructions" class="form-control"
+                                                    value="{{ $record->instructions }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -572,208 +617,234 @@
                                     <div class="row m-2">
 
                                         <div class="col-12 mb-3 col-lg-3">
-                                            <div class="form-label">FOB Currency</div>
-                                            <select class="form-select" name="fob_currency"
-                                                {{ $record->status > 1 ? 'disabled' : '' }} required>
-                                                <option value="" {{ !$record->fob_currency ? 'selected' : '' }}>--
-                                                    select
-                                                    --
-                                                </option>
-                                                <option value="USD"
-                                                    {{ $record->fob_currency == 'USD' ? 'selected' : '' }}>USD
-                                                </option>
-                                                <option value="EUR"
-                                                    {{ $record->fob_currency == 'EUR' ? 'selected' : '' }}>EUR
-                                                </option>
-                                                <option value="TZS"
-                                                    {{ $record->fob_currency == 'TZS' ? 'selected' : '' }}>TZS
-                                                </option>
-                                                <option value="ZAR"
-                                                    {{ $record->fob_currency == 'ZAR' ? 'selected' : '' }}>ZAR
-                                                </option>
-                                                <option value="AOA"
-                                                    {{ $record->fob_currency == 'AOA' ? 'selected' : '' }}>AOA
-                                                </option>
-                                            </select>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label for="exampleFormControlSelect1" class="ms-0">FOB Currency</label>
+                                                <select class="form-control" name="fob_currency"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }} required>
+                                                    <option value=""
+                                                        {{ !$record->fob_currency ? 'selected' : '' }}>--
+                                                        select
+                                                        --
+                                                    </option>
+                                                    <option value="USD"
+                                                        {{ $record->fob_currency == 'USD' ? 'selected' : '' }}>USD
+                                                    </option>
+                                                    <option value="EUR"
+                                                        {{ $record->fob_currency == 'EUR' ? 'selected' : '' }}>EUR
+                                                    </option>
+                                                    <option value="TZS"
+                                                        {{ $record->fob_currency == 'TZS' ? 'selected' : '' }}>TZS
+                                                    </option>
+                                                    <option value="ZAR"
+                                                        {{ $record->fob_currency == 'ZAR' ? 'selected' : '' }}>ZAR
+                                                    </option>
+                                                    <option value="AOA"
+                                                        {{ $record->fob_currency == 'AOA' ? 'selected' : '' }}>AOA
+                                                    </option>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-3">
-                                            <div class="form-label">FOB Value</div>
-                                            <input type="text" name="fob_value" class="form-control"
-                                                value="{{ $record->fob_value }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>FOB Value</label>
+                                                <input type="text" name="fob_value" class="form-control"
+                                                    value="{{ $record->fob_value }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-3">
-                                            <div class="form-label">Incoterm</div>
-                                            <select class="form-select" name="incoterm"
-                                                {{ $record->status > 1 ? 'disabled' : '' }} required>
-                                                <option value="" {{ !$record->incoterm ? 'selected' : '' }}>--
-                                                    select
-                                                    --
-                                                </option>
-                                                <option value="CFR"
-                                                    {{ $record->incoterm == 'CFR' ? 'selected' : '' }}>CFR
-                                                </option>
-                                                <option value="CIF"
-                                                    {{ $record->incoterm == 'CIF' ? 'selected' : '' }}>CIF
-                                                </option>
-                                                <option value="CIP"
-                                                    {{ $record->incoterm == 'CIP' ? 'selected' : '' }}>CIP
-                                                </option>
-                                                <option value="CPT"
-                                                    {{ $record->incoterm == 'CPT' ? 'selected' : '' }}>CPT
-                                                </option>
-                                                <option value="DAF"
-                                                    {{ $record->incoterm == 'DAF' ? 'selected' : '' }}>DAF
-                                                </option>
-                                                <option value="DAP"
-                                                    {{ $record->incoterm == 'DAP' ? 'selected' : '' }}>DAP
-                                                </option>
-                                                <option value="DAT"
-                                                    {{ $record->incoterm == 'DAT' ? 'selected' : '' }}>DAT
-                                                </option>
-                                                <option value="DDP"
-                                                    {{ $record->incoterm == 'DDP' ? 'selected' : '' }}>DDP
-                                                </option>
-                                                <option value="DDU"
-                                                    {{ $record->incoterm == 'DDU' ? 'selected' : '' }}>DDU
-                                                </option>
-                                                <option value="DEQ"
-                                                    {{ $record->incoterm == 'DEQ' ? 'selected' : '' }}>DEQ
-                                                </option>
-                                                <option value="DES"
-                                                    {{ $record->incoterm == 'DES' ? 'selected' : '' }}>DES
-                                                </option>
-                                                <option value="DPU"
-                                                    {{ $record->incoterm == 'DPU' ? 'selected' : '' }}>DPU
-                                                </option>
-                                                <option value="EXW"
-                                                    {{ $record->incoterm == 'EXW' ? 'selected' : '' }}>EXW
-                                                </option>
-                                                <option value="FAS"
-                                                    {{ $record->incoterm == 'FAS' ? 'selected' : '' }}>FAS
-                                                </option>
-                                                <option value="FCA"
-                                                    {{ $record->incoterm == 'FCA' ? 'selected' : '' }}>FCA
-                                                </option>
-                                                <option value="FOB"
-                                                    {{ $record->incoterm == 'FOB' ? 'selected' : '' }}>FOB
-                                                </option>
-                                            </select>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Incoterm</label>
+                                                <select class="form-control" name="incoterm"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }} required>
+                                                    <option value="" {{ !$record->incoterm ? 'selected' : '' }}>--
+                                                        select
+                                                        --
+                                                    </option>
+                                                    <option value="CFR"
+                                                        {{ $record->incoterm == 'CFR' ? 'selected' : '' }}>CFR
+                                                    </option>
+                                                    <option value="CIF"
+                                                        {{ $record->incoterm == 'CIF' ? 'selected' : '' }}>CIF
+                                                    </option>
+                                                    <option value="CIP"
+                                                        {{ $record->incoterm == 'CIP' ? 'selected' : '' }}>CIP
+                                                    </option>
+                                                    <option value="CPT"
+                                                        {{ $record->incoterm == 'CPT' ? 'selected' : '' }}>CPT
+                                                    </option>
+                                                    <option value="DAF"
+                                                        {{ $record->incoterm == 'DAF' ? 'selected' : '' }}>DAF
+                                                    </option>
+                                                    <option value="DAP"
+                                                        {{ $record->incoterm == 'DAP' ? 'selected' : '' }}>DAP
+                                                    </option>
+                                                    <option value="DAT"
+                                                        {{ $record->incoterm == 'DAT' ? 'selected' : '' }}>DAT
+                                                    </option>
+                                                    <option value="DDP"
+                                                        {{ $record->incoterm == 'DDP' ? 'selected' : '' }}>DDP
+                                                    </option>
+                                                    <option value="DDU"
+                                                        {{ $record->incoterm == 'DDU' ? 'selected' : '' }}>DDU
+                                                    </option>
+                                                    <option value="DEQ"
+                                                        {{ $record->incoterm == 'DEQ' ? 'selected' : '' }}>DEQ
+                                                    </option>
+                                                    <option value="DES"
+                                                        {{ $record->incoterm == 'DES' ? 'selected' : '' }}>DES
+                                                    </option>
+                                                    <option value="DPU"
+                                                        {{ $record->incoterm == 'DPU' ? 'selected' : '' }}>DPU
+                                                    </option>
+                                                    <option value="EXW"
+                                                        {{ $record->incoterm == 'EXW' ? 'selected' : '' }}>EXW
+                                                    </option>
+                                                    <option value="FAS"
+                                                        {{ $record->incoterm == 'FAS' ? 'selected' : '' }}>FAS
+                                                    </option>
+                                                    <option value="FCA"
+                                                        {{ $record->incoterm == 'FCA' ? 'selected' : '' }}>FCA
+                                                    </option>
+                                                    <option value="FOB"
+                                                        {{ $record->incoterm == 'FOB' ? 'selected' : '' }}>FOB
+                                                    </option>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-3">
-                                            <div class="form-label">Freight Currency</div>
-                                            <select class="form-select" name="freight_currency"
-                                                {{ $record->status > 1 ? 'disabled' : '' }} required>
-                                                <option value=""
-                                                    {{ !$record->freight_currency ? 'selected' : '' }}>--
-                                                    select
-                                                    --</option>
-                                                <option value="USD"
-                                                    {{ $record->freight_currency == 'USD' ? 'selected' : '' }}>USD
-                                                </option>
-                                                <option value="EUR"
-                                                    {{ $record->freight_currency == 'EUR' ? 'selected' : '' }}>EUR
-                                                </option>
-                                                <option value="TZS"
-                                                    {{ $record->freight_currency == 'TZS' ? 'selected' : '' }}>TZS
-                                                </option>
-                                                <option value="ZAR"
-                                                    {{ $record->freight_currency == 'ZAR' ? 'selected' : '' }}>ZAR
-                                                </option>
-                                                <option value="AOA"
-                                                    {{ $record->freight_currency == 'AOA' ? 'selected' : '' }}>AOA
-                                                </option>
-                                            </select>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label for="exampleFormControlSelect1" class="ms-0">Freight
+                                                    Currency</label>
+                                                <select class="form-control" name="freight_currency"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }} required>
+                                                    <option value=""
+                                                        {{ !$record->freight_currency ? 'selected' : '' }}>--
+                                                        select
+                                                        --</option>
+                                                    <option value="USD"
+                                                        {{ $record->freight_currency == 'USD' ? 'selected' : '' }}>USD
+                                                    </option>
+                                                    <option value="EUR"
+                                                        {{ $record->freight_currency == 'EUR' ? 'selected' : '' }}>EUR
+                                                    </option>
+                                                    <option value="TZS"
+                                                        {{ $record->freight_currency == 'TZS' ? 'selected' : '' }}>TZS
+                                                    </option>
+                                                    <option value="ZAR"
+                                                        {{ $record->freight_currency == 'ZAR' ? 'selected' : '' }}>ZAR
+                                                    </option>
+                                                    <option value="AOA"
+                                                        {{ $record->freight_currency == 'AOA' ? 'selected' : '' }}>AOA
+                                                    </option>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-3">
-                                            <div class="form-label">Freight Value</div>
-                                            <input type="text" name="freight_value" class="form-control"
-                                                value="{{ $record->freight_value }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Freight Value</label>
+                                                <input type="text" name="freight_value" class="form-control"
+                                                    value="{{ $record->freight_value }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-3">
-                                            <div class="form-label">Insurance Currency</div>
-                                            <select class="form-select" name="insurance_currency"
-                                                {{ $record->status > 1 ? 'disabled' : '' }} required>
-                                                <option value=""
-                                                    {{ !$record->insurance_currency ? 'selected' : '' }}>
-                                                    --
-                                                    select
-                                                    --</option>
-                                                <option value="USD"
-                                                    {{ $record->insurance_currency == 'USD' ? 'selected' : '' }}>
-                                                    USD
-                                                </option>
-                                                <option value="EUR"
-                                                    {{ $record->insurance_currency == 'EUR' ? 'selected' : '' }}>
-                                                    EUR
-                                                </option>
-                                                <option value="TZS"
-                                                    {{ $record->insurance_currency == 'TZS' ? 'selected' : '' }}>
-                                                    TZS
-                                                </option>
-                                                <option value="ZAR"
-                                                    {{ $record->insurance_currency == 'ZAR' ? 'selected' : '' }}>
-                                                    ZAR
-                                                </option>
-                                                <option value="AOA"
-                                                    {{ $record->insurance_currency == 'AOA' ? 'selected' : '' }}>
-                                                    AOA
-                                                </option>
-                                            </select>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label for="exampleFormControlSelect1" class="ms-0">Insurance
+                                                    Currency</label>
+                                                <select class="form-control" name="insurance_currency"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }} required>
+                                                    <option value=""
+                                                        {{ !$record->insurance_currency ? 'selected' : '' }}>
+                                                        --
+                                                        select
+                                                        --</option>
+                                                    <option value="USD"
+                                                        {{ $record->insurance_currency == 'USD' ? 'selected' : '' }}>
+                                                        USD
+                                                    </option>
+                                                    <option value="EUR"
+                                                        {{ $record->insurance_currency == 'EUR' ? 'selected' : '' }}>
+                                                        EUR
+                                                    </option>
+                                                    <option value="TZS"
+                                                        {{ $record->insurance_currency == 'TZS' ? 'selected' : '' }}>
+                                                        TZS
+                                                    </option>
+                                                    <option value="ZAR"
+                                                        {{ $record->insurance_currency == 'ZAR' ? 'selected' : '' }}>
+                                                        ZAR
+                                                    </option>
+                                                    <option value="AOA"
+                                                        {{ $record->insurance_currency == 'AOA' ? 'selected' : '' }}>
+                                                        AOA
+                                                    </option>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-3">
-                                            <div class="form-label">Insurance Value</div>
-                                            <input type="text" name="insurance_value" class="form-control"
-                                                value="{{ $record->insurance_value }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Insurance Value</label>
+                                                <input type="text" name="insurance_value" class="form-control"
+                                                    value="{{ $record->insurance_value }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-3">
-                                            <div class="form-label">Additional Fees Currency</div>
-                                            <select class="form-select" name="additional_fees_currency"
-                                                {{ $record->status > 1 ? 'disabled' : '' }} required>
-                                                <option value=""
-                                                    {{ !$record->additional_fees_currency ? 'selected' : '' }}>--
-                                                    select --
-                                                </option>
-                                                <option value="USD"
-                                                    {{ $record->additional_fees_currency == 'USD' ? 'selected' : '' }}>USD
-                                                </option>
-                                                <option value="EUR"
-                                                    {{ $record->additional_fees_currency == 'EUR' ? 'selected' : '' }}>EUR
-                                                </option>
-                                                <option value="TZS"
-                                                    {{ $record->additional_fees_currency == 'TZS' ? 'selected' : '' }}>TZS
-                                                </option>
-                                                <option value="ZAR"
-                                                    {{ $record->additional_fees_currency == 'ZAR' ? 'selected' : '' }}>ZAR
-                                                </option>
-                                                <option value="AOA"
-                                                    {{ $record->additional_fees_currency == 'AOA' ? 'selected' : '' }}>AOA
-                                                </option>
-                                            </select>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label for="exampleFormControlSelect1" class="ms-0">Additional Fees
+                                                    Currency</label>
+                                                <select class="form-control" name="additional_fees_currency"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }} required>
+                                                    <option value=""
+                                                        {{ !$record->additional_fees_currency ? 'selected' : '' }}>--
+                                                        select --
+                                                    </option>
+                                                    <option value="USD"
+                                                        {{ $record->additional_fees_currency == 'USD' ? 'selected' : '' }}>
+                                                        USD
+                                                    </option>
+                                                    <option value="EUR"
+                                                        {{ $record->additional_fees_currency == 'EUR' ? 'selected' : '' }}>
+                                                        EUR
+                                                    </option>
+                                                    <option value="TZS"
+                                                        {{ $record->additional_fees_currency == 'TZS' ? 'selected' : '' }}>
+                                                        TZS
+                                                    </option>
+                                                    <option value="ZAR"
+                                                        {{ $record->additional_fees_currency == 'ZAR' ? 'selected' : '' }}>
+                                                        ZAR
+                                                    </option>
+                                                    <option value="AOA"
+                                                        {{ $record->additional_fees_currency == 'AOA' ? 'selected' : '' }}>
+                                                        AOA
+                                                    </option>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-12">
-                                            <div class="form-label">Additional Fees Value</div>
-                                            <input type="text" name="additional_fees_value" class="form-control"
-                                                value="{{ $record->additional_fees_value }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Additional Fees Value</label>
+                                                <input type="text" name="additional_fees_value" class="form-control"
+                                                    value="{{ $record->additional_fees_value }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         @if ($documents)
                                             @foreach ($documents as $type => $path)
                                                 <div
                                                     class="col-12 mb-3 col-lg-{{ $record->status == 1 ? '6' : ($record->status != 1 ? '4' : '') }}">
-                                                    <div class="form-label">{{ ucfirst(str_replace('_', ' ', $type)) }}
-                                                    </div>
+                                                    <label>{{ ucfirst(str_replace('_', ' ', $type)) }}
+                                                    </label>
                                                     <a href="{{ route('file.downloadfile', ['id' => $record->id, 'type' => $type]) }}"
                                                         download>
                                                         <div class="card py-1">
-                                                            <div class="card-body p-1">
-                                                                Download
-                                                                File
-                                                            </div>
-                                                            <div class="ribbon ribbon-top">
-                                                                <i class="fa fa-file"></i>
+                                                            <div class="row m-2">
+                                                                <div class="col-auto">
+                                                                    <i class="fa fa-file text-info"></i>
+                                                                </div>
+                                                                <div class="col-auto">Download File</div>
                                                             </div>
                                                         </div>
                                                     </a>
@@ -782,11 +853,12 @@
                                                 @if ($record->status == 1)
                                                     <div
                                                         class="col-12 mb-3 col-lg-{{ $record->status == 1 ? '6' : ($record->status != 1 ? '4' : '') }}">
-                                                        <div class="form-label">Edit
-                                                            {{ ucfirst(str_replace('_', ' ', $type)) }}
+                                                        <div class="input-group input-group-static mb-4">
+                                                            <label>Edit
+                                                                {{ ucfirst(str_replace('_', ' ', $type)) }}</label>
+                                                            <input type="file" name="{{ $type }}"
+                                                                class="form-control">
                                                         </div>
-                                                        <input type="file" name="{{ $type }}"
-                                                            class="form-control">
                                                     </div>
                                                 @endif
                                             @endforeach
@@ -799,35 +871,39 @@
                                         <div class="row m-2">
 
                                             <div class="col-12 mb-3 col-lg-12">
-                                                <div class="form-label">Document</div>
-                                                <input type="text" name="#" class="form-control"
-                                                    value="{{ $record->type }}" disabled />
+                                                <div class="input-group input-group-static mb-4">
+                                                    <label>Document</label>
+                                                    <input type="text" name="#" class="form-control"
+                                                        value="{{ $record->type }}" disabled />
+                                                </div>
                                             </div>
 
                                             <a href="{{ route('certificate.downloaddraft', ['id' => $record->id]) }}"
                                                 class="text-decoration-none" download>
-                                                <div class="card col-12 card-link">
-                                                    <div class="card-body pt-5" style="height: 5rem">
-                                                        Download Feri Document
+                                                <div class="card py-1">
+                                                    <div class="row m-2">
+                                                        <div class="col-auto">
+                                                            <i class="fa fa-certificate text-info"></i>
+                                                        </div>
+                                                        <div class="col-auto" style="height: 5rem">
+                                                            Download Feri Document
+                                                        </div>
                                                     </div>
-                                                    <div class="ribbon bg-danger ribbon-top ribbon-start">
-                                                        <i class="fa fa-certificate fs-2 px-2"></i>
-                                                    </div>
-
                                                 </div>
                                             </a>
 
                                             @if ($invoice)
                                                 <a href="{{ route('invoices.downloadinvoice', ['id' => $record->id]) }}"
                                                     target="_blanck" class="text-decoration-none">
-                                                    <div class="card col-12 card-link">
-                                                        <div class="card-body pt-5" style="height: 5rem">
-                                                            Download Draft Invoice
+                                                    <div class="card py-1">
+                                                        <div class="row m-2">
+                                                            <div class="col-auto">
+                                                                <i class="fa fa-dollar-sign text-info"></i>
+                                                            </div>
+                                                            <div class="col-auto" style="height: 5rem">
+                                                                Download Draft Invoice
+                                                            </div>
                                                         </div>
-                                                        <div class="ribbon bg-danger ribbon-top ribbon-start">
-                                                            <i class="fa fa-dollar-sign fs-2 px-2"></i>
-                                                        </div>
-
                                                     </div>
                                                 </a>
                                             @endif
@@ -841,32 +917,37 @@
                                         <div class="row m-2">
 
                                             <div class="col-12 mb-3 col-lg-12">
-                                                <div class="form-label">Document</div>
-                                                <input type="text" name="#" class="form-control"
-                                                    value="{{ $record->type }}" disabled />
+                                                <div class="input-group input-group-static mb-4">
+                                                    <label>Document</label>
+                                                    <input type="text" name="#" class="form-control"
+                                                        value="{{ $record->type }}" disabled />
+                                                </div>
                                             </div>
 
                                             <a href="{{ route('certificate.download', ['id' => $record->id]) }}"
                                                 class="text-decoration-none" download>
-                                                <div class="card col-12 card-link">
-                                                    <div class="card-body pt-5" style="height: 5rem">
-                                                        Download Feri Certificate
+                                                <div class="card py-1">
+                                                    <div class="row m-2">
+                                                        <div class="col-auto">
+                                                            <i class="fa fa-certificate text-success"></i>
+                                                        </div>
+                                                        <div class="col-auto" style="height: 5rem">
+                                                            Download Feri Certificate
+                                                        </div>
                                                     </div>
-                                                    <div class="ribbon bg-success ribbon-top ribbon-start">
-                                                        <i class="fa fa-certificate fs-2 px-2"></i>
-                                                    </div>
-
                                                 </div>
                                             </a>
                                             @if ($invoice)
                                                 <a href="{{ route('invoices.downloadinvoice', ['id' => $record->id]) }}"
                                                     target="_blank" class="text-decoration-none">
-                                                    <div class="card col-12 card-link">
-                                                        <div class="card-body pt-5" style="height: 5rem">
-                                                            Download Feri Invoice
-                                                        </div>
-                                                        <div class="ribbon bg-success ribbon-top ribbon-start">
-                                                            <i class="fa fa-dollar-sign fs-2 px-2"></i>
+                                                    <div class="card py-1">
+                                                        <div class="row m-2">
+                                                            <div class="col-auto">
+                                                                <i class="fa fa-dollar-sign text-success"></i>
+                                                            </div>
+                                                            <div class="col-auto" style="height: 5rem">
+                                                                Download Feri Invoice
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -952,111 +1033,131 @@
                                     <div class="row m-2">
 
                                         <div class="col-12 mb-3 col-lg-3">
-                                            <div class="form-label">Applicant</div>
-                                            <input type="text" name="user_id" class="form-control"
-                                                value="{{ $record->applicant }}" disabled>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Applicant</label>
+                                                <input type="text" name="user_id" class="form-control"
+                                                    value="{{ $record->applicant }}" disabled>
+                                            </div>
                                         </div>
 
                                         <div class="col-12 mb-3 col-lg-3">
-                                            <div class="form-label">Company Ref</div>
-                                            <input type="text" name="company_ref" class="form-control"
-                                                value="{{ $record->company_ref }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Company Ref</label>
+                                                <input type="text" name="company_ref" class="form-control"
+                                                    value="{{ $record->company_ref }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
 
                                         <div class="col-12 mb-3 col-lg-3">
-                                            <div class="form-label">PO Number</div>
-                                            <input type="text" name="po" class="form-control"
-                                                value="{{ $record->po }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>PO Number</label>
+                                                <input type="text" name="po" class="form-control"
+                                                    value="{{ $record->po }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
 
                                         <div class="col-12 mb-3 col-lg-3">
-                                            <div class="form-label">Entry Border DRC</div>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label for="exampleFormControlSelect1" class="ms-0">Entry Border
+                                                    DRC</label>
 
-                                            <select class="form-select" name="entry_border_drc"
-                                                {{ $record->status > 1 ? 'disabled' : '' }} required>
-                                                <option value="0"
-                                                    {{ $record->entry_border_drc == '0' || !$record->entry_border_drc ? 'selected' : '' }}>
-                                                    -- select --</option>
-                                                <option value="Kasumbalesa"
-                                                    {{ $record->entry_border_drc == 'Kasumbalesa' ? 'selected' : '' }}>
-                                                    Kasumbalesa
-                                                </option>
-                                                <option value="Mokambo"
-                                                    {{ $record->entry_border_drc == 'Mokambo' ? 'selected' : '' }}>
-                                                    Mokambo</option>
-                                                <option value="Sakania"
-                                                    {{ $record->entry_border_drc == 'Sakania' ? 'selected' : '' }}>
-                                                    Sakania</option>
-                                            </select>
+                                                <select class="form-control" name="entry_border_drc"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }} required>
+                                                    <option value="0"
+                                                        {{ $record->entry_border_drc == '0' || !$record->entry_border_drc ? 'selected' : '' }}>
+                                                        -- select --</option>
+                                                    <option value="Kasumbalesa"
+                                                        {{ $record->entry_border_drc == 'Kasumbalesa' ? 'selected' : '' }}>
+                                                        Kasumbalesa
+                                                    </option>
+                                                    <option value="Mokambo"
+                                                        {{ $record->entry_border_drc == 'Mokambo' ? 'selected' : '' }}>
+                                                        Mokambo</option>
+                                                    <option value="Sakania"
+                                                        {{ $record->entry_border_drc == 'Sakania' ? 'selected' : '' }}>
+                                                        Sakania</option>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-4">
-                                            <div class="form-label">Final Destination</div>
-                                            <select class="form-select" name="final_destination"
-                                                {{ $record->status > 1 ? 'disabled' : '' }} required>
-                                                <option value=""
-                                                    {{ !$record->final_destination ? 'selected' : '' }}>--
-                                                    select --
-                                                </option>
-                                                <option value="Likasi DRC"
-                                                    {{ $record->final_destination == 'Likasi DRC' ? 'selected' : '' }}>
-                                                    Likasi DRC
-                                                </option>
-                                                <option value="Lubumbashi DRC"
-                                                    {{ $record->final_destination == 'Lubumbashi DRC' ? 'selected' : '' }}>
-                                                    Lubumbashi
-                                                    DRC</option>
-                                                <option value="Kolwezi DRC"
-                                                    {{ $record->final_destination == 'Kolwezi DRC' ? 'selected' : '' }}>
-                                                    Kolwezi
-                                                    DRC
-                                                </option>
-                                                <option value="Tenke DRC"
-                                                    {{ $record->final_destination == 'Tenke DRC' ? 'selected' : '' }}>
-                                                    Tenke DRC
-                                                </option>
-                                                <option value="Kisanfu DRC"
-                                                    {{ $record->final_destination == 'Kisanfu DRC' ? 'selected' : '' }}>
-                                                    Kisanfu
-                                                    DRC
-                                                </option>
-                                                <option value="Lualaba DRC"
-                                                    {{ $record->final_destination == 'Lualaba DRC' ? 'selected' : '' }}>
-                                                    Lualaba
-                                                    DRC
-                                                </option>
-                                                <option value="Pumpi DRC"
-                                                    {{ $record->final_destination == 'Pumpi DRC' ? 'selected' : '' }}>
-                                                    Pumpi DRC
-                                                </option>
-                                            </select>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label for="exampleFormControlSelect1" class="ms-0">Final
+                                                    Destination</label>
+                                                <select class="form-control" name="final_destination"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }} required>
+                                                    <option value=""
+                                                        {{ !$record->final_destination ? 'selected' : '' }}>--
+                                                        select --
+                                                    </option>
+                                                    <option value="Likasi DRC"
+                                                        {{ $record->final_destination == 'Likasi DRC' ? 'selected' : '' }}>
+                                                        Likasi DRC
+                                                    </option>
+                                                    <option value="Lubumbashi DRC"
+                                                        {{ $record->final_destination == 'Lubumbashi DRC' ? 'selected' : '' }}>
+                                                        Lubumbashi
+                                                        DRC</option>
+                                                    <option value="Kolwezi DRC"
+                                                        {{ $record->final_destination == 'Kolwezi DRC' ? 'selected' : '' }}>
+                                                        Kolwezi
+                                                        DRC
+                                                    </option>
+                                                    <option value="Tenke DRC"
+                                                        {{ $record->final_destination == 'Tenke DRC' ? 'selected' : '' }}>
+                                                        Tenke DRC
+                                                    </option>
+                                                    <option value="Kisanfu DRC"
+                                                        {{ $record->final_destination == 'Kisanfu DRC' ? 'selected' : '' }}>
+                                                        Kisanfu
+                                                        DRC
+                                                    </option>
+                                                    <option value="Lualaba DRC"
+                                                        {{ $record->final_destination == 'Lualaba DRC' ? 'selected' : '' }}>
+                                                        Lualaba
+                                                        DRC
+                                                    </option>
+                                                    <option value="Pumpi DRC"
+                                                        {{ $record->final_destination == 'Pumpi DRC' ? 'selected' : '' }}>
+                                                        Pumpi DRC
+                                                    </option>
+                                                </select>
+                                            </div>
                                         </div>
 
                                         <div class="col-12 col-lg-4 mb-3">
-                                            <label class="form-label">Border ETA</label>
-                                            <input type="date" class="form-control" name="arrival_date"
-                                                value="{{ $record->arrival_date }}" autocomplete="on"
-                                                {{ $record->status > 1 ? 'disabled' : '' }} required />
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Border ETA</label>
+                                                <input type="date" class="form-control" name="arrival_date"
+                                                    value="{{ $record->arrival_date }}" autocomplete="on"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }} required />
+                                            </div>
                                         </div>
 
                                         <div class="col-12 mb-3 col-lg-4">
-                                            <div class="form-label">Customs Decl No</div>
-                                            <input type="text" name="customs_decl_no" class="form-control"
-                                                value="{{ $record->customs_decl_no }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Customs Decl No</label>
+                                                <input type="text" name="customs_decl_no" class="form-control"
+                                                    value="{{ $record->customs_decl_no }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-6">
-                                            <div class="form-label">Arrival Station</div>
-                                            <input type="text" name="arrival_station" class="form-control"
-                                                value="{{ $record->arrival_station }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Arrival Station</label>
+                                                <input type="text" name="arrival_station" class="form-control"
+                                                    value="{{ $record->arrival_station }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-6">
-                                            <div class="form-label">Truck Details</div>
-                                            <input type="text" name="truck_details" class="form-control"
-                                                value="{{ $record->truck_details }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Truck Details</label>
+                                                <input type="text" name="truck_details" class="form-control"
+                                                    value="{{ $record->truck_details }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -1068,136 +1169,151 @@
                                             require />
 
                                         <div class="col-12 col-lg-3 mb-3">
-                                            <label class="form-label">Transporter Company</label>
-                                            <select class="form-select" name="transporter_company"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
-                                                <option value="">-- select --</option>
-                                                @foreach ($companies as $company)
-                                                    <option value="{{ $company->id }}"
-                                                        {{ old('transporter_company', $record->transporter_company ?? '') == $company->id ? 'selected' : '' }}>
-                                                        {{ $company->name }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label for="exampleFormControlSelect1" class="ms-0">Transporter
+                                                    Company</label>
+                                                <select class="form-control" name="transporter_company"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                                    <option value="">-- select --</option>
+                                                    @foreach ($companies as $company)
+                                                        <option value="{{ $company->id }}"
+                                                            {{ old('transporter_company', $record->transporter_company ?? '') == $company->id ? 'selected' : '' }}>
+                                                            {{ $company->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                             <input type="hidden" name="transporter_company"
                                                 value="{{ $record->transporter_company }}">
                                         </div>
 
                                         <div class="col-12 mb-3 col-lg-3">
-                                            <div class="form-label">Quantity</div>
-                                            <input type="text" name="quantity" class="form-control"
-                                                value="{{ $record->quantity }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Quantity</label>
+                                                <input type="text" name="quantity" class="form-control"
+                                                    value="{{ $record->quantity }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
 
                                         <div class="col-12 mb-3 col-lg-3">
-                                            <div class="form-label">Weight</div>
-                                            <input type="text" name="weight" class="form-control"
-                                                value="{{ $record->weight }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Weight</label>
+                                                <input type="text" name="weight" class="form-control"
+                                                    value="{{ $record->weight }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
 
                                         <div class="col-12 mb-3 col-lg-3">
-                                            <div class="form-label">Volume</div>
-                                            <input type="text" name="volume" class="form-control"
-                                                value="{{ $record->volume }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Volume</label>
+                                                <input type="text" name="volume" class="form-control"
+                                                    value="{{ $record->volume }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
 
                                         <div class="col-12 mb-3 col-lg-12">
-                                            <div class="form-label">Importer Name</div>
-                                            <input type="text" name="importer_name" class="form-control"
-                                                value="{{ $record->importer_name }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Importer Name</label>
+                                                <input type="text" name="importer_name" class="form-control"
+                                                    value="{{ $record->importer_name }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
                                         <div class="col-12 mb-3 col-lg-12">
-                                            <label class="form-label">CF Agent</label>
-                                            <select class="form-select" name="cf_agent"
-                                                {{ $record->status > 1 ? 'disabled' : '' }} required>
-                                                <option value="" {{ !$record->cf_agent ? 'selected' : '' }}>--
-                                                    select --
-                                                </option>
-                                                <option value="AGL"
-                                                    {{ $record->cf_agent == 'AGL' ? 'selected' : '' }}>AGL
-                                                </option>
-                                                <option value="CARGO CONGO"
-                                                    {{ $record->cf_agent == 'CARGO CONGO' ? 'selected' : '' }}>CARGO
-                                                    CONGO</option>
-                                                <option value="CONNEX"
-                                                    {{ $record->cf_agent == 'CONNEX' ? 'selected' : '' }}>CONNEX
-                                                </option>
-                                                <option value="African Logistics"
-                                                    {{ $record->cf_agent == 'African Logistics' ? 'selected' : '' }}>
-                                                    African Logistics
-                                                </option>
-                                                <option value="Afritac"
-                                                    {{ $record->cf_agent == 'Afritac' ? 'selected' : '' }}>
-                                                    Afritac
-                                                </option>
-                                                <option value="Amicongo"
-                                                    {{ $record->cf_agent == 'Amicongo' ? 'selected' : '' }}>
-                                                    Amicongo
-                                                </option>
-                                                <option value="Aristote"
-                                                    {{ $record->cf_agent == 'Aristote' ? 'selected' : '' }}>
-                                                    Aristote
-                                                </option>
-                                                <option value="Bollore"
-                                                    {{ $record->cf_agent == 'Bollore' ? 'selected' : '' }}>
-                                                    Bollore
-                                                </option>
-                                                <option value="Brasimba"
-                                                    {{ $record->cf_agent == 'Brasimba' ? 'selected' : '' }}>
-                                                    Brasimba
-                                                </option>
-                                                <option value="Brasimba S.A"
-                                                    {{ $record->cf_agent == 'Brasimba S.A' ? 'selected' : '' }}>
-                                                    Brasimba S.A</option>
-                                                <option value="Chemaf"
-                                                    {{ $record->cf_agent == 'Chemaf' ? 'selected' : '' }}>Chemaf
-                                                </option>
-                                                <option value="Comexas Afrique"
-                                                    {{ $record->cf_agent == 'Comexas Afrique' ? 'selected' : '' }}>Comexas
-                                                    Afrique
-                                                </option>
-                                                <option value="Comexas"
-                                                    {{ $record->cf_agent == 'Comexas' ? 'selected' : '' }}>
-                                                    Comexas
-                                                </option>
-                                                <option value="DCG"
-                                                    {{ $record->cf_agent == 'DCG' ? 'selected' : '' }}>DCG
-                                                </option>
-                                                <option value="Evele & Co"
-                                                    {{ $record->cf_agent == 'Evele & Co' ? 'selected' : '' }}>
-                                                    Evele &
-                                                    Co</option>
-                                                <option value="Gecotrans"
-                                                    {{ $record->cf_agent == 'Gecotrans' ? 'selected' : '' }}>
-                                                    Gecotrans
-                                                </option>
-                                                <option value="Global Logistics"
-                                                    {{ $record->cf_agent == 'Global Logistics' ? 'selected' : '' }}>Global
-                                                    Logistics
-                                                </option>
-                                                <option value="Malabar"
-                                                    {{ $record->cf_agent == 'Malabar' ? 'selected' : '' }}>
-                                                    Malabar
-                                                </option>
-                                                <option value="Polytra"
-                                                    {{ $record->cf_agent == 'Polytra' ? 'selected' : '' }}>
-                                                    Polytra
-                                                </option>
-                                                <option value="Spedag"
-                                                    {{ $record->cf_agent == 'Spedag' ? 'selected' : '' }}>Spedag
-                                                </option>
-                                                <option value="Tradecorp"
-                                                    {{ $record->cf_agent == 'Tradecorp' ? 'selected' : '' }}>
-                                                    Tradecorp
-                                                </option>
-                                                <option value="Trade Service"
-                                                    {{ $record->cf_agent == 'Trade Service' ? 'selected' : '' }}>
-                                                    Trade Service</option>
-                                            </select>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label for="exampleFormControlSelect1" class="ms-0">CF Agent</label>
+                                                <select class="form-control" name="cf_agent"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }} required>
+                                                    <option value="" {{ !$record->cf_agent ? 'selected' : '' }}>--
+                                                        select --
+                                                    </option>
+                                                    <option value="AGL"
+                                                        {{ $record->cf_agent == 'AGL' ? 'selected' : '' }}>AGL
+                                                    </option>
+                                                    <option value="CARGO CONGO"
+                                                        {{ $record->cf_agent == 'CARGO CONGO' ? 'selected' : '' }}>CARGO
+                                                        CONGO</option>
+                                                    <option value="CONNEX"
+                                                        {{ $record->cf_agent == 'CONNEX' ? 'selected' : '' }}>CONNEX
+                                                    </option>
+                                                    <option value="African Logistics"
+                                                        {{ $record->cf_agent == 'African Logistics' ? 'selected' : '' }}>
+                                                        African Logistics
+                                                    </option>
+                                                    <option value="Afritac"
+                                                        {{ $record->cf_agent == 'Afritac' ? 'selected' : '' }}>
+                                                        Afritac
+                                                    </option>
+                                                    <option value="Amicongo"
+                                                        {{ $record->cf_agent == 'Amicongo' ? 'selected' : '' }}>
+                                                        Amicongo
+                                                    </option>
+                                                    <option value="Aristote"
+                                                        {{ $record->cf_agent == 'Aristote' ? 'selected' : '' }}>
+                                                        Aristote
+                                                    </option>
+                                                    <option value="Bollore"
+                                                        {{ $record->cf_agent == 'Bollore' ? 'selected' : '' }}>
+                                                        Bollore
+                                                    </option>
+                                                    <option value="Brasimba"
+                                                        {{ $record->cf_agent == 'Brasimba' ? 'selected' : '' }}>
+                                                        Brasimba
+                                                    </option>
+                                                    <option value="Brasimba S.A"
+                                                        {{ $record->cf_agent == 'Brasimba S.A' ? 'selected' : '' }}>
+                                                        Brasimba S.A</option>
+                                                    <option value="Chemaf"
+                                                        {{ $record->cf_agent == 'Chemaf' ? 'selected' : '' }}>Chemaf
+                                                    </option>
+                                                    <option value="Comexas Afrique"
+                                                        {{ $record->cf_agent == 'Comexas Afrique' ? 'selected' : '' }}>
+                                                        Comexas
+                                                        Afrique
+                                                    </option>
+                                                    <option value="Comexas"
+                                                        {{ $record->cf_agent == 'Comexas' ? 'selected' : '' }}>
+                                                        Comexas
+                                                    </option>
+                                                    <option value="DCG"
+                                                        {{ $record->cf_agent == 'DCG' ? 'selected' : '' }}>DCG
+                                                    </option>
+                                                    <option value="Evele & Co"
+                                                        {{ $record->cf_agent == 'Evele & Co' ? 'selected' : '' }}>
+                                                        Evele &
+                                                        Co</option>
+                                                    <option value="Gecotrans"
+                                                        {{ $record->cf_agent == 'Gecotrans' ? 'selected' : '' }}>
+                                                        Gecotrans
+                                                    </option>
+                                                    <option value="Global Logistics"
+                                                        {{ $record->cf_agent == 'Global Logistics' ? 'selected' : '' }}>
+                                                        Global
+                                                        Logistics
+                                                    </option>
+                                                    <option value="Malabar"
+                                                        {{ $record->cf_agent == 'Malabar' ? 'selected' : '' }}>
+                                                        Malabar
+                                                    </option>
+                                                    <option value="Polytra"
+                                                        {{ $record->cf_agent == 'Polytra' ? 'selected' : '' }}>
+                                                        Polytra
+                                                    </option>
+                                                    <option value="Spedag"
+                                                        {{ $record->cf_agent == 'Spedag' ? 'selected' : '' }}>Spedag
+                                                    </option>
+                                                    <option value="Tradecorp"
+                                                        {{ $record->cf_agent == 'Tradecorp' ? 'selected' : '' }}>
+                                                        Tradecorp
+                                                    </option>
+                                                    <option value="Trade Service"
+                                                        {{ $record->cf_agent == 'Trade Service' ? 'selected' : '' }}>
+                                                        Trade Service</option>
+                                                </select>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -1207,63 +1323,78 @@
                                     <div class="row m-2">
 
                                         <div class="col-12 mb-3 col-lg-6">
-                                            <div class="form-label">Exporter Name</div>
-                                            <input type="text" name="exporter_name" class="form-control"
-                                                value="{{ $record->exporter_name }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Exporter Name</label>
+                                                <input type="text" name="exporter_name" class="form-control"
+                                                    value="{{ $record->exporter_name }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
 
                                         <div class="col-12 mb-3 col-lg-3">
-                                            <div class="form-label">Freight Currency</div>
-                                            <select class="form-select" name="freight_currency"
-                                                {{ $record->status > 1 ? 'disabled' : '' }} required>
-                                                <option value=""
-                                                    {{ !$record->freight_currency ? 'selected' : '' }}>-- select
-                                                    --</option>
-                                                <option value="USD"
-                                                    {{ $record->freight_currency == 'USD' ? 'selected' : '' }}>USD
-                                                </option>
-                                                <option value="EUR"
-                                                    {{ $record->freight_currency == 'EUR' ? 'selected' : '' }}>EUR
-                                                </option>
-                                                <option value="TZS"
-                                                    {{ $record->freight_currency == 'TZS' ? 'selected' : '' }}>TZS
-                                                </option>
-                                                <option value="ZAR"
-                                                    {{ $record->freight_currency == 'ZAR' ? 'selected' : '' }}>ZAR
-                                                </option>
-                                                <option value="AOA"
-                                                    {{ $record->freight_currency == 'AOA' ? 'selected' : '' }}>AOA
-                                                </option>
-                                            </select>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label for="exampleFormControlSelect1" class="ms-0">Freight
+                                                    Currency</label>
+                                                <select class="form-control" name="freight_currency"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }} required>
+                                                    <option value=""
+                                                        {{ !$record->freight_currency ? 'selected' : '' }}>-- select
+                                                        --</option>
+                                                    <option value="USD"
+                                                        {{ $record->freight_currency == 'USD' ? 'selected' : '' }}>USD
+                                                    </option>
+                                                    <option value="EUR"
+                                                        {{ $record->freight_currency == 'EUR' ? 'selected' : '' }}>EUR
+                                                    </option>
+                                                    <option value="TZS"
+                                                        {{ $record->freight_currency == 'TZS' ? 'selected' : '' }}>TZS
+                                                    </option>
+                                                    <option value="ZAR"
+                                                        {{ $record->freight_currency == 'ZAR' ? 'selected' : '' }}>ZAR
+                                                    </option>
+                                                    <option value="AOA"
+                                                        {{ $record->freight_currency == 'AOA' ? 'selected' : '' }}>AOA
+                                                    </option>
+                                                </select>
+                                            </div>
                                         </div>
 
                                         <div class="col-12 mb-3 col-lg-3">
-                                            <div class="form-label">Freight Value</div>
-                                            <input type="text" name="freight_value" class="form-control"
-                                                value="{{ $record->freight_value }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Freight Value</label>
+                                                <input type="text" name="freight_value" class="form-control"
+                                                    value="{{ $record->freight_value }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
 
                                         <div class="col-12 mb-3 col-lg-6">
-                                            <div class="form-label">FOB Value</div>
-                                            <input type="text" name="fob_value" class="form-control"
-                                                value="{{ $record->fob_value }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>FOB Value</label>
+                                                <input type="text" name="fob_value" class="form-control"
+                                                    value="{{ $record->fob_value }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
 
                                         <div class="col-12 mb-3 col-lg-6">
-                                            <div class="form-label">Insurance Value</div>
-                                            <input type="text" name="insurance_value" class="form-control"
-                                                value="{{ $record->insurance_value }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Insurance Value</label>
+                                                <input type="text" name="insurance_value" class="form-control"
+                                                    value="{{ $record->insurance_value }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
 
                                         <div class="col-12 mb-3 col-lg-12">
-                                            <div class="form-label">Instructions</div>
-                                            <input type="text" name="instructions" class="form-control"
-                                                value="{{ $record->instructions }}"
-                                                {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>
+                                                    <div class="form-label">Instructions</div>
+                                                </label>
+                                                <input type="text" name="instructions" class="form-control"
+                                                    value="{{ $record->instructions }}"
+                                                    {{ $record->status > 1 ? 'disabled' : '' }}>
+                                            </div>
                                         </div>
 
 
@@ -1290,11 +1421,12 @@
                                                 @if ($record->status == 1)
                                                     <div
                                                         class="col-12 mb-3 col-lg-{{ $record->status == 1 ? '6' : ($record->status != 1 ? '4' : '') }}">
-                                                        <div class="form-label">Edit
-                                                            {{ ucfirst(str_replace('_', ' ', $type)) }}
+                                                        <div class="input-group input-group-static mb-4">
+                                                            <label>Edit
+                                                                {{ ucfirst(str_replace('_', ' ', $type)) }}</label>
+                                                            <input type="file" name="{{ $type }}"
+                                                                class="form-control">
                                                         </div>
-                                                        <input type="file" name="{{ $type }}"
-                                                            class="form-control">
                                                     </div>
                                                 @endif
                                             @endforeach
@@ -1307,9 +1439,11 @@
                                         <div class="row m-2">
 
                                             <div class="col-12 mb-3 col-lg-12">
-                                                <div class="form-label">Document</div>
-                                                <input type="text" name="#" class="form-control"
-                                                    value="{{ $record->type }}" disabled />
+                                                <div class="input-group input-group-static mb-4">
+                                                    <label>Document</label>
+                                                    <input type="text" name="#" class="form-control"
+                                                        value="{{ $record->type }}" disabled />
+                                                </div>
                                             </div>
 
                                             <a href="{{ route('certificate.downloaddraft', ['id' => $record->id]) }}"
@@ -1319,7 +1453,7 @@
                                                         Download Feri Document
                                                     </div>
                                                     <div class="ribbon bg-danger ribbon-top ribbon-start">
-                                                        <i class="fa fa-certificate fs-2 px-2"></i>
+                                                        <i class="fa fa-certificate text-success"></i>
                                                     </div>
 
                                                 </div>
@@ -1333,7 +1467,7 @@
                                                             Download Draft Invoice
                                                         </div>
                                                         <div class="ribbon bg-danger ribbon-top ribbon-start">
-                                                            <i class="fa fa-dollar-sign fs-2 px-2"></i>
+                                                            <i class="fa fa-dollar-sign text-success"></i>
                                                         </div>
 
                                                     </div>
@@ -1349,9 +1483,11 @@
                                         <div class="row m-2">
 
                                             <div class="col-12 mb-3 col-lg-12">
-                                                <div class="form-label">Document</div>
-                                                <input type="text" name="#" class="form-control"
-                                                    value="{{ $record->type }}" disabled />
+                                                <div class="input-group input-group-static mb-4">
+                                                    <label>Document</label>
+                                                    <input type="text" name="#" class="form-control"
+                                                        value="{{ $record->type }}" disabled />
+                                                </div>
                                             </div>
 
                                             <a href="{{ route('certificate.download', ['id' => $record->id]) }}"
@@ -1491,7 +1627,7 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="chat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{-- <div class="modal fade" id="chat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -1614,6 +1750,104 @@
                 </div>
             </div>
         </div>
+    </div> --}}
+
+    <!-- Modern Material Dashboard Chat Modal (Light Mode) -->
+    <div class="modal fade" id="chat" tabindex="-1" aria-labelledby="chatModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-white text-dark rounded-4 shadow-lg border-0">
+                <div class="modal-header border-0 pb-0">
+                    <div class="d-flex align-items-center w-100">
+                        <span class="avatar avatar-sm bg-gradient-primary text-white me-2">
+                            <i class="fa fa-comments"></i>
+                        </span>
+                        <h5 class="modal-title fw-bold mb-0" id="chatModalLabel">Chat & Queries</h5>
+                        <a href="{{ route('transporter.readchat', ['id' => $record->id]) }}"
+                            class="ms-auto text-primary text-decoration-underline fs-6">Mark as read</a>
+                        <button type="button" class="btn-close text-dark ms-2" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="modal-body px-3 pt-2 pb-0">
+                    <div class="card bg-white border-0 shadow-sm mb-0">
+                        <div class="card-body scrollable px-2 py-3" style="height: 320px; overflow-y: auto;">
+                            <div class="chat">
+                                <div class="chat-bubbles">
+                                    <form action="{{ route('transporter.sendchat', ['id' => $record->id]) }}"
+                                        method="POST">
+                                        @csrf
+                                        @foreach ($chats as $chat)
+                                            @if ($chat->user_id == Auth::user()->id)
+                                                <div class="d-flex justify-content-end mb-3">
+                                                    <div class="me-2">
+                                                        <div class="bg-primary text-white rounded-3 px-3 py-2 shadow-sm">
+                                                            <div class="d-flex align-items-center mb-1">
+                                                                <span class="fw-bold">{{ Auth::user()->name }}</span>
+                                                                <span
+                                                                    class="ms-2 small text-white-50">{{ $chat->formatted_date }}</span>
+                                                            </div>
+                                                            <div>
+                                                                @if ($chat->del == 0)
+                                                                    <span>{{ $chat->message }}</span>
+                                                                    <a href="{{ route('transporter.deletechat', ['id' => $chat->id]) }}"
+                                                                        class="ms-2 text-info small text-decoration-underline">delete</a>
+                                                                @else
+                                                                    <span class="fst-italic text-warning"><i
+                                                                            class="fa fa-ban"></i> Deleted message</span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="avatar avatar-xs bg-primary text-white">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                </div>
+                                            @else
+                                                <div class="d-flex justify-content-start mb-3">
+                                                    <span class="avatar avatar-xs bg-info text-white me-2">
+                                                        <i class="fa fa-user-shield"></i>
+                                                    </span>
+                                                    <div>
+                                                        <div class="bg-info text-white rounded-3 px-3 py-2 shadow-sm">
+                                                            <div class="d-flex align-items-center mb-1">
+                                                                <span class="fw-bold">Vendor</span>
+                                                                <span
+                                                                    class="ms-2 small text-white-50">{{ $chat->formatted_date }}</span>
+                                                            </div>
+                                                            <div>
+                                                                @if ($chat->del == 0)
+                                                                    <span>{{ $chat->message }}</span>
+                                                                @else
+                                                                    <span class="fst-italic text-warning"><i
+                                                                            class="fa fa-ban"></i> Deleted message</span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                    <form action="{{ route('transporter.sendchat', ['id' => $record->id]) }}" method="POST"
+                        class="w-100">
+                        @csrf
+                        <div class="input-group input-group-flat">
+                            <input type="text" name="message" class="form-control bg-white text-dark border-secondary"
+                                autocomplete="off" placeholder="Type your message...">
+                            <button type="submit" class="btn btn-primary px-3">
+                                <i class="fa fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- this below is modal for editing and adding PO number -->
@@ -1639,7 +1873,7 @@
                                     class="form-control is-{{ is_numeric($record->po) ? '' : 'in' }}valid"
                                     id="validationServer01" value="{{ $record->po }}" required>
                                 <div class="{{ is_numeric($record->po) ? '' : 'in' }}valid-feedback">
-                                    {{ is_numeric($record->po) ? 'Correct Format' : 'Change PO' }}
+                                    {{ is_numeric($record->po) ? 'Accepted Format' : 'Change P.O' }}
                                 </div>
                             </div>
 

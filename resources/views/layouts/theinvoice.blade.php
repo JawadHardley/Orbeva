@@ -24,7 +24,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>
-        PRES-{{ date('Y') }}-P{{ $invoice->id }}
+        ORB-{{ date('Y') }}-P{{ $invoice->id }}
     </title>
     <meta name="author" content="Jordan Chaki" />
     <meta name="keywords" content="DAGlQ12i2k4,BAE3pwnYqAY,0" />
@@ -201,7 +201,7 @@
             <td>
                 <div class="lefthand" style="width: 450px;">
                     <p style="padding-left: 35pt; text-indent: 0pt; text-align: left">
-                        P.O BOX 75391
+                        P.O BOX xxxx
                     </p>
                     <p
                         style="
@@ -212,7 +212,7 @@
         text-align: left;
       ">
                         Dar es Salaam, Avocado Street, Kawe <br>
-                        <span class="h3">TIN: </span>141-853-023
+                        <span class="h3">TIN: </span>xxxxx
                     </p>
                     <h3
                         style="
@@ -221,7 +221,7 @@
         line-height: 12pt;
         text-align: left;
       ">
-                        CELL: <span class="p">+255 753 123 283</span>
+                        CELL: <span class="p">+2xxxxxxx</span>
                     </h3>
                     <p
                         style="
@@ -230,7 +230,7 @@
         text-indent: 0pt;
         text-align: left;
       ">
-                        <a href="mailto:giraldinen@presisfinace.co.tz">giraldinen@presisfinace.co.tz</a>
+                        <a href="mailto:XXXXX@XXXXX.co.tz">xxxxxxxxxxx</a>
                     </p>
                 </div>
             </td>
@@ -245,7 +245,7 @@
         line-height: 59pt;
         text-align: left;
       ">
-                        PRESIS
+                        COMPANY
                     </h1>
                     <p class="s2"
                         style="
@@ -254,7 +254,7 @@
         line-height: 19pt;
         text-align: left;
       ">
-                        CONSULTANCY LTD
+                        SOMETHING LTD
                     </p>
                 </div>
             </td>
@@ -270,7 +270,7 @@
     <p style="padding-top: 7pt; text-indent: 0pt; text-align: left"><br /></p>
     <table style="border-collapse: collapse" cellspacing="0">
         <tr style="height: 25pt">
-            <td style="width: 322pt" bgcolor="#3F4A7E">
+            <td style="width: 322pt" bgcolor="#9d0208">
                 <p class="s3"
                     style="
               padding-top: 9pt;
@@ -296,7 +296,7 @@
             </td>
         </tr>
         <tr style="height: 17pt">
-            <td style="width: 322pt" bgcolor="#3F4A7E">
+            <td style="width: 322pt" bgcolor="#9d0208">
                 <p class="s5"
                     style="
               padding-top: 3pt;
@@ -305,17 +305,17 @@
               line-height: 12pt;
               text-align: left;
             ">
-                    ALISTAIR JAMES COMPANY Ltd.
+                    TRANSPORTER COMPANY Ltd.
                 </p>
             </td>
             <td style="width: 274pt" bgcolor="#FFF">
                 <p class="s6" style="padding-left: 17pt; text-indent: 0pt; text-align: left">
-                    PRES-{{ date('Y') }}-P{{ $invoice->id }}
+                    ORB-{{ date('Y') }}-P{{ $invoice->id }}
                 </p>
             </td>
         </tr>
         <tr style="height: 41pt">
-            <td style="width: 322pt" bgcolor="#3F4A7E">
+            <td style="width: 322pt" bgcolor="#9d0208">
                 <p class="s5" style="padding-left: 62pt; text-indent: 0pt; text-align: left">
                     P.O. Box 4543
                 </p>
@@ -327,7 +327,7 @@
               line-height: 14pt;
               text-align: left;
             ">
-                    Kurasini Temeke Dar es salaam
+                    Somewhere, Country
                 </p>
             </td>
             <td style="width: 274pt" bgcolor="#FFF">
@@ -346,9 +346,9 @@
             </td>
         </tr>
         <tr style="height: 24pt">
-            <td style="width: 322pt" bgcolor="#3F4A7E">
+            <td style="width: 322pt" bgcolor="#9d0208">
                 <p style="padding-left: 62pt; text-indent: 0pt; text-align: left">
-                    <a href="mailto:payables@alistairgroup.com" class="s7">payables@alistairgroup.com</a>
+                    <a href="mailto:payables@alistairgroup.com" class="s7">payables@transporter.com</a>
                 </p>
             </td>
             <td style="
@@ -895,7 +895,7 @@
         text-indent: 0pt;
         text-align: left;
       ">
-                    Application Invoice No: <span class="p">PRES-{{ date('Y') }}-P{{ $invoice->id }}</span>
+                    Application Invoice No: <span class="p">ORB-{{ date('Y') }}-P{{ $invoice->id }}</span>
                 </h3>
                 <h3
                     style="
@@ -942,7 +942,7 @@
         text-indent: 0pt;
         text-align: left;
       ">
-        Account Name: <span class="p">PRESIS CONSULTANCY LIMITED</span>
+        Account Name: <span class="p">COMPANY SOMETHING LIMITED</span>
     </h3>
     <h3
         style="
@@ -951,7 +951,7 @@
         text-indent: 0pt;
         text-align: left;
       ">
-        Banker: <span class="p">CRDB BANK PLC</span>
+        Banker: <span class="p">SOME BANK PLC</span>
     </h3>
     <h3
         style="
@@ -960,7 +960,7 @@
         text-indent: 0pt;
         text-align: left;
       ">
-        Bank Branch: <span class="p">MIKOCHENI</span>
+        Bank Branch: <span class="p">SOMEWHERE</span>
     </h3>
     <h3
         style="
@@ -969,7 +969,7 @@
         text-indent: 0pt;
         text-align: left;
       ">
-        Account Number: <span class="p">0150828197600 - TZS</span> | <span class="p">0250828197600 -
+        Account Number: <span class="p">XXXXXXXX -
             USD</span>
     </h3>
     <h3
@@ -979,7 +979,7 @@
         text-indent: 0pt;
         text-align: left;
       ">
-        Branch Code: <span class="p">003074 - TZS</span> | <span class="p">003374 - USD</span>
+        Branch Code: <span class="p">XXXXX - USD</span>
     </h3>
     <h3
         style="
@@ -988,11 +988,11 @@
         text-indent: 0pt;
         text-align: left;
       ">
-        Swift Code: <span class="p">CORUTZTZ</span>
+        Swift Code: <span class="p">XXXXX</span>
     </h3>
     <!-- <p style="text-indent: 0pt; text-align: left" /> -->
     <br><br><br><br><br>
-    <div style="background-color: #3F4A7E; height: 55px; color: #3F4A7E;">s</div>
+    <div style="background-color: #9d0208; height: 55px; color: #9d0208;">s</div>
 </body>
 
 </html>

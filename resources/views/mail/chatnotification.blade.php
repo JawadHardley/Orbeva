@@ -121,7 +121,7 @@
     <!-- Progressive Enhancements : BEGIN -->
     <style>
         .primary {
-            background: rgb(25, 0, 215);
+            background: rgba(215, 0, 0, 1);
         }
 
         .bg_white {
@@ -152,7 +152,7 @@
 
         .btn.btn-primary {
             border-radius: 5px;
-            background: rgb(4, 0, 255);
+            background: rgba(255, 0, 0, 1);
             color: #ffffff;
         }
 
@@ -198,7 +198,7 @@
         }
 
         a {
-            color: rgb(25, 0, 215);
+            color: rgba(215, 0, 0, 1);
         }
 
         table {}
@@ -210,7 +210,7 @@
         }
 
         .logo h1 a {
-            color: rgb(4, 0, 255);
+            color: rgba(255, 0, 0, 1);
             font-size: 24px;
             font-weight: 700;
             font-family: 'Lato', sans-serif;
@@ -241,7 +241,7 @@
 
         .hero .text h2 span {
             font-weight: 600;
-            color: rgb(0, 22, 87);
+            color: rgba(87, 0, 0, 1);
         }
 
 
@@ -353,7 +353,7 @@
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                             <tr>
                                 <td class="logo" style="text-align: left; background-color: #f1f1f1;">
-                                    <h1><a href="#">Ferix io</a></h1>
+                                    <h1><a href="#">Orbeva</a></h1>
                                 </td>
                             </tr>
                         </table>
@@ -399,7 +399,7 @@
                 style="margin: auto;">
                 <tr>
                     <td class="bg_light" style="text-align: center; background-color: #f1f1f1; padding: 2em;">
-                        <p>© All rights reserved. 2025 ferix io</p>
+                        <p>© All rights reserved. 2025 Orbeva</p>
                     </td>
                 </tr>
             </table>
