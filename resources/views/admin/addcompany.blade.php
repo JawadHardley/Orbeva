@@ -13,12 +13,12 @@
 
 
                         <!-- <div class="row">
-                            <div class="col-4 mb-3">
-                                <label class="form-label">Invoice Number</label>
-                                <input type="text" class="form-control" name="invoice_number"
-                                    placeholder="e.g. INV-2025-001" required />
-                            </div>
-                        </div> -->
+                                <div class="col-4 mb-3">
+                                    <label class="form-label">Invoice Number</label>
+                                    <input type="text" class="form-control" name="invoice_number"
+                                        placeholder="e.g. INV-2025-001" required />
+                                </div>
+                            </div> -->
 
                         <div class="row">
 
