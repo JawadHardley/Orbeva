@@ -34,7 +34,7 @@ class ChatNotificationMail extends Mailable implements ShouldQueue
      */
     public function envelope(): Envelope
     {
-        return new Envelope(subject: 'New Query Received');
+        return new Envelope(subject: 'New Query Alert');
     }
 
     /**

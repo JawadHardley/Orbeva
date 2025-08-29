@@ -39,7 +39,7 @@ class DraftInvoiceMail extends Mailable implements ShouldQueue
      */
     public function envelope(): Envelope
     {
-        return new Envelope(subject: 'Draft Certificate + Invoice for Approval');
+        return new Envelope(subject: 'Pending Approval: Certificate & Invoice Draft');
     }
 
     /**

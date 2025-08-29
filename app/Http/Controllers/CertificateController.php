@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -137,12 +138,14 @@ class CertificateController extends Controller
 
         // Fetch the applicant's name
         $applicantName = User::find($feriApp->user_id)?->name ?? 'N/A';
+        $applicantEmail = User::find($feriApp->user_id)?->email ?? 'N/A';
 
         // Pass $invoice, $feriApp, and $applicantName to the view
         $pdf = Pdf::loadView('layouts.theinvoice', [
             'invoice' => $invoice,
             'feriapp' => $feriApp,
             'applicantName' => Str::title($applicantName),
+            'applicantEmail' => Str::title($applicantEmail),
         ]);
 
         return $pdf->download("{$invoice->customer_trip_no}.pdf");
@@ -165,12 +168,14 @@ class CertificateController extends Controller
         }
         // Fetch the applicant's name
         $applicantName = User::find($feriApp->user_id)?->name ?? 'N/A';
+        $applicantEmail = User::find($feriApp->user_id)?->email ?? 'N/A';
 
         // Pass $invoice, $feriApp, and $applicantName to the view
         $pdf = Pdf::loadView('layouts.theinvoice', [
             'invoice' => $invoice,
             'feriapp' => $feriApp,
             'applicantName' => Str::title($applicantName),
+            'applicantEmail' => Str::title($applicantEmail),
         ]);
 
         return $pdf->download("{$invoice->customer_trip_no}.pdf");

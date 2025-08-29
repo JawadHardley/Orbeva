@@ -1,6 +1,5 @@
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
 @php
     $feriQty = (float) ($invoice->feri_quantity ?? 0);
@@ -18,981 +17,261 @@
     $grandTotal = $transporterAmount + $upTotal * $euroRate - 5;
     $grandTotal_r = number_format($grandTotal, 2, '.', ',');
 
-    $formattedDate = \Carbon\Carbon::parse($invoice->invoice_date)->format('d - F - Y');
+    $formattedDate = \Carbon\Carbon::parse($invoice->invoice_date)->format('d.m.Y');
 @endphp
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>
-        ORB-{{ date('Y') }}-P{{ $invoice->id }}
-    </title>
-    <meta name="author" content="Jordan Chaki" />
-    <meta name="keywords" content="DAGlQ12i2k4,BAE3pwnYqAY,0" />
-    <style type="text/css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A4 Invoice</title>
+    <style>
         * {
             margin: 0;
             padding: 0;
             text-indent: 0;
         }
 
-        .p,
-        p {
-            color: black;
-            font-family: Tahoma, sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            text-decoration: none;
-            font-size: 10pt;
-            margin: 0pt;
+        @page {
+            size: A4 portrait;
+            /* A4, portrait mode */
+            margin: 15mm 15mm 15mm 15mm;
+            /* top, right, bottom, left */
         }
 
-        .h3,
-        h3 {
-            color: black;
-            font-family: "Century Gothic", sans-serif;
-            font-style: normal;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 10pt;
+        body {
+            margin: 0;
+            padding: 25px;
+            background: #eee;
+            font-family: serif;
+            /* just to show contrast */
         }
 
-        .a,
-        a {
-            color: black;
-            font-family: Tahoma, sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            text-decoration: none;
-            font-size: 10pt;
+        .a4-page {
+            width: 100%;
+            /* use full page width minus margins */
+            box-sizing: border-box;
+            /* includes padding/border inside width */
+            padding: 10px;
         }
 
-        .s1 {
-            color: black;
-            font-family: "Trebuchet MS", sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            text-decoration: none;
-            font-size: 18pt;
+        @media print {
+            body {
+                background: none;
+            }
+
+            .a4-page {
+                margin: 0;
+                box-shadow: none;
+                /* page-break-after: always;
+                width: 200px; */
+            }
         }
 
-        h1 {
-            color: black;
-            font-family: "Trebuchet MS", sans-serif;
-            font-style: normal;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 52.5pt;
+        .bol {
+            border: 1px solid black;
         }
 
-        .s2 {
-            color: #a5a5aa;
-            font-family: "Trebuchet MS", sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            text-decoration: none;
-            font-size: 18pt;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            /* force equal width columns */
         }
 
-        .s3 {
-            color: #fff;
-            font-family: "Century Gothic", sans-serif;
-            font-style: normal;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 12pt;
-        }
-
-        .s4 {
-            color: black;
-            font-family: "Century Gothic", sans-serif;
-            font-style: normal;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 12pt;
-        }
-
-        .s5 {
-            color: #fff;
-            font-family: Tahoma, sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            text-decoration: none;
-            font-size: 10pt;
-        }
-
-        .s6 {
-            color: black;
-            font-family: Tahoma, sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            text-decoration: none;
-            font-size: 12pt;
-        }
-
-        .s7 {
-            color: #fff;
-            font-family: Tahoma, sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            text-decoration: none;
-            font-size: 10pt;
-        }
-
-        .s8 {
-            color: black;
-            font-family: Tahoma, sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            text-decoration: none;
-            font-size: 10pt;
-        }
-
-        .s9 {
-            color: black;
-            font-family: "Century Gothic", sans-serif;
-            font-style: normal;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 10pt;
-        }
-
-        .s10 {
-            color: black;
-            font-family: Tahoma, sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            text-decoration: none;
-            font-size: 7pt;
-        }
-
-        .h2,
-        h2 {
-            color: black;
-            font-family: "Century Gothic", sans-serif;
-            font-style: normal;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 12pt;
-        }
-
-        .s11 {
-            color: black;
-            font-family: "Century Gothic", sans-serif;
-            font-style: normal;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 12pt;
-            vertical-align: 1pt;
-        }
-
-        table,
-        tbody {
-            vertical-align: top;
-            overflow: visible;
+        th,
+        td {
+            /* each cell gets its border */
+            padding: 8px;
+            text-align: left;
         }
     </style>
 </head>
 
 <body>
-    <p style="padding-top: 4pt; text-indent: 0pt; text-align: left"><br /></p>
-
-    <table>
-        <tr>
-            <td>
-                <div class="lefthand" style="width: 450px;">
-                    <p style="padding-left: 35pt; text-indent: 0pt; text-align: left">
-                        P.O BOX xxxx
-                    </p>
-                    <p
-                        style="
-        padding-top: 1pt;
-        padding-left: 35pt;
-        text-indent: 0pt;
-        line-height: 112%;
-        text-align: left;
-      ">
-                        Dar es Salaam, Avocado Street, Kawe <br>
-                        <span class="h3">TIN: </span>xxxxx
-                    </p>
-                    <h3
-                        style="
-        padding-left: 35pt;
-        text-indent: 0pt;
-        line-height: 12pt;
-        text-align: left;
-      ">
-                        CELL: <span class="p">+2xxxxxxx</span>
-                    </h3>
-                    <p
-                        style="
-        padding-top: 1pt;
-        padding-left: 35pt;
-        text-indent: 0pt;
-        text-align: left;
-      ">
-                        <a href="mailto:XXXXX@XXXXX.co.tz">xxxxxxxxxxx</a>
-                    </p>
-                </div>
-            </td>
-            <td>
-                <div class="righthand" style="float: right;">
-
-                    <h1
-                        style="
-        padding-top: 5pt;
-        padding-left: 21pt;
-        text-indent: 0pt;
-        line-height: 59pt;
-        text-align: left;
-      ">
-                        COMPANY
-                    </h1>
-                    <p class="s2"
-                        style="
-        padding-left: 24pt;
-        text-indent: 0pt;
-        line-height: 19pt;
-        text-align: left;
-      ">
-                        SOMETHING LTD
-                    </p>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <p style="text-indent: 0pt; text-align: left"><br /></p>
-
-    <p class="s1" style="margin-top: 40px; text-align: center;">
-        {{ $feriapp->status != 5 ? 'DRAFT' : '' }} FERI/AD INVOICE
-    </p>
-
-
-    <p style="padding-top: 7pt; text-indent: 0pt; text-align: left"><br /></p>
-    <table style="border-collapse: collapse" cellspacing="0">
-        <tr style="height: 25pt">
-            <td style="width: 322pt" bgcolor="#9d0208">
-                <p class="s3"
-                    style="
-              padding-top: 9pt;
-              padding-left: 62pt;
-              text-indent: 0pt;
-              line-height: 14pt;
-              text-align: left;
-            ">
-                    BILL TO:
-                </p>
-            </td>
-            <td style="width: 274pt; border-top-style: solid; border-top-width: 1pt" bgcolor="#FFF">
-                <p class="s4"
-                    style="
-              padding-top: 9pt;
-              padding-left: 17pt;
-              text-indent: 0pt;
-              line-height: 14pt;
-              text-align: left;
-            ">
-                    INVOICE NUMBER
-                </p>
-            </td>
-        </tr>
-        <tr style="height: 17pt">
-            <td style="width: 322pt" bgcolor="#9d0208">
-                <p class="s5"
-                    style="
-              padding-top: 3pt;
-              padding-left: 62pt;
-              text-indent: 0pt;
-              line-height: 12pt;
-              text-align: left;
-            ">
-                    TRANSPORTER COMPANY Ltd.
-                </p>
-            </td>
-            <td style="width: 274pt" bgcolor="#FFF">
-                <p class="s6" style="padding-left: 17pt; text-indent: 0pt; text-align: left">
-                    ORB-{{ date('Y') }}-P{{ $invoice->id }}
-                </p>
-            </td>
-        </tr>
-        <tr style="height: 41pt">
-            <td style="width: 322pt" bgcolor="#9d0208">
-                <p class="s5" style="padding-left: 62pt; text-indent: 0pt; text-align: left">
-                    P.O. Box 4543
-                </p>
-                <p class="s5"
-                    style="
-              padding-left: 62pt;
-              padding-right: 167pt;
-              text-indent: 0pt;
-              line-height: 14pt;
-              text-align: left;
-            ">
-                    Somewhere, Country
-                </p>
-            </td>
-            <td style="width: 274pt" bgcolor="#FFF">
-                <p class="s4"
-                    style="
-              padding-top: 8pt;
-              padding-left: 18pt;
-              text-indent: 0pt;
-              text-align: left;
-            ">
-                    DATE
-                </p>
-                <p class="s6" style="padding-left: 18pt; text-indent: 0pt; text-align: left">
-                    {{ $formattedDate }}
-                </p>
-            </td>
-        </tr>
-        <tr style="height: 24pt">
-            <td style="width: 322pt" bgcolor="#9d0208">
-                <p style="padding-left: 62pt; text-indent: 0pt; text-align: left">
-                    <a href="mailto:payables@alistairgroup.com" class="s7">payables@transporter.com</a>
-                </p>
-            </td>
-            <td style="
-            width: 274pt;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-          "
-                bgcolor="#FFF">
-                <p style="text-indent: 0pt; text-align: left"><br /></p>
-            </td>
-        </tr>
-    </table>
-    <p style="padding-top: 8pt; text-indent: 0pt; text-align: left"><br /></p>
-    <table style="border-collapse: collapse; margin-left: 58.7072pt" cellspacing="0">
-        <tr style="height: 28pt">
-            <td style="
-            width: 141pt;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-          "
-                bgcolor="#FFF">
-                <p class="s4" style="text-indent: 0pt; line-height: 15pt; text-align: left">
-                    ITEMS
-                </p>
-            </td>
-            <td style="
-            width: 99pt;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-          "
-                bgcolor="#FFF">
-                <p class="s4"
-                    style="
-              padding-left: 5pt;
-              text-indent: 0pt;
-              line-height: 15pt;
-              text-align: left;
-            ">
-                    CURRENCY
-                </p>
-            </td>
-            <td style="
-            width: 81pt;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-          "
-                bgcolor="#FFF">
-                <p class="s4"
-                    style="
-              padding-left: 31pt;
-              text-indent: 0pt;
-              line-height: 15pt;
-              text-align: left;
-            ">
-                    QTY
-                </p>
-            </td>
-            <td style="
-            width: 101pt;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-          "
-                bgcolor="#FFF">
-                <p class="s4"
-                    style="
-              padding-left: 25pt;
-              text-indent: 0pt;
-              line-height: 15pt;
-              text-align: left;
-            ">
-                    UNIT COST
-                </p>
-            </td>
-            <td style="
-            width: 71pt;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-          "
-                bgcolor="#FFF">
-                <p class="s4"
-                    style="
-              padding-left: 12pt;
-              text-indent: 0pt;
-              line-height: 15pt;
-              text-align: left;
-            ">
-                    AMOUNT
-                </p>
-            </td>
-        </tr>
-        <tr style="height: 25pt">
-            <td style="width: 141pt; border-top-style: solid; border-top-width: 1pt" bgcolor="#FFF">
-                <p class="s8" style="padding-top: 7pt; text-indent: 0pt; text-align: left">
-                    Feri Cost Per ton/cbm
-                </p>
-            </td>
-            <td style="width: 99pt; border-top-style: solid; border-top-width: 1pt" bgcolor="#FFF">
-                <p class="s8"
-                    style="
-              padding-top: 7pt;
-              padding-left: 5pt;
-              text-indent: 0pt;
-              text-align: left;
-            ">
-                    EUR - €
-                </p>
-            </td>
-            <td style="width: 81pt; border-top-style: solid; border-top-width: 1pt" bgcolor="#FFF">
-                <p class="s8"
-                    style="
-              padding-top: 7pt;
-              padding-left: 31pt;
-              text-indent: 0pt;
-              text-align: left;
-            ">
-                    {{ $feriQty }}
-                </p>
-            </td>
-            <td style="width: 101pt; border-top-style: solid; border-top-width: 1pt" bgcolor="#FFF">
-                <p class="s8"
-                    style="
-              padding-top: 7pt;
-              padding-left: 25pt;
-              text-indent: 0pt;
-              text-align: left;
-            ">
-                    {{ $feriUnits }}
-                </p>
-            </td>
-            <td style="width: 71pt; border-top-style: solid; border-top-width: 1pt" bgcolor="#FFF">
-                <p class="s8"
-                    style="
-              padding-top: 7pt;
-              padding-left: 12pt;
-              text-indent: 0pt;
-              text-align: left;
-            ">
-                    € {{ $feriAmount }}
-                </p>
-            </td>
-        </tr>
-        <tr style="height: 31pt">
-            <td style="
-            width: 141pt;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-            border-bottom-color: #a6a6a6;
-          "
-                bgcolor="#FFF">
-                <p class="s8" style="padding-top: 4pt; text-indent: 0pt; text-align: left">
-                    Feri/COD Certificate Admin
-                </p>
-            </td>
-            <td style="
-            width: 99pt;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-            border-bottom-color: #a6a6a6;
-          "
-                bgcolor="#FFF">
-                <p class="s8"
-                    style="
-              padding-top: 4pt;
-              padding-left: 5pt;
-              text-indent: 0pt;
-              text-align: left;
-            ">
-                    EUR - €
-                </p>
-            </td>
-            <td style="
-            width: 81pt;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-            border-bottom-color: #a6a6a6;
-          "
-                bgcolor="#FFF">
-                <p class="s8"
-                    style="
-              padding-top: 4pt;
-              padding-left: 31pt;
-              text-indent: 0pt;
-              text-align: left;
-            ">
-                    {{ $codQty }}
-                </p>
-            </td>
-            <td style="
-            width: 101pt;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-            border-bottom-color: #a6a6a6;
-          "
-                bgcolor="#FFF">
-                <p class="s8"
-                    style="
-              padding-top: 4pt;
-              padding-left: 25pt;
-              text-indent: 0pt;
-              text-align: left;
-            ">
-                    {{ $codUnits }}
-                </p>
-            </td>
-            <td style="
-            width: 71pt;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-            border-bottom-color: #a6a6a6;
-          "
-                bgcolor="#FFF">
-                <p class="s8"
-                    style="
-              padding-top: 4pt;
-              padding-left: 12pt;
-              text-indent: 0pt;
-              text-align: left;
-            ">
-                    € {{ $codAmount }}
-                </p>
-            </td>
-        </tr>
-        <tr style="height: 31pt">
-            <td style="
-            width: 141pt;
-            border-top-style: solid;
-            border-top-width: 1pt;
-            border-top-color: #a6a6a6;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-            border-bottom-color: #a6a6a6;
-          "
-                bgcolor="#FFF">
-                <p style="text-indent: 0pt; text-align: left"><br /></p>
-            </td>
-            <td style="
-            width: 99pt;
-            border-top-style: solid;
-            border-top-width: 1pt;
-            border-top-color: #a6a6a6;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-            border-bottom-color: #a6a6a6;
-          "
-                bgcolor="#FFF">
-                <p style="text-indent: 0pt; text-align: left"><br /></p>
-            </td>
-            <td style="
-            width: 81pt;
-            border-top-style: solid;
-            border-top-width: 1pt;
-            border-top-color: #a6a6a6;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-            border-bottom-color: #a6a6a6;
-          "
-                bgcolor="#FFF">
-                <p style="text-indent: 0pt; text-align: left"><br /></p>
-            </td>
-            <td style="
-            width: 101pt;
-            border-top-style: solid;
-            border-top-width: 1pt;
-            border-top-color: #a6a6a6;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-            border-bottom-color: #a6a6a6;
-          "
-                bgcolor="#FFF">
-                <p class="s9"
-                    style="
-              padding-top: 8pt;
-              padding-left: 25pt;
-              text-indent: 0pt;
-              text-align: left;
-            ">
-                    Total
-                </p>
-            </td>
-            <td style="
-            width: 71pt;
-            border-top-style: solid;
-            border-top-width: 1pt;
-            border-top-color: #a6a6a6;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-            border-bottom-color: #a6a6a6;
-          "
-                bgcolor="#FFF">
-                <p class="s8"
-                    style="
-              padding-top: 8pt;
-              padding-left: 12pt;
-              text-indent: 0pt;
-              text-align: left;
-            ">
-                    € {{ $upTotal }}
-                </p>
-            </td>
-        </tr>
-        <tr style="height: 54pt">
-            <td style="
-            width: 141pt;
-            border-top-style: solid;
-            border-top-width: 1pt;
-            border-top-color: #a6a6a6;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-            border-bottom-color: #a6a6a6;
-          "
-                bgcolor="#FFF">
-                <p style="padding-top: 8pt; text-indent: 0pt; text-align: left">
-                    <br />
-                </p>
-                <p class="s8" style="text-indent: 0pt; text-align: left">
-                    Transporter DRC Freight TAX
-                </p>
-                <p class="s10" style="padding-top: 2pt; text-indent: 0pt; text-align: left">
-                    1.80% of Freight cost
-                </p>
-            </td>
-            <td style="
-            width: 99pt;
-            border-top-style: solid;
-            border-top-width: 1pt;
-            border-top-color: #a6a6a6;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-            border-bottom-color: #a6a6a6;
-          "
-                bgcolor="#FFF">
-                <p style="padding-top: 8pt; text-indent: 0pt; text-align: left">
-                    <br />
-                </p>
-                <p class="s8" style="padding-left: 6pt; text-indent: 0pt; text-align: left">
-                    USD - $
-                </p>
-            </td>
-            <td style="
-            width: 81pt;
-            border-top-style: solid;
-            border-top-width: 1pt;
-            border-top-color: #a6a6a6;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-            border-bottom-color: #a6a6a6;
-          "
-                bgcolor="#FFF">
-                <p style="padding-top: 8pt; text-indent: 0pt; text-align: left">
-                    <br />
-                </p>
-                <p class="s8" style="padding-left: 32pt; text-indent: 0pt; text-align: left">
-                    {{ $transporterQty }}
-                </p>
-            </td>
-            <td style="
-            width: 101pt;
-            border-top-style: solid;
-            border-top-width: 1pt;
-            border-top-color: #a6a6a6;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-            border-bottom-color: #a6a6a6;
-          "
-                bgcolor="#FFF">
-                <p style="padding-top: 8pt; text-indent: 0pt; text-align: left">
-                    <br />
-                </p>
-                <p class="s8" style="padding-left: 26pt; text-indent: 0pt; text-align: left">
-                    1.80%
-                </p>
-            </td>
-            <td style="
-            width: 71pt;
-            border-top-style: solid;
-            border-top-width: 1pt;
-            border-top-color: #a6a6a6;
-            border-bottom-style: solid;
-            border-bottom-width: 1pt;
-            border-bottom-color: #a6a6a6;
-          "
-                bgcolor="#FFF">
-                <p style="padding-top: 8pt; text-indent: 0pt; text-align: left">
-                    <br />
-                </p>
-                <p class="s8" style="padding-left: 13pt; text-indent: 0pt; text-align: left">
-                    ${{ number_format($transporterAmount, 2, '.', ',') }}
-                </p>
-            </td>
-        </tr>
-        <tr style="height: 21pt">
-            <td style="
-            width: 141pt;
-            border-top-style: solid;
-            border-top-width: 1pt;
-            border-top-color: #a6a6a6;
-          "
-                bgcolor="#FFF">
-                <p style="text-indent: 0pt; text-align: left"><br /></p>
-            </td>
-            <td style="
-            width: 99pt;
-            border-top-style: solid;
-            border-top-width: 1pt;
-            border-top-color: #a6a6a6;
-          "
-                bgcolor="#FFF">
-                <p style="text-indent: 0pt; text-align: left"><br /></p>
-            </td>
-            <td style="
-            width: 81pt;
-            border-top-style: solid;
-            border-top-width: 1pt;
-            border-top-color: #a6a6a6;
-          "
-                bgcolor="#FFF">
-                <p style="text-indent: 0pt; text-align: left"><br /></p>
-            </td>
-            <td style="
-            width: 101pt;
-            border-top-style: solid;
-            border-top-width: 1pt;
-            border-top-color: #a6a6a6;
-          "
-                bgcolor="#FFF">
-                <p class="s9"
-                    style="
-              padding-top: 8pt;
-              padding-left: 24pt;
-              text-indent: 0pt;
-              line-height: 12pt;
-              text-align: left;
-            ">
-                    Total
-                </p>
-            </td>
-            <td style="
-            width: 71pt;
-            border-top-style: solid;
-            border-top-width: 1pt;
-            border-top-color: #a6a6a6;
-          "
-                bgcolor="#FFF">
-                <p class="s8"
-                    style="
-              padding-top: 8pt;
-              padding-left: 12pt;
-              text-indent: 0pt;
-              line-height: 12pt;
-              text-align: left;
-            ">
-                    ${{ number_format($transporterAmount, 2, '.', ',') }}
-                </p>
-            </td>
-        </tr>
-    </table>
-    <p style="padding-top: 7pt; text-indent: 0pt; text-align: left"><br /></p>
-    <!-- <p style="text-indent: 0pt; text-align: left"><br /></p> -->
-
-
-    <div class="total" style="padding-right: 120px">
-
-        <p class="s"
-            style="
-        padding-top: 2pt;
-        text-indent: 0pt;
-        text-align: right;
-      ">
-            DISCOUNT APPLIED <span class="">: $5</span>
-        </p>
-        <p class="s"
-            style="
-        padding-top: 2pt;
-        text-indent: 0pt;
-        text-align: right;
-      ">
-            GRAND TOTAL (USD) <span class="">: ${{ number_format($grandTotal, 2, '.', ',') }}</span>
-        </p>
-        <p class="s9"
-            style="
-        padding-top: 1pt;
-        text-indent: 0pt;
-        text-align: right;
-      ">
-            GRAND TOTAL (TZ) <span class="h2">:
-                {{ number_format($grandTotal_r * $invoice->tz_rate, 2, '.', ',') }}</span>
-        </p>
-        <p class="s11"
-            style="
-        padding-top: 2pt;
-        padding-left: 16pt;
-        text-indent: 0pt;
-        text-align: left;
-      ">
-
-        </p>
+    <div class="a4-page">
+        <table class="table" style="width: 100%; border:1px solid black; margin: 0;">
+            <thead>
+                <tr>
+                    <td style="vertical-align: top; font-size: 30px;">
+                        {{-- <img src="{{ asset('images/inv-logo.png') }}" style="width: 300px; height: auto;"> --}}
+                        <h1 style="color: #14213d; font-family: elephant;">MIKHANYI</h1>
+                        <h5 style="color: #ae2012; text-align: left;">LOGISTICS</h5>
+                    </td>
+                    <td style="text-align: right; font-size: 13px;">
+                        <div>
+                            MIKHANYI PTY LTD
+                        </div>
+                        <div>
+                            Prism Business Park
+                        </div>
+                        <div>
+                            1 Ruby Cl, Witkoppen
+                        </div>
+                        <div>
+                            Fourways, Johannesburg
+                        </div>
+                        <div>
+                            Cell: +27 83 639 3338
+                        </div>
+                        <div>
+                            Tel: +27 10 220 5828
+                        </div>
+                        <div>
+                            ilungam@mikhanyi.co.za
+                        </div>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="font-size: 13px;">
+                    <td>
+                        <div>
+                            INV NO: MKH-M-{{ $invoice->id }}
+                        </div>
+                        <div>
+                            CERTIFICATE NUMBER: {{ $invoice->certificate_no }}
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            VAT: 4750279434
+                        </div>
+                    </td>
+                </tr>
+                <tr style="font-size: 13px;">
+                    <td>
+                        <div>
+                            ALISTAIR GROUP
+                        </div>
+                        <div>
+                            ALM TRANSPORT (MAURITIUS) LTD
+                        </div>
+                        <div>
+                            Sovereign Trust (Mauritius) Limited
+                        </div>
+                        <div>
+                            Unit 21, Circle Square Business Park, Forbach, Mauritius.
+                        </div>
+                        <div style="font-weight: bold; font-size: 16px; margin-top: 8px;">
+                            {{ $applicantName }}
+                        </div>
+                        <div>
+                            {{ $applicantEmail }}
+                        </div>
+                        <div>
+                            {{-- nothing --}}
+                        </div>
+                    </td>
+                    <td style="padding: 0;">
+                        <table>
+                            <tr class="bol" style="font-size: 13px;">
+                                <td style="background-color: #5c5c5cff; padding: 2px;">INVOICE DATE</td>
+                                <td style="text-align: right; padding: 0;">{{ $formattedDate }}</td>
+                            </tr>
+                            <tr class="bol">
+                                <td style="background-color: #5c5c5cff; padding: 2px;">FILE REF NO</td>
+                                <td style="text-align: right; padding: 0;">{{ $invoice->customer_trip_no }}</td>
+                            </tr>
+                            <tr class="bol">
+                                <td style="background-color: #5c5c5cff; padding: 2px;">PO</td>
+                                <td style="text-align: right; padding: 0;">{{ $feriapp->po }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td class="bol" style="padding: 2px; font-weight: bold;">Banking details</td>
+                                <td class="bol" style="padding: 0;"></td>
+                            </tr>
+                            <tr>
+                                <td class="bol" style="padding: 2px;">Name:</td>
+                                <td class="bol" style="padding: 0;">Mikhanyi Pty Ltd</td>
+                            </tr>
+                            <tr>
+                                <td class="bol" style="padding: 2px;">Acc No:</td>
+                                <td class="bol" style="padding: 0;">63138197371</td>
+                            </tr>
+                            <tr>
+                                <td class="bol" style="padding: 2px;">Acc type:</td>
+                                <td class="bol" style="padding: 0;">CFC Business Account</td>
+                            </tr>
+                            <tr>
+                                <td class="bol" style="padding: 2px;">Bank:</td>
+                                <td class="bol" style="padding: 0;">First National Bank</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center; padding: 0;">
+                        <h3 style="margin: 50px;">FERI/ AD INVOICE</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding: 0;">
+                        <table>
+                            <tr style="text-align: center; background-color: #9f9f9fff; font-size: 13px;">
+                                <td colspan="2">Description</td>
+                                <td>Quantity</td>
+                                <td>Amount (EUR)</td>
+                                <td>Amount (USD)</td>
+                                <td> Balance</td>
+                            </tr>
+                            <tr style="text-align: center; font-size: 10px;">
+                                <td colspan="2">Application fee COD/FERI</td>
+                                <td>{{ $codQty }}</td>
+                                <td>{{ $codAmount }} €</td>
+                                <td>${{ $euroRate * $codAmount }}</td>
+                                <td></td>
+                            </tr>
+                            <tr style="text-align: center; font-size: 10px;">
+                                <td colspan="2">Feri Cost Per ton/cbm</td>
+                                <td>{{ $feriQty }}</td>
+                                <td>{{ $feriAmount }} €</td>
+                                <td>${{ $euroRate * $feriAmount }}</td>
+                                <td></td>
+                            </tr>
+                            <tr style="text-align: center; font-size: 10px;">
+                                <td colspan="2"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr style="text-align: center; font-size: 10px;">
+                                <td colspan="2">Intervention Commission</td>
+                                <td>{{ $transporterQty }}</td>
+                                <td>1.80%</td>
+                                <td>${{ number_format($transporterAmount, 2, '.', ',') }}</td>
+                                <td></td>
+                            </tr>
+                            <tr style="text-align: center; background-color: #9f9f9fff; font-size: 13px;">
+                                <td colspan="2">120+ Days</td>
+                                <td>90 Days</td>
+                                <td>60 Days</td>
+                                <td>30 Days</td>
+                                <td>${{ number_format($grandTotal, 2, '.', ',') }}</td>
+                            </tr>
+                            <tr class="bol" style="font-size: 13px; text-align: right; color: green;">
+                                <td colspan="5" style="text-align: right;">Discount Applied:</td>
+                                <td class="bol" style="text-align: right;">
+                                    $5</td>
+                            </tr>
+                            <tr class="bol" style="font-size: 13px; text-align: right;">
+                                <td colspan="5" style="text-align: right;">Total amount Due:</td>
+                                <td class="bol" style="text-align: right;">
+                                    ${{ number_format($grandTotal, 2, '.', ',') }}</td>
+                            </tr>
+                            <tr class="bol" style="font-size: 13px;">
+                                <td class="bol" colspan="5" style="text-align: right;">Amount Overdue:</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <table>
-        <tr>
-            <td>
-                <h2 style="padding-left: 60pt; text-indent: 0pt; text-align: left">
-                    APPLICATION REF
-                </h2>
-                <h3
-                    style="
-        padding-top: 4pt;
-        padding-left: 60pt;
-        text-indent: 0pt;
-        text-align: left;
-      ">
-                    Applicant: <span class="p">{{ $applicantName }}</span>
-                </h3>
-                <h3
-                    style="
-        padding-top: 1pt;
-        padding-left: 60pt;
-        text-indent: 0pt;
-        text-align: left;
-      ">
-                    Customer Ref No: <span class="p">{{ $invoice->customer_trip_no }}</span>
-                </h3>
-                <h3
-                    style="
-        padding-top: 1pt;
-        padding-left: 60pt;
-        text-indent: 0pt;
-        text-align: left;
-      ">
-                    Customer PO: <span class="p">{{ $feriapp->po }}</span>
-                </h3>
-                <h3
-                    style="
-        padding-top: 1pt;
-        padding-left: 60pt;
-        text-indent: 0pt;
-        text-align: left;
-      ">
-                    Customer Trip No: <span class="p">{{ $invoice->customer_ref }}</span>
-                </h3>
-                <h3
-                    style="
-        padding-top: 1pt;
-        padding-left: 60pt;
-        text-indent: 0pt;
-        text-align: left;
-      ">
-                    Application Invoice No: <span class="p">ORB-{{ date('Y') }}-P{{ $invoice->id }}</span>
-                </h3>
-                <h3
-                    style="
-        padding-top: 1pt;
-        padding-left: 60pt;
-        text-indent: 0pt;
-        text-align: left;
-      ">
-                    Feri/COD Certificate NO: <span class="p">{{ $invoice->certificate_no }}</span>
-                </h3>
-            </td>
-            <td>
-            </td>
-        </tr>
-    </table>
-
-
-    <p style="padding-top: 3pt; text-indent: 0pt; text-align: left"><br /></p>
-    <h3 style="text-indent: 0pt; text-align: right; padding-right: 80px;">NOTE</h3>
-    <p
-        style="
-        padding-top: 4pt;
-        padding-left: 184pt;
-        text-indent: 0pt;
-        text-align: left;
-      ">
-        <a href="http://www.ex.com/" class="a" target="_blank">Exchange rates are based on the daily ex rates.
-            For
-            reference visit </a><a href="http://www.ex.com/" target="_blank">www.ex.com</a>
-    </p>
-    <h2
-        style="
-        padding-top: 8pt;
-        padding-left: 60pt;
-        text-indent: 0pt;
-        text-align: left;
-      ">
-        BANKING DETAILS
-    </h2>
-    <h3
-        style="
-        padding-top: 3pt;
-        padding-left: 59pt;
-        text-indent: 0pt;
-        text-align: left;
-      ">
-        Account Name: <span class="p">COMPANY SOMETHING LIMITED</span>
-    </h3>
-    <h3
-        style="
-        padding-top: 1pt;
-        padding-left: 59pt;
-        text-indent: 0pt;
-        text-align: left;
-      ">
-        Banker: <span class="p">SOME BANK PLC</span>
-    </h3>
-    <h3
-        style="
-        padding-top: 1pt;
-        padding-left: 59pt;
-        text-indent: 0pt;
-        text-align: left;
-      ">
-        Bank Branch: <span class="p">SOMEWHERE</span>
-    </h3>
-    <h3
-        style="
-        padding-top: 1pt;
-        padding-left: 59pt;
-        text-indent: 0pt;
-        text-align: left;
-      ">
-        Account Number: <span class="p">XXXXXXXX -
-            USD</span>
-    </h3>
-    <h3
-        style="
-        padding-top: 1pt;
-        padding-left: 59pt;
-        text-indent: 0pt;
-        text-align: left;
-      ">
-        Branch Code: <span class="p">XXXXX - USD</span>
-    </h3>
-    <h3
-        style="
-        padding-top: 1pt;
-        padding-left: 59pt;
-        text-indent: 0pt;
-        text-align: left;
-      ">
-        Swift Code: <span class="p">XXXXX</span>
-    </h3>
-    <!-- <p style="text-indent: 0pt; text-align: left" /> -->
-    <br><br><br><br><br>
-    <div style="background-color: #9d0208; height: 55px; color: #9d0208;">s</div>
 </body>
 
 </html>

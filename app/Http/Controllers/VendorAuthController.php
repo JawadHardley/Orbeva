@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -613,12 +614,14 @@ class VendorAuthController extends Controller
 
         // Fetch the applicant's name
         $applicantName = $recipient->name;
+        $applicantEmail = $recipient->email;
 
         // Pass $invoice, $feriApp, and $applicantName to the view
         $pdf = Pdf::loadView('layouts.theinvoice', [
             'invoice' => $invoice,
             'feriapp' => $feriApp,
             'applicantName' => Str::title($applicantName),
+            'applicantEmail' => Str::title($applicantEmail),
         ])->output();
 
         $pdf = base64_encode($pdf);
@@ -703,12 +706,14 @@ class VendorAuthController extends Controller
 
         // Fetch the applicant's name
         $applicantName = $recipient->name;
+        $applicantEmail = $recipient->email;
 
         // Pass $invoice, $feriApp, and $applicantName to the view
         $pdf = Pdf::loadView('layouts.theinvoice', [
             'invoice' => $invoice,
             'feriapp' => $feriApp,
             'applicantName' => Str::title($applicantName),
+            'applicantEmail' => Str::title($applicantEmail),
         ])->output();
 
         // dd($recipient, $recipient->email, $certificatePath);
@@ -820,12 +825,14 @@ class VendorAuthController extends Controller
             $recipient = User::find($feriApp->user_id);
             $sender = $user;
             $applicantName = $recipient ? $recipient->name : 'Applicant';
+            $applicantEmail = $recipient ? $recipient->email : 'applicant.mail.com';
 
             // Generate PDF for the invoice
             $pdf = Pdf::loadView('layouts.theinvoice', [
                 'invoice' => $invoice,
                 'feriapp' => $feriApp,
                 'applicantName' => Str::title($applicantName),
+                'applicantEmail' => Str::title($applicantEmail),
             ])->output();
 
             $pdf = base64_encode($pdf);

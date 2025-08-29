@@ -64,7 +64,7 @@
                                             {{ $record->customer_ref }}
                                         </a></td>
                                     <td>
-                                        PRES-{{ $record->created_at->format('Y') }}-P{{ $record->id }}
+                                        MKH-M-{{ $record->id }}
                                     </td>
                                     <td>
                                         {{ $record->customer_trip_no }}
@@ -86,7 +86,7 @@
                                     </td>
 
                                     <td>
-                                        {{ number_format($record->grandTotal * $record->tz_rate, 2, '.', ',') }}
+                                        ${{ number_format($record->grandTotal, 2, '.', ',') }}
                                         {{-- $ {{ number_format($record->grandTotal, 2) }} --}}
                                     </td>
 
@@ -103,19 +103,19 @@
                                             </div>
                                         </div>
                                         <!-- <div class="dropdown">
-                                                                <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport"
-                                                                    data-bs-toggle="dropdown">Actions</button>
-                                                                <div class="dropdown-menu dropdown-menu-start">
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#mXX">
-                                                                        <i class="fa fa-message pe-2"></i>Query
-                                                                    </a>
-                                                                    <a class="dropdown-item"
-                                                                        href="{{ route('vendor.showApp', ['id' => $record->id]) }}">
-                                                                        <i class="fa fa-eye pe-2"></i>View
-                                                                    </a>
+                                                                                <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport"
+                                                                                    data-bs-toggle="dropdown">Actions</button>
+                                                                                <div class="dropdown-menu dropdown-menu-start">
+                                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#mXX">
+                                                                                        <i class="fa fa-message pe-2"></i>Query
+                                                                                    </a>
+                                                                                    <a class="dropdown-item"
+                                                                                        href="{{ route('vendor.showApp', ['id' => $record->id]) }}">
+                                                                                        <i class="fa fa-eye pe-2"></i>View
+                                                                                    </a>
 
-                                                                </div>
-                                                            </div> -->
+                                                                                </div>
+                                                                            </div> -->
                                     </td>
                                 </tr>
                             @endforeach

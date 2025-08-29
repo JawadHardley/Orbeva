@@ -2,52 +2,45 @@
 <html lang="en">
 
 @php
-    $tatal = 0;
-    $firstId = null;
-    $lastId = null;
-@endphp
+    $feriQty = (float) ($invoice->feri_quantity ?? 0);
+    $feriUnits = (float) ($invoice->feri_units ?? 0);
+    $codQty = (float) ($invoice->cod_quantities ?? 0);
+    $codUnits = (float) ($invoice->cod_units ?? 0);
+    $euroRate = (float) ($invoice->euro_rate ?? 1);
+    $transporterQty = (float) ($invoice->transporter_quantity ?? 0);
 
-@foreach ($invoice as $key => $record)
-    @if ($loop->first)
-        @php $firstId = $record->id; @endphp
-    @endif
-    @if ($loop->last)
-        @php $lastId = $record->id; @endphp
-    @endif
-@endforeach
+    // Calculating the amounts
+    $feriAmount = $feriQty * $feriUnits;
+    $codAmount = $codQty * $codUnits;
+    $upTotal = $feriAmount + $codAmount;
+    $transporterAmount = $transporterQty * 0.018;
+    $grandTotal = $transporterAmount + $upTotal * $euroRate - 5;
+    $grandTotal_r = number_format($grandTotal, 2, '.', ',');
+
+    $formattedDate = \Carbon\Carbon::parse($invoice->invoice_date)->format('d.F.Y');
+@endphp
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A4 Invoice</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            text-indent: 0;
-        }
-
-        @page {
-            size: A4 portrait;
-            /* A4, portrait mode */
-            margin: 15mm 15mm 15mm 15mm;
-            /* top, right, bottom, left */
-        }
-
         body {
             margin: 0;
-            padding: 25px;
+            padding: 0;
             background: #eee;
             font-family: serif;
             /* just to show contrast */
         }
 
         .a4-page {
-            width: 100%;
-            /* use full page width minus margins */
+            width: 210mm;
+            height: 297mm;
+            margin: auto;
+            padding: 20mm;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             box-sizing: border-box;
-            /* includes padding/border inside width */
-            padding: 10px;
         }
 
         @media print {
@@ -58,8 +51,7 @@
             .a4-page {
                 margin: 0;
                 box-shadow: none;
-                /* page-break-after: always;
-                width: 200px; */
+                page-break-after: always;
             }
         }
 
@@ -89,9 +81,7 @@
             <thead>
                 <tr>
                     <td style="vertical-align: top;">
-                        {{-- <img src="{{ asset('images/inv-logo.png') }}" style="width: 300px; height: auto;"> --}}
-                        <h1 style="color: #14213d; font-family: elephant;">MIKHANYI</h1>
-                        <h5 style="color: #ae2012; text-align: left;">LOGISTICS</h5>
+                        <img src="{{ asset('images/inv-logo.png') }}" style="width: 300px; height: auto;">
                     </td>
                     <td style="text-align: right; font-size: 13px;">
                         <div>
@@ -121,7 +111,12 @@
             <tbody>
                 <tr style="font-size: 13px;">
                     <td>
-                        {{-- nothing --}}
+                        <div>
+                            INV NO: MKH251000107
+                        </div>
+                        <div>
+                            CERTIFICATE NUMBER:2025TSLZA1408756
+                        </div>
                     </td>
                     <td>
                         <div>
@@ -143,29 +138,29 @@
                         <div>
                             Unit 21, Circle Square Business Park, Forbach, Mauritius.
                         </div>
-                        {{-- <div style="font-weight: bold; font-size: 16px; margin-top: 8px;">
-                            Isaac Ibrahim
+                        <div style="font-weight: bold; font-size: 16px; margin-top: 8px;">
+                            {{ $applicantName }}
                         </div>
                         <div>
-                            isaac.brahim@alistairgroup.com
+                            {{ $applicantEmail }}
                         </div>
                         <div>
-                            +255 757 434 320
-                        </div> --}}
+                            {{-- nothing --}}
+                        </div>
                     </td>
                     <td style="padding: 0;">
                         <table>
                             <tr class="bol" style="font-size: 13px;">
                                 <td style="background-color: #5c5c5cff; padding: 2px;">INVOICE DATE</td>
-                                <td style="text-align: right; padding: 0;">{{ date('d.m.Y') }}</td>
+                                <td style="text-align: right; padding: 0;">{{ $formattedDate }}</td>
                             </tr>
-                            {{-- <tr class="bol">
-                                <td style="background-color: #5c5c5cff; padding: 2px;">AMOUNT DUE </td>
-                                <td style="text-align: right; padding: 0; color: #941f1fff;">$4 492,92</td>
-                            </tr> --}}
                             <tr class="bol">
-                                <td style="background-color: #5c5c5cff; padding: 2px;">CLIENT NAME </td>
-                                <td style="text-align: right; padding: 0;">ALM</td>
+                                <td style="background-color: #5c5c5cff; padding: 2px;">FILE REF NO</td>
+                                <td style="text-align: right; padding: 0;">{{ $invoice->customer_trip_no }}</td>
+                            </tr>
+                            <tr class="bol">
+                                <td style="background-color: #5c5c5cff; padding: 2px;">PO</td>
+                                <td style="text-align: right; padding: 0;">{{ $feriapp->po }}</td>
                             </tr>
                             <tr>
                                 <td colspan="2"></td>
@@ -195,65 +190,61 @@
                 </tr>
                 <tr>
                     <td colspan="2" style="text-align: center; padding: 0;">
-                        <h3 style="margin: 25px;">STATEMENT</h3>
+                        <h3 style="margin: 50px;">FERI/ AD INVOICE</h3>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2" style="padding: 0;">
                         <table>
-                            <tr style="text-align: center; background-color: #9f9f9fff; font-size: 10px;">
-                                <td>Date</td>
-                                <td>Invoice Number</td>
-                                <td>Certificate Number</td>
-                                <td>File Ref Number</td>
-                                <td>PO Number</td>
-                                <td>Amount(USD)</td>
-                                <td>Balance</td>
+                            <tr style="text-align: center; background-color: #9f9f9fff; font-size: 13px;">
+                                <td colspan="2">Description</td>
+                                <td>Quantity</td>
+                                <td>Amount (EUR)</td>
+                                <td>Amount (USD)</td>
+                                <td> Balance</td>
                             </tr>
-                            @foreach ($invoice as $record)
-                                <tr style="text-align: center; font-size: 8px;">
-                                    <td style="padding: 3px;">
-                                        {{ \Carbon\Carbon::parse($record->invoice_date)->format('j.n.Y') }}</td>
-                                    <td style="padding: 3px;">MKH-M-{{ $record->id }}</td>
-                                    <td style="padding: 3px;">{{ $record->certificate_no }}</td>
-                                    <td style="padding: 3px;">{{ $record->customer_ref }}</td>
-                                    <td style="padding: 3px;">{{ $record->po }}</td>
-                                    @php
-                                        $amount = (float) str_replace(',', '', $record->amount);
-                                        $rate = (float) str_replace(',', '', $record->tz_rate);
-                                        $tzamountRaw = $amount * $rate;
-                                        $tzamount = number_format($tzamountRaw, 2, '.', ',');
-                                    @endphp
-                                    <td class="hrr">${{ $amount }}</td>
-                                    @php
-                                        $tatal = ($tatal ?? 0) + $amount;
-                                    @endphp
-                                    <td style="padding: 3px;"></td>
-                                </tr>
-                            @endforeach
-                            <tr style="text-align: center; font-size: 8px;">
+                            <tr style="text-align: center; font-size: 10px;">
+                                <td colspan="2">Application fee COD/FERI</td>
+                                <td>{{ $codQty }}</td>
+                                <td>{{ $codAmount }} €</td>
+                                <td>${{ $invoice->tz_rate * $codAmount }}</td>
                                 <td></td>
+                            </tr>
+                            <tr style="text-align: center; font-size: 10px;">
+                                <td colspan="2">Feri Cost Per ton/cbm</td>
+                                <td>{{ $feriQty }}</td>
+                                <td>{{ $feriAmount }} €</td>
+                                <td>{{ $invoice->tz_rate * $feriAmount }}</td>
                                 <td></td>
-                                <td></td>
+                            </tr>
+                            <tr style="text-align: center; font-size: 10px;">
+                                <td colspan="2"></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
-
-                            <tr style="text-align: center; background-color: #9f9f9fff; font-size: 11px;">
-                                <td colspan="3">120+ Days</td>
+                            <tr style="text-align: center; font-size: 10px;">
+                                <td colspan="2">Intervention Commission</td>
+                                <td>{{ $transporterQty }}</td>
+                                <td>1.80%</td>
+                                <td>${{ number_format($transporterAmount, 2, '.', ',') }}</td>
+                                <td></td>
+                            </tr>
+                            <tr style="text-align: center; background-color: #9f9f9fff; font-size: 13px;">
+                                <td colspan="2">120+ Days</td>
                                 <td>90 Days</td>
                                 <td>60 Days</td>
                                 <td>30 Days</td>
-                                <td>${{ number_format($tatal, 2) }}</td>
+                                <td>${{ number_format($grandTotal, 2, '.', ',') }}</td>
                             </tr>
                             <tr class="bol" style="font-size: 13px; text-align: right;">
-                                <td colspan="6" style="text-align: right;">Total amount Due:</td>
-                                <td class="bol" style="text-align: left;">${{ number_format($tatal, 2) }}</td>
+                                <td colspan="5" style="text-align: right;">Total amount Due:</td>
+                                <td class="bol" style="text-align: right;">
+                                    ${{ number_format($grandTotal, 2, '.', ',') }}</td>
                             </tr>
                             <tr class="bol" style="font-size: 13px;">
-                                <td class="bol" colspan="6" style="text-align: right;">Amount Overdue:</td>
+                                <td class="bol" colspan="5" style="text-align: right;">Amount Overdue:</td>
                                 <td></td>
                             </tr>
                         </table>

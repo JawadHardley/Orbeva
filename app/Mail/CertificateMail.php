@@ -39,7 +39,7 @@ class CertificateMail extends Mailable implements ShouldQueue
      */
     public function envelope(): Envelope
     {
-        return new Envelope(subject: 'Final Feri Certificate & Invoice');
+        return new Envelope(subject: 'Completed FERI Certificate & Invoice');
     }
 
     /**

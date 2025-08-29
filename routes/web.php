@@ -17,6 +17,24 @@ Route::get('/', function () {
     return view('landingpage');
 })->name('homesweethome');
 
+// testing links below
+// testing links below
+// testing links below
+// testing links below
+
+Route::get('/tester', function () {
+    return view('layouts.hold');
+})->name('holder');
+
+Route::get('/tester2', function () {
+    return view('layouts.hold2');
+})->name('holder');
+
+// testing links above
+// testing links above
+// testing links above
+// testing links above
+
 Route::get('/email/verify/success', function () {
     return view('auth.verify-success');
 })->name('verification.success');
