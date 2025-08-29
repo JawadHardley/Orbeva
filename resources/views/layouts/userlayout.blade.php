@@ -320,7 +320,7 @@
                             <a class="nav-link" data-bs-toggle="collapse" href="#assets" role="button"
                                 aria-expanded="false" aria-controls="assets">
                                 <i class="fa fa-compass-drafting me-2 opacity-5"></i>
-                                <span class="nav-link-text ms-1">Assets</span>
+                                <span class="nav-link-text ms-1">Cost Calculator</span>
                             </a>
 
                             <div class="collapse mx-3" id="assets">
@@ -329,21 +329,21 @@
                                         href="{{ route('transporter.sampcalculator') }}">
                                         Orbeva Calculator
                                     </a>
-                                    <a class="dropdown-item small mb-2" href="#">
+                                    {{-- <a class="dropdown-item small mb-2" href="#">
                                         Coming soon
-                                    </a>
+                                    </a> --}}
                                 </div>
                             </div>
                         </li>
 
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <i class="fa fa-gears me-2 opacity-5"></i>
                                 <span class="nav-link-text ms-1 ">
                                     Automations <span class="small">(coming soon)</span>
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
 
                     </ul>
                 </ul>
