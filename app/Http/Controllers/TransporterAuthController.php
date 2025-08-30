@@ -372,6 +372,9 @@ class TransporterAuthController extends Controller
             $r = feriApp::create($validatedData);
             $transporter = Auth::user();
             $company = Company::where('type', 'vendor')->first();
+            $company2 = Company::where('type', 'transporter')
+                ->where('id', $transporter->company)
+                ->first();
             $vendors = User::where('company', $company->id)->where('role', 'vendor')->get();
 
             if ($vendors->count() > 0) {
@@ -380,7 +383,7 @@ class TransporterAuthController extends Controller
 
                 // Mail::to($mainVendor->email)->cc($ccEmails)->send(new NewAppMail($r, $mainVendor, $transporter));
                 // Mail::to($mainVendor->email)->cc($ccEmails)->queue(new NewAppMail($r, $mainVendor, $transporter));
-                Mail::to($mainVendor->email)->send(new NewEntry($r, $mainVendor, $transporter));
+                Mail::to($mainVendor->email)->cc($ccEmails)->send(new NewEntry($r, $mainVendor, $transporter, $company2));
             }
 
             return redirect()
@@ -1217,6 +1220,9 @@ class TransporterAuthController extends Controller
                 $imported++;
                 $transporter = Auth::user();
                 $company = Company::where('type', 'vendor')->first();
+                $company2 = Company::where('type', 'transporter')
+                    ->where('id', $transporter->company)
+                    ->first();
 
                 $vendors = User::where('company', $company->id)->where('role', 'vendor')->get();
 
@@ -1225,7 +1231,7 @@ class TransporterAuthController extends Controller
                     $ccEmails = $vendors->skip(1)->pluck('email')->filter()->all(); // Remove nulls
 
                     // Mail::to($mainVendor->email)->cc($ccEmails)->queue(new NewAppMail($r, $mainVendor, $transporter));
-                    Mail::to($mainVendor->email)->send(new NewEntry($r, $mainVendor, $transporter));
+                    Mail::to($mainVendor->email)->cc($ccEmails)->send(new NewEntry($r, $mainVendor, $transporter, $company2));
                 }
             } catch (\Exception $e) {
                 $errors[] = 'Row ' . ($rowIndex + 2) . ': Failed to insert. ' . $e->getMessage();

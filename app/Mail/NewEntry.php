@@ -8,6 +8,8 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Attachment;
+
 
 class NewEntry extends Mailable implements ShouldQueue
 {
@@ -15,15 +17,17 @@ class NewEntry extends Mailable implements ShouldQueue
     public $feriApp;
     public $vendor;
     public $transporter;
+    public $company2;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($feriApp, $vendor, $transporter)
+    public function __construct($feriApp, $vendor, $transporter, $company2)
     {
         $this->feriApp = $feriApp;
         $this->vendor = $vendor;
         $this->transporter = $transporter;
+        $this->company2 = $company2;
     }
 
     /**
@@ -32,7 +36,7 @@ class NewEntry extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'New Entry',
+            subject: 'New Feri Application Submitted',
         );
     }
 
@@ -47,6 +51,7 @@ class NewEntry extends Mailable implements ShouldQueue
                 'feriApp' => $this->feriApp,
                 'vendor' => $this->vendor,
                 'transporter' => $this->transporter,
+                'company2' => $this->company2,
             ],
         );
     }
@@ -58,6 +63,24 @@ class NewEntry extends Mailable implements ShouldQueue
      */
     public function attachments(): array
     {
-        return [];
+        // Attach documents uploaded via $feriapp->documents_upload
+        $fileFields = ['invoice', 'manifest', 'packing_list', 'customs']; // your predefined fields
+        $uploadedFiles = json_decode($this->feriApp->documents_upload, true);
+
+        if ($uploadedFiles && is_array($uploadedFiles)) {
+            foreach ($fileFields as $field) {
+                if (!empty($uploadedFiles[$field])) {
+                    $fullPath = storage_path('app/private/' . $uploadedFiles[$field]);
+
+                    if (file_exists($fullPath)) {
+                        $attachments[] = Attachment::fromPath($fullPath)
+                            ->as(ucfirst($field) . '.' . pathinfo($fullPath, PATHINFO_EXTENSION))
+                            ->withMime(mime_content_type($fullPath));
+                    }
+                }
+            }
+        }
+
+        return $attachments;
     }
 }
