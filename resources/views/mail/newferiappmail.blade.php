@@ -121,7 +121,7 @@
         <div class="content">
 
             <h4>
-                Dear Trial, <br><br>
+                Dear {{ $vendor->name }}, <br><br>
             </h4>
 
             A new application has been submitted in the system.
@@ -129,8 +129,8 @@
             <br><br>
             - Application Details<br>
             <p style="padding: 30px; color: #666666; background-color: #1064ff25;">
-                Entry Reference: Trial 1<br />
-                Feri Type: Trial 1
+                Entry Reference: {{ $feriApp->company_ref }} <br />
+                Feri Type: {{ $feriApp->feri_type }}
             </p>
 
 
@@ -139,7 +139,7 @@
 
             <br><br>
             Kind regards, <br />
-            Applicant: Trial 1 <br>
+            Applicant: {{ $transporter->name }} <br>
             <br />
             <br />
         </div>
@@ -147,7 +147,7 @@
         <!-- Footer -->
         <div class="footer">
             <br>
-            &copy; Trial Orbeva. All rights reserved.
+            &copy; {{ date('Y') }} Orbeva. All rights reserved.
         </div>
     </div>
 </body>

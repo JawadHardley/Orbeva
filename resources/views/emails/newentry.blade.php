@@ -1,12 +1,17 @@
 <x-mail::message>
-    # Hi
+    # Hi, {{ $vendor->name }}
 
-    New entry just arrived in our system
+    A new application has been submitted in the system.
+    Kindly log in to review the details and take the required action
 
-    <x-mail::button :url="''">
-        Button Text
-    </x-mail::button>
+    Entry Reference: {{ $feriApp->company_ref }}
+    Feri Type: {{ $feriApp->feri_type }}
 
-    Thanks,<br>
-    {{ config('app.name') }}
+    If you have any questions or encounter any issues accessing the system, please
+    our system admin team.
+
+
+    Kind regards,
+    Applicant: {{ $transporter->name }}
+
 </x-mail::message>
