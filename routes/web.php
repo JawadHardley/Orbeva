@@ -22,13 +22,6 @@ Route::get('/', function () {
 // testing links below
 // testing links below
 
-// Route::get('/tester', function () {
-//     return view('layouts.hold');
-// })->name('holder');
-
-// Route::get('/tester2', function () {
-//     return view('layouts.hold2');
-// })->name('holder2');
 
 // testing links above
 // testing links above
