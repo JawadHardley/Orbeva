@@ -28,7 +28,7 @@ Route::get('/tester', function () {
 
 Route::get('/tester2', function () {
     return view('layouts.hold2');
-})->name('holder');
+})->name('holder2');
 
 // testing links above
 // testing links above
