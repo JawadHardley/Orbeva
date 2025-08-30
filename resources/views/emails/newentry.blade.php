@@ -1,5 +1,5 @@
 <x-mail::message>
-    # Hi, {{ $vendor->name }}
+    # Hi, Mikhanyi
 
     A new application has been submitted in the system.
     Kindly log in to review the details and take the required action
