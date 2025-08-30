@@ -136,8 +136,7 @@
             To respond to this query and continue processing your application, please log in
             to the system <br><br>
 
-            If you have any questions or need assistance, feel free to contact our support
-            team.
+            If you have any questions or need assistance, feel free to contact our admin team
 
             <br><br>
             ~ {{ $sender->name }} <br>

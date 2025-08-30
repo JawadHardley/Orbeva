@@ -131,7 +131,7 @@
             Kindly log into the system to either approve or reject the documents at your
             earliest convenience.<br><br>
 
-            Let us know if you have any questions or require any adjustments.
+            Let us know if you have any questions or require any changes.
 
             <br><br>
             ~ {{ $sender->name }} <br>
