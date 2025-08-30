@@ -21,6 +21,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\mainmail;
 use App\Mail\NewAppMail;
+use App\Mail\NewEntry;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
@@ -379,7 +380,7 @@ class TransporterAuthController extends Controller
 
                 // Mail::to($mainVendor->email)->cc($ccEmails)->send(new NewAppMail($r, $mainVendor, $transporter));
                 // Mail::to($mainVendor->email)->cc($ccEmails)->queue(new NewAppMail($r, $mainVendor, $transporter));
-                Mail::to($mainVendor->email)->send(new NewAppMail($r, $mainVendor, $transporter));
+                Mail::to($mainVendor->email)->send(new NewEntry($r, $mainVendor, $transporter));
             }
 
             return redirect()
@@ -1224,7 +1225,7 @@ class TransporterAuthController extends Controller
                     $ccEmails = $vendors->skip(1)->pluck('email')->filter()->all(); // Remove nulls
 
                     // Mail::to($mainVendor->email)->cc($ccEmails)->queue(new NewAppMail($r, $mainVendor, $transporter));
-                    Mail::to($mainVendor->email)->send(new NewAppMail($r, $mainVendor, $transporter));
+                    Mail::to($mainVendor->email)->send(new NewEntry($r, $mainVendor, $transporter));
                 }
             } catch (\Exception $e) {
                 $errors[] = 'Row ' . ($rowIndex + 2) . ': Failed to insert. ' . $e->getMessage();
