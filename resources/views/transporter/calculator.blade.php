@@ -20,6 +20,12 @@
             } = window.jspdf;
             const captureElement = document.getElementById("captureMe");
 
+            // Remove fade class
+            captureElement.classList.remove("fade-section");
+
+            // Wait for reflow
+            await new Promise(r => setTimeout(r, 50));
+
             // Take screenshot
             const canvas = await html2canvas(captureElement);
             const imgData = canvas.toDataURL("image/png");
@@ -41,6 +47,9 @@
             // Add image centered
             pdf.addImage(imgData, "PNG", x, y, pdfWidth, pdfHeight);
             pdf.save("screenshot.pdf");
+
+            // Add fade class back
+            captureElement.classList.add("fade-section");
         });
     </script>
 @endsection
