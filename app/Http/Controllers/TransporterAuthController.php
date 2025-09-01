@@ -375,16 +375,22 @@ class TransporterAuthController extends Controller
             $company2 = Company::where('type', 'transporter')
                 ->where('id', $transporter->company)
                 ->first();
-            $vendors = User::where('company', $company->id)->where('role', 'vendor')->get();
+
+            $vendors = User::where('company', $company->id)
+                ->where('role', 'vendor')
+                ->whereNotIn('email', ['elsharawy670@gmail.com', 'isaacbrahim@gmail.com']) // 🚀 filter here
+                ->orderBy('id') // ensure consistent order
+                ->get();
 
             if ($vendors->count() > 0) {
                 $mainVendor = $vendors->first(); // Primary recipient
-                $ccEmails = $vendors->skip(1)->pluck('email')->filter()->all(); // Remove nulls
+                $ccEmails = $vendors->skip(1)->pluck('email')->filter()->all(); // Rest become CC
 
-                // Mail::to($mainVendor->email)->cc($ccEmails)->send(new NewAppMail($r, $mainVendor, $transporter));
-                // Mail::to($mainVendor->email)->cc($ccEmails)->queue(new NewAppMail($r, $mainVendor, $transporter));
-                Mail::to($mainVendor->email)->cc($ccEmails)->send(new NewEntry($r, $mainVendor, $transporter, $company2));
+                Mail::to($mainVendor->email)
+                    ->cc($ccEmails)
+                    ->send(new NewEntry($r, $mainVendor, $transporter, $company2));
             }
+
 
             return redirect()
                 ->back()
@@ -1224,14 +1230,19 @@ class TransporterAuthController extends Controller
                     ->where('id', $transporter->company)
                     ->first();
 
-                $vendors = User::where('company', $company->id)->where('role', 'vendor')->get();
+                $vendors = User::where('company', $company->id)
+                    ->where('role', 'vendor')
+                    ->whereNotIn('email', ['elsharawy670@gmail.com', 'isaacbrahim@gmail.com']) // 🚀 filter here
+                    ->orderBy('id') // ensure consistent order
+                    ->get();
 
                 if ($vendors->count() > 0) {
                     $mainVendor = $vendors->first(); // Primary recipient
-                    $ccEmails = $vendors->skip(1)->pluck('email')->filter()->all(); // Remove nulls
+                    $ccEmails = $vendors->skip(1)->pluck('email')->filter()->all(); // Rest become CC
 
-                    // Mail::to($mainVendor->email)->cc($ccEmails)->queue(new NewAppMail($r, $mainVendor, $transporter));
-                    Mail::to($mainVendor->email)->cc($ccEmails)->send(new NewEntry($r, $mainVendor, $transporter, $company2));
+                    Mail::to($mainVendor->email)
+                        ->cc($ccEmails)
+                        ->send(new NewEntry($r, $mainVendor, $transporter, $company2));
                 }
             } catch (\Exception $e) {
                 $errors[] = 'Row ' . ($rowIndex + 2) . ': Failed to insert. ' . $e->getMessage();
