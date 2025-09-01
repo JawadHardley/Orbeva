@@ -934,12 +934,13 @@ class TransporterAuthController extends Controller
     public function showdashboard()
     {
         $feris = feriApp::where('user_id', Auth::id())->get();
+        $rates = Rate::where('currency', 'EUR to USD')->first();
 
         // If no data found, set $feris to 0
         if ($feris->isEmpty()) {
             $feris = 0;
         }
-        return view('transporter.dashboard', compact('feris'));
+        return view('transporter.dashboard', compact('feris', 'rates'));
     }
 
     public function sampcalculator()

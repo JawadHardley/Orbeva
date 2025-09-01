@@ -301,6 +301,14 @@
                                                     {{ old('cf_agent') == 'Trade Service' ? 'selected' : '' }}>Trade
                                                     Service
                                                 </option>
+                                                <option value="Transflot Ltd"
+                                                    {{ old('cf_agent') == 'Transflot Ltd' ? 'selected' : '' }}>Transflot
+                                                    Ltd
+                                                </option>
+                                                <option value="TBA - Additional Comments"
+                                                    {{ old('cf_agent') == 'TBA - Additional Comments' ? 'selected' : '' }}>
+                                                    TBA - Additional Comments
+                                                </option>
                                             </select>
                                         </div>
                                     </div>

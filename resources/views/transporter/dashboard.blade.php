@@ -107,6 +107,26 @@
                 </div>
             </div>
         </div>
+        <div class="col-sm-6 mb-xl-0 mb-4 order-5">
+            <div class="card">
+                <div class="card-header p-2 ps-3">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p class="text-sm mb-0 text-capitalize">Today's System Rate</p>
+                            <h4 class="mb-0">{{ $rates->amount }}</h4>
+                        </div>
+                        <div
+                            class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+                            <i class="opacity-10 fa fa-cent-sign"></i>
+                        </div>
+                    </div>
+                </div>
+                <hr class="dark horizontal my-0">
+                <div class="card-footer p-2 ps-3">
+                    <p class="mb-0 text-sm"><span class="text-success font-weight-bolder">{{ $rates->currency }} </span></p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="row mt-5">

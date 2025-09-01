@@ -494,6 +494,15 @@
                                                     <option value="Trade Service"
                                                         {{ $record->cf_agent == 'Trade Service' ? 'selected' : '' }}>
                                                         Trade Service</option>
+                                                    <option value="Transflot Ltd"
+                                                        {{ $record->cf_agent == 'Transflot Ltd' ? 'selected' : '' }}>
+                                                        Transflot
+                                                        Ltd
+                                                    </option>
+                                                    <option value="TBA - Additional Comments"
+                                                        {{ $record->cf_agent == 'TBA - Additional Comments' ? 'selected' : '' }}>
+                                                        TBA - Additional Comments
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -1312,6 +1321,15 @@
                                                     <option value="Trade Service"
                                                         {{ $record->cf_agent == 'Trade Service' ? 'selected' : '' }}>
                                                         Trade Service</option>
+                                                    <option value="Transflot Ltd"
+                                                        {{ $record->cf_agent == 'Transflot Ltd' ? 'selected' : '' }}>
+                                                        Transflot
+                                                        Ltd
+                                                    </option>
+                                                    <option value="TBA - Additional Comments"
+                                                        {{ $record->cf_agent == 'TBA - Additional Comments' ? 'selected' : '' }}>
+                                                        TBA - Additional Comments
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
