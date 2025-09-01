@@ -204,7 +204,7 @@
                 </tr>
                 <tr>
                     <td colspan="2" style="text-align: center; padding: 0;">
-                        <h3 style="margin: 50px;">FERI/ AD INVOICE</h3>
+                        <h3 style="margin: 50px;">{{ $feriapp->status != 5 ? 'DRAFT' : '' }} FERI/ AD INVOICE</h3>
                     </td>
                 </tr>
                 <tr>
