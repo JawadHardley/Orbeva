@@ -22,6 +22,7 @@ Route::get('/', function () {
 // testing links below
 // testing links below
 
+Route::get('/download-pdf', [CertificateController::class, 'cal_download'])->name('pdf.download');
 
 // testing links above
 // testing links above

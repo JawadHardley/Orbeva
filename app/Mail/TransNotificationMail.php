@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ChatNotificationMail extends Mailable implements ShouldQueue
+class TransNotificationMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -17,16 +17,18 @@ class ChatNotificationMail extends Mailable implements ShouldQueue
     public $feriApp;
     public $sender;
     public $recipient;
+    public $company2;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($chat, $feriApp, $sender, $recipient)
+    public function __construct($chat, $feriApp, $sender, $recipient, $company2)
     {
         $this->chat = $chat;
         $this->feriApp = $feriApp;
         $this->sender = $sender;
         $this->recipient = $recipient;
+        $this->company2 = $company2;
     }
 
     /**
@@ -43,12 +45,13 @@ class ChatNotificationMail extends Mailable implements ShouldQueue
     public function content(): Content
     {
         return new Content(
-            markdown: 'mail.chatnotification',
+            markdown: 'mail.TransNotification',
             with: [
                 'chat' => $this->chat,
                 'feriApp' => $this->feriApp,
                 'sender' => $this->sender,
                 'recipient' => $this->recipient,
+                'company2' => $this->company2,
             ],
         );
     }

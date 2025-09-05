@@ -112,6 +112,9 @@
                                                 <option value="Pumpi DRC"
                                                     {{ old('final_destination') == 'Pumpi DRC' ? 'selected' : '' }}>
                                                     Pumpi DRC</option>
+                                                <option value="Kambove DRC"
+                                                    {{ old('final_destination') == 'Kambove DRC' ? 'selected' : '' }}>
+                                                    Kambove DRC</option>
                                             </select>
                                         </div>
                                     </div>

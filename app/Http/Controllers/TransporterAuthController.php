@@ -27,6 +27,7 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\CustomVerifyEmail;
+use App\Mail\TransNotificationMail;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -388,7 +389,7 @@ class TransporterAuthController extends Controller
 
                 Mail::to($mainVendor->email)
                     ->cc($ccEmails)
-                    ->send(new NewEntry($r, $mainVendor, $transporter, $company2));
+                    ->queue(new NewEntry($r, $mainVendor, $transporter, $company2));
             }
 
 
@@ -827,7 +828,7 @@ class TransporterAuthController extends Controller
             }
         }
 
-        chats::create([
+        $chat = chats::create([
             'user_id' => $user->id, // Current logged-in user ID
             'application_id' => $id, // Application ID from the route parameter
             'read' => 0, // Default to unread
@@ -835,12 +836,41 @@ class TransporterAuthController extends Controller
             'del' => 0, // Default to not deleted
         ]);
 
+        $feriApp = feriApp::findOrFail($id);
+        $transporter = Auth::user();
+        $company = Company::where('type', 'vendor')->first();
+        $company2 = Company::where('type', 'transporter')
+            ->where('id', $transporter->company)
+            ->first();
+
+        $vendors = User::where('company', $company->id)
+            ->where('role', 'vendor')
+            ->whereNotIn('email', ['elsharawy670@gmail.com', 'isaacbrahim@gmail.com']) // 🚀 filter here
+            ->orderBy('id') // ensure consistent order
+            ->get();
+
+        if ($vendors->count() > 0) {
+            $mainVendor = $vendors->first(); // Primary recipient
+            $ccEmails = $vendors->skip(1)->pluck('email')->filter()->all(); // Rest become CC
+
+            Mail::to($mainVendor->email)
+                ->cc($ccEmails)
+                ->queue(new TransNotificationMail($chat, $feriApp, $user, $company, $company2));
+        }
+
+        // Send the email if recipient exists and has an email
+        // if ($recipient && $recipient->email) {
+        //     Mail::to($recipient->email)->queue(new TransNotificationMail($chat, $feriApp, $user, $recipient));
+        // }
+
         $this->readchat($id);
 
-        return back()->with([
-            'status' => 'success',
-            'message' => 'Query sent successfully!.',
-        ]);
+        return redirect()
+            ->route('transporter.showApp', ['id' => $id]) // replace with your actual route name
+            ->with([
+                'status' => 'success',
+                'message' => 'Query sent successfully!.',
+            ]);
     }
 
     public function readchat($id)
@@ -1243,7 +1273,7 @@ class TransporterAuthController extends Controller
 
                     Mail::to($mainVendor->email)
                         ->cc($ccEmails)
-                        ->send(new NewEntry($r, $mainVendor, $transporter, $company2));
+                        ->queue(new NewEntry($r, $mainVendor, $transporter, $company2));
                 }
             } catch (\Exception $e) {
                 $errors[] = 'Row ' . ($rowIndex + 2) . ': Failed to insert. ' . $e->getMessage();

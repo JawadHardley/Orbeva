@@ -316,6 +316,11 @@
                                                         Pumpi
                                                         DRC
                                                     </option>
+                                                    <option value="Kambove DRC"
+                                                        {{ $record->final_destination == 'Kambove DRC' ? 'selected' : '' }}>
+                                                        Kambove
+                                                        DRC
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -1130,6 +1135,11 @@
                                                     <option value="Pumpi DRC"
                                                         {{ $record->final_destination == 'Pumpi DRC' ? 'selected' : '' }}>
                                                         Pumpi DRC
+                                                    </option>
+                                                    <option value="Kambove DRC"
+                                                        {{ $record->final_destination == 'Kambove DRC' ? 'selected' : '' }}>
+                                                        Kambove
+                                                        DRC
                                                     </option>
                                                 </select>
                                             </div>

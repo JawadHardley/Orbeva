@@ -56,7 +56,7 @@
 </div>
 
 <div class="col-12 col-lg-3">
-    <div class="container freight mb-3 card ">
+    <div class="container freight mb-3  card z">
         <div class="row">
 
             <h5 class="my-3 py-2 text-center border-bottom">Additional <br /> Freight Details</h5>
@@ -99,7 +99,7 @@
 </div>
 
 <div class="col-12 col-lg-6">
-    <div class="container answers mb-3 card">
+    <div class="container answers mb-3 fade-section card">
         <div class="row">
             <h5 class="my-3 py-2 text-center border-bottom">Cost Estimation <br /> ~ </h5>
 
@@ -139,7 +139,7 @@
                 <tfoot>
                     <tr>
                         <td colspan="4" class="text-end h5">Total Estimated Cost:</td>
-                        <td class="text-info ans2">00.00 USD</td>
+                        <td class="text-info ans2">24.00 USD</td>
                     </tr>
             </table>
 

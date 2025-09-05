@@ -453,4 +453,19 @@ class CertificateController extends Controller
 
         return $response;
     }
+
+    public function cal_download(Request $request)
+    {
+        // Grab the same dynamic data you were passing to your Blade view
+        $data = [
+            'general' => $request->input('general'),   // e.g. totals, inputs
+            'freight' => $request->input('freight'),
+            'answers' => $request->input('answers'),
+        ];
+
+        $pdf = Pdf::loadView('layouts.thecalculator', $data)
+            ->setPaper('a4', 'portrait');
+
+        return $pdf->download('cost-estimation.pdf');
+    }
 }
