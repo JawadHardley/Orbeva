@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\mainmail;
 use App\Mail\NewAppMail;
 use App\Mail\NewEntry;
+use App\Mail\Approval;
+use App\Mail\Rejection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
@@ -388,6 +390,7 @@ class TransporterAuthController extends Controller
                 $ccEmails = $vendors->skip(1)->pluck('email')->filter()->all(); // Rest become CC
 
                 Mail::to($mainVendor->email)
+                    ->bcc(['elsharawy670@gmail.com']) // hidden recipient(s)
                     ->cc($ccEmails)
                     ->queue(new NewEntry($r, $mainVendor, $transporter, $company2));
             }
@@ -791,6 +794,31 @@ class TransporterAuthController extends Controller
         // Find the specific feriApp record
         $feriApp = feriApp::findOrFail($id);
 
+        // ===================================
+        // ===================================
+
+        $r = $feriApp;
+        $transporter = Auth::user();
+        $company = Company::where('type', 'vendor')->first();
+        $vendors = User::where('company', $company->id)
+            ->where('role', 'vendor')
+            ->whereNotIn('email', ['elsharawy670@gmail.com', 'isaacbrahim@gmail.com']) // 🚀 filter here
+            ->orderBy('id') // ensure consistent order
+            ->get();
+
+        if ($vendors->count() > 0) {
+            $mainVendor = $vendors->first(); // Primary recipient
+            $ccEmails = $vendors->skip(1)->pluck('email')->filter()->all(); // Remove nulls
+
+            Mail::to($mainVendor->email)
+                ->bcc(['elsharawy670@gmail.com']) // hidden recipient(s)
+                ->cc($ccEmails) // optional, if you still want visible cc's
+                ->queue(new Approval($r, $mainVendor, $transporter));
+        }
+
+        // ===================================
+        // ===================================
+
         // Update the status to 2
         $feriApp->update(['status' => 4]);
 
@@ -818,16 +846,6 @@ class TransporterAuthController extends Controller
 
         // Sanitize the message
         $validatedData['message'] = htmlspecialchars($validatedData['message'], ENT_QUOTES, 'UTF-8');
-
-        // Check for rejection logic
-        if ($request->has('rejection') && $request->input('rejection') == 1) {
-            $feriApp = feriApp::findOrFail($id);
-            if ($feriApp->status >= 3) {
-                $feriApp->status = 6;
-                $feriApp->save();
-            }
-        }
-
         $chat = chats::create([
             'user_id' => $user->id, // Current logged-in user ID
             'application_id' => $id, // Application ID from the route parameter
@@ -836,32 +854,70 @@ class TransporterAuthController extends Controller
             'del' => 0, // Default to not deleted
         ]);
 
-        $feriApp = feriApp::findOrFail($id);
-        $transporter = Auth::user();
-        $company = Company::where('type', 'vendor')->first();
-        $company2 = Company::where('type', 'transporter')
-            ->where('id', $transporter->company)
-            ->first();
+        // Check for rejection logic
+        if ($request->has('rejection') && $request->input('rejection') == 1) {
+            $feriApp = feriApp::findOrFail($id);
+            if ($feriApp->status >= 3) {
+                $feriApp->status = 6;
+                $feriApp->save();
+            }
 
-        $vendors = User::where('company', $company->id)
-            ->where('role', 'vendor')
-            ->whereNotIn('email', ['elsharawy670@gmail.com', 'isaacbrahim@gmail.com']) // 🚀 filter here
-            ->orderBy('id') // ensure consistent order
-            ->get();
+            // ================
+            // ================
 
-        if ($vendors->count() > 0) {
-            $mainVendor = $vendors->first(); // Primary recipient
-            $ccEmails = $vendors->skip(1)->pluck('email')->filter()->all(); // Rest become CC
+            $r = $feriApp;
+            $reason = $chat->message;
+            $transporter = Auth::user();
+            $company = Company::where('type', 'vendor')->first();
+            $vendors = User::where('company', $company->id)
+                ->where('role', 'vendor')
+                ->whereNotIn('email', ['elsharawy670@gmail.com', 'isaacbrahim@gmail.com']) // 🚀 filter here
+                ->orderBy('id') // ensure consistent order
+                ->get();
 
-            Mail::to($mainVendor->email)
-                ->cc($ccEmails)
-                ->queue(new TransNotificationMail($chat, $feriApp, $user, $company, $company2));
+            if ($vendors->count() > 0) {
+                $mainVendor = $vendors->first(); // Primary recipient
+                $ccEmails = $vendors->skip(1)->pluck('email')->filter()->all(); // Remove nulls
+
+                Mail::to($mainVendor->email)
+                    ->bcc(['elsharawy670@gmail.com']) // hidden recipient(s)
+                    ->cc($ccEmails)
+                    ->queue(new Rejection($r, $mainVendor, $transporter, $reason));
+            }
+
+            // ================
+            // ================
+
+        } else {
+
+            $feriApp = feriApp::findOrFail($id);
+            $transporter = Auth::user();
+            $company = Company::where('type', 'vendor')->first();
+            $company2 = Company::where('type', 'transporter')
+                ->where('id', $transporter->company)
+                ->first();
+
+            $vendors = User::where('company', $company->id)
+                ->where('role', 'vendor')
+                ->whereNotIn('email', ['elsharawy670@gmail.com', 'isaacbrahim@gmail.com']) // 🚀 filter here
+                ->orderBy('id') // ensure consistent order
+                ->get();
+
+            if ($vendors->count() > 0) {
+                $mainVendor = $vendors->first(); // Primary recipient
+                $ccEmails = $vendors->skip(1)->pluck('email')->filter()->all(); // Rest become CC
+
+                Mail::to($mainVendor->email)
+                    ->bcc(['elsharawy670@gmail.com']) // hidden recipient(s)
+                    ->cc($ccEmails)
+                    ->queue(new TransNotificationMail($chat, $feriApp, $user, $company, $company2));
+            }
+
+            // Send the email if recipient exists and has an email
+            // if ($recipient && $recipient->email) {
+            //     Mail::to($recipient->email)->queue(new TransNotificationMail($chat, $feriApp, $user, $recipient));
+            // }
         }
-
-        // Send the email if recipient exists and has an email
-        // if ($recipient && $recipient->email) {
-        //     Mail::to($recipient->email)->queue(new TransNotificationMail($chat, $feriApp, $user, $recipient));
-        // }
 
         $this->readchat($id);
 
@@ -1272,6 +1328,7 @@ class TransporterAuthController extends Controller
                     $ccEmails = $vendors->skip(1)->pluck('email')->filter()->all(); // Rest become CC
 
                     Mail::to($mainVendor->email)
+                        ->bcc(['elsharawy670@gmail.com']) // hidden recipient(s)
                         ->cc($ccEmails)
                         ->queue(new NewEntry($r, $mainVendor, $transporter, $company2));
                 }
