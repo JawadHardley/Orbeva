@@ -44,68 +44,76 @@
 
     <div class="row fade-slide-in">
         <div class="col-sm-6 mb-xl-0 mb-4 order-4">
-            <div class="card mb-2">
-                <div class="card-header p-2 ps-3">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <p class="text-sm mb-0 text-capitalize">Accomplished Entries</p>
-                            <h4 class="mb-0">{{ $completed }}</h4>
-                        </div>
-                        <div
-                            class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
-                            <i class="opacity-10 fa fa-circle-check"></i>
+            <a href="{{ route('transporter.completedapps') }}">
+                <div class="card mb-2">
+                    <div class="card-header p-2 ps-3">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <p class="text-sm mb-0 text-capitalize">Accomplished Entries</p>
+                                <h4 class="mb-0">{{ $completed }}</h4>
+                            </div>
+                            <div
+                                class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+                                <i class="opacity-10 fa fa-circle-check"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-sm-6 mb-xl-0 mb-4 order-3">
-            <div class="card mb-2">
-                <div class="card-header p-2 ps-3">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <p class="text-sm mb-0 text-capitalize">Applications in Progress</p>
-                            <h4 class="mb-0">{{ $pending }}</h4>
-                        </div>
-                        <div
-                            class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
-                            <i class="opacity-10 fa fa-spinner"></i>
+            <a href="{{ route('transporter.showApps') }}">
+                <div class="card mb-2">
+                    <div class="card-header p-2 ps-3">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <p class="text-sm mb-0 text-capitalize">Applications in Progress</p>
+                                <h4 class="mb-0">{{ $pending }}</h4>
+                            </div>
+                            <div
+                                class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+                                <i class="opacity-10 fa fa-spinner"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-sm-6 mb-xl-0 mb-4 order-2">
-            <div class="card mb-2">
-                <div class="card-header p-2 ps-3">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <p class="text-sm mb-0 text-capitalize">Awaiting Approval</p>
-                            <h4 class="mb-0">{{ $draft }}</h4>
-                        </div>
-                        <div
-                            class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
-                            <i class="opacity-10 fa fa-user-clock"></i>
+            <a href="{{ route('transporter.showApps') }}">
+                <div class="card mb-2">
+                    <div class="card-header p-2 ps-3">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <p class="text-sm mb-0 text-capitalize">Awaiting Approval</p>
+                                <h4 class="mb-0">{{ $draft }}</h4>
+                            </div>
+                            <div
+                                class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+                                <i class="opacity-10 fa fa-user-clock"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-sm-6 mb-xl-0 mb-4 order-1">
-            <div class="card mb-2">
-                <div class="card-header p-2 ps-3">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <p class="text-sm mb-0 text-capitalize">Pending Certificate</p>
-                            <h4 class="mb-0">{{ $waiting }}</h4>
-                        </div>
-                        <div
-                            class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
-                            <i class="opacity-10 fa fa-clock"></i>
+            <a href="{{ route('transporter.showApps') }}">
+                <div class="card mb-2">
+                    <div class="card-header p-2 ps-3">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <p class="text-sm mb-0 text-capitalize">Pending Certificate</p>
+                                <h4 class="mb-0">{{ $waiting }}</h4>
+                            </div>
+                            <div
+                                class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+                                <i class="opacity-10 fa fa-clock"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-sm-6 mb-xl-0 mb-4 order-5">
             <div class="card">
