@@ -41,7 +41,7 @@
 
                                 </div>
                                 <div class="card-body">
-                                    <form role="form" action="{{ route('vendor.register') }}" method="POST"
+                                    <form role="form" action="{{ route('vendorz.register') }}" method="POST"
                                         autocomplete="off" novalidate="">
                                         @csrf
                                         <div class="input-group input-group-outline mb-3">
@@ -94,7 +94,7 @@
                                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                                     <p class="mb-2 text-sm mx-auto">
                                         Already have an account?
-                                        <a href="{{ route('vendor.login') }}"
+                                        <a href="{{ route('vendorz.login') }}"
                                             class="text-primary text-gradient font-weight-bold">Sign in</a>
                                     </p>
                                 </div>

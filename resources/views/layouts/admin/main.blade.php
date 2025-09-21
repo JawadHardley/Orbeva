@@ -43,7 +43,13 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav pt-lg-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route(Auth::user()->role . '' . '.dashboard') }}">
+                            {{-- <a class="nav-link" href="{{ route(Auth::user()->role . '' . '.dashboard') }}">
+                                <i class="fa fa-house pe-3"></i>
+                                <span class="nav-link-title"> Home </span>
+                            </a> --}}
+
+                            <a class="nav-link"
+                                href="{{ route((Auth::user()->role === 'vendor' ? 'vendorz' : Auth::user()->role) . '.dashboard') }}">
                                 <i class="fa fa-house pe-3"></i>
                                 <span class="nav-link-title"> Home </span>
                             </a>
@@ -90,13 +96,13 @@
                                     <span class="nav-link-title"> Feri Applications </span>
                                 </a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ route('vendor.showApps') }}">
+                                    <a class="dropdown-item" href="{{ route('vendorz.showApps') }}">
                                         All Applications
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('vendor.rejectedapps') }}">
+                                    <a class="dropdown-item" href="{{ route('vendorz.rejectedapps') }}">
                                         Rejected
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('vendor.completedapps') }}">
+                                    <a class="dropdown-item" href="{{ route('vendorz.completedapps') }}">
                                         Completed
                                     </a>
                                 </div>
@@ -108,10 +114,10 @@
                                     <span class="nav-link-title"> Finances </span>
                                 </a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ route('vendor.showinvoices') }}">
+                                    <a class="dropdown-item" href="{{ route('vendorz.showinvoices') }}">
                                         Invoices
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('vendor.showstatementgen') }}">
+                                    <a class="dropdown-item" href="{{ route('vendorz.showstatementgen') }}">
                                         Statement Generator
                                     </a>
                                 </div>
@@ -123,10 +129,10 @@
                                     <span class="nav-link-title"> Tools </span>
                                 </a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ route('vendor.sampcalculator') }}">
+                                    <a class="dropdown-item" href="{{ route('vendorz.sampcalculator') }}">
                                         Calculator
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('vendor.rates') }}">
+                                    <a class="dropdown-item" href="{{ route('vendorz.rates') }}">
                                         Rates
                                     </a>
                                 </div>
@@ -191,10 +197,17 @@
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-end flex-row order-md-last">
-                                <a href="{{ route(Auth::user()->role . '.showProfile') }}"
+                                {{-- <a href="{{ route(Auth::user()->role . '.showProfile') }}"
                                     class="dropdown-item">Profile</a>
                                 <a href="{{ route(Auth::user()->role . '.dashboard') }}"
+                                    class="dropdown-item">Dashboard</a> --}}
+
+                                <a href="{{ route((Auth::user()->role === 'vendor' ? 'vendorz' : Auth::user()->role) . '.showProfile') }}"
+                                    class="dropdown-item">Profile</a>
+                                <a href="{{ route((Auth::user()->role === 'vendor' ? 'vendorz' : Auth::user()->role) . '.dashboard') }}"
                                     class="dropdown-item">Dashboard</a>
+
+
                                 <!-- <a href="#" class="dropdown-item">Feedback</a> -->
                                 <div class="dropdown-divider"></div>
                                 <!-- <a href="./settings.html" class="dropdown-item">Settings</a> -->

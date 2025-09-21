@@ -44,7 +44,7 @@
                                     </div>
                                 @endif
 
-                                <form action="{{ route('vendor.login') }}" method="POST" autocomplete="off" novalidate=""
+                                <form action="{{ route('vendorz.login') }}" method="POST" autocomplete="off" novalidate=""
                                     class="text-start">
                                     @csrf
                                     <div class="input-group input-group-outline my-3">
@@ -71,7 +71,7 @@
                                     </div>
                                     <p class="mt-4 text-sm text-center">
                                         Don't have an account?
-                                        <a href="{{ route('vendor.register') }}"
+                                        <a href="{{ route('vendorz.register') }}"
                                             class="text-primary text-gradient font-weight-bold">Sign up</a>
                                     </p>
                                 </form>

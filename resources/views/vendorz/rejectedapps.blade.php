@@ -27,13 +27,6 @@
                                     <option value="3">100</option>
                                 </select>
                             </div>
-                            <div class="col-md-auto col-sm-12 d-flex">
-                                <div class="input-group mb-3">
-                                    <a href="{{ route('vendor.exportapps') }}" class="btn btn-outline-success">
-                                        <i class="fa fa-circle-down me-2"></i> Export
-                                    </a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -62,7 +55,7 @@
                             @foreach ($records as $record)
                                 <tr>
                                     <td><span class="text-secondary">{{ $record->id }}</span></td>
-                                    <td><a href="{{ route('vendor.showApp', ['id' => $record->id]) }}" class="text-reset"
+                                    <td><a href="{{ route('vendorz.showApp', ['id' => $record->id]) }}" class="text-reset"
                                             tabindex="-1">
                                             {{ ucfirst($record->company_ref) }}
                                         </a></td>
@@ -143,7 +136,7 @@
                                         @php
                                             $unreadChats = $chats->filter(function ($chat) use ($record) {
                                                 return $chat->user_id != Auth::id() &&
-                                                    $chat->read == 0 &&
+                                                    $chat->read === 0 &&
                                                     $chat->application_id == $record->id;
                                             });
                                         @endphp
@@ -167,7 +160,7 @@
                                                             {{ ucfirst($record->company_ref) }}</h1>
                                                         <span class="fs-5 ms-auto">
                                                             <a
-                                                                href="{{ route('vendor.readchat', ['id' => $record->id]) }}">mark
+                                                                href="{{ route('vendorz.readchat', ['id' => $record->id]) }}">mark
                                                                 as read</a>
                                                         </span>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -180,7 +173,7 @@
                                                                 <div class="chat">
                                                                     <div class="chat-bubbles">
                                                                         <form
-                                                                            action="{{ route('vendor.sendchat', ['id' => $record->id]) }}"
+                                                                            action="{{ route('vendorz.sendchat', ['id' => $record->id]) }}"
                                                                             method="POST">
                                                                             @csrf
 
@@ -211,16 +204,14 @@
                                                                                                         </div>
                                                                                                         <div
                                                                                                             class="chat-bubble-body">
-                                                                                                            <p class="mb-0 text-break"
-                                                                                                                style="word-break:break-word;white-space:pre-line;overflow-wrap:anywhere;">
-                                                                                                                {{ $chat->message }}
+                                                                                                            <p>{{ $chat->message }}
                                                                                                             </p>
                                                                                                         </div>
                                                                                                         @if ($chat->user->id == Auth::user()->id)
                                                                                                             <span
                                                                                                                 class="fs-5">
                                                                                                                 <a
-                                                                                                                    href="{{ route('vendor.deletechat', ['id' => $chat->id]) }}">delete</a>
+                                                                                                                    href="{{ route('vendorz.deletechat', ['id' => $chat->id]) }}">delete</a>
                                                                                                             </span>
                                                                                                         @endif
                                                                                                     @else
@@ -280,9 +271,7 @@
                                                                                                         </div>
                                                                                                         <div
                                                                                                             class="chat-bubble-body">
-                                                                                                            <p class="mb-0 text-break"
-                                                                                                                style="word-break:break-word;white-space:pre-line;overflow-wrap:anywhere;">
-                                                                                                                {{ $chat->message }}
+                                                                                                            <p>{{ $chat->message }}
                                                                                                             </p>
                                                                                                         </div>
                                                                                                     @else
@@ -340,25 +329,25 @@
                                                     <i class="fa fa-comment-dots pe-2"></i>Query
                                                 </a>
                                                 <a class="dropdown-item"
-                                                    href="{{ route('vendor.showApp', ['id' => $record->id]) }}">
+                                                    href="{{ route('vendorz.showApp', ['id' => $record->id]) }}">
                                                     <i class="fa fa-eye pe-2"></i>View
                                                 </a>
                                             </div>
                                         </div>
                                         <!-- <div class="dropdown">
-                                                <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport"
-                                                    data-bs-toggle="dropdown">Actions</button>
-                                                <div class="dropdown-menu dropdown-menu-start">
-                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#mXX">
-                                                        <i class="fa fa-message pe-2"></i>Query
-                                                    </a>
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('vendor.showApp', ['id' => $record->id]) }}">
-                                                        <i class="fa fa-eye pe-2"></i>View
-                                                    </a>
+                                            <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport"
+                                                data-bs-toggle="dropdown">Actions</button>
+                                            <div class="dropdown-menu dropdown-menu-start">
+                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#mXX">
+                                                    <i class="fa fa-message pe-2"></i>Query
+                                                </a>
+                                                <a class="dropdown-item"
+                                                    href="{{ route('vendorz.showApp', ['id' => $record->id]) }}">
+                                                    <i class="fa fa-eye pe-2"></i>View
+                                                </a>
 
-                                                </div>
-                                            </div> -->
+                                            </div>
+                                        </div> -->
                                     </td>
                                 </tr>
                             @endforeach
@@ -392,24 +381,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // For all chat modals
-            document.querySelectorAll('.modal[id^="chat"]').forEach(function(modal) {
-                modal.addEventListener('shown.bs.modal', function() {
-                    // Find the scrollable chat body inside this modal
-                    var chatBody = modal.querySelector('.card-body.scrollable');
-                    if (chatBody) {
-                        chatBody.scrollTo({
-                            top: chatBody.scrollHeight,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
 
     <script>
         new DataTable('#linework', {

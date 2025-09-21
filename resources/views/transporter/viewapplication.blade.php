@@ -15,6 +15,22 @@
         </div>
     </div>
 
+    <style>
+        .dat_input[type="file"] {
+            display: none;
+            /* hide the default completely */
+        }
+
+        .file-uploadex {
+            display: none;
+            /* hide the ugly input */
+        }
+
+        .file-labelex {
+            display: inline-block;
+        }
+    </style>
+
     <div class="row">
         <div class="col-12 p-2 mx-2 border rounded">
             <div class="mx-1">
@@ -852,7 +868,7 @@
                                                     <label>{{ ucfirst(str_replace('_', ' ', $type)) }}
                                                     </label>
                                                     <a href="{{ route('file.downloadfile', ['id' => $record->id, 'type' => $type]) }}"
-                                                        download>
+                                                        target="_blank" download>
                                                         <div class="card py-1">
                                                             <div class="row m-2">
                                                                 <div class="col-auto">
@@ -975,7 +991,7 @@
                                 @if ($record->status == 1)
                                     <div class="row">
                                         <div class="col py-3 pt-5 text-end">
-                                            <a href="{{ route(Auth::user()->role . '' . '.showApps') }}"
+                                            <a href="{{ route((Auth::user()->role === 'vendor' ? 'vendorz' : Auth::user()->role) . '' . '.showApps') }}"
                                                 class="btn btn-outline-secondary">Cancel</a>
                                             <button class="btn btn-primary" type="submit">Edit</button>
                                         </div>
@@ -1552,7 +1568,7 @@
                                 @if ($record->status == 1)
                                     <div class="row">
                                         <div class="col py-3 pt-5 text-end">
-                                            <a href="{{ route(Auth::user()->role . '' . '.showApps') }}"
+                                            <a href="{{ route((Auth::user()->role === 'vendor' ? 'vendorz' : Auth::user()->role) . '' . '.showApps') }}"
                                                 class="btn btn-outline-secondary">Cancel</a>
                                             <button class="btn btn-primary" type="submit">Edit</button>
                                         </div>
@@ -1804,7 +1820,7 @@
                                     <form action="{{ route('transporter.sendchat', ['id' => $record->id]) }}"
                                         method="POST">
                                         @csrf
-                                        @foreach ($chats as $chat)
+                                        {{-- @foreach ($chats as $chat)
                                             @if ($chat->user_id == Auth::user()->id)
                                                 <div class="d-flex justify-content-end mb-3">
                                                     <div class="me-2">
@@ -1854,6 +1870,88 @@
                                                     </div>
                                                 </div>
                                             @endif
+                                        @endforeach --}}
+
+                                        @foreach ($chats as $chat)
+                                            @php
+                                                $isMe = $chat->user_id == Auth::user()->id;
+                                                $bubbleClass = $isMe ? 'bg-primary text-white' : 'bg-info text-white';
+                                                $avatarClass = $isMe ? 'bg-primary text-white' : 'bg-info text-white';
+                                                $name = $isMe ? Auth::user()->name : 'Vendor';
+                                            @endphp
+
+                                            <div
+                                                class="d-flex {{ $isMe ? 'justify-content-end' : 'justify-content-start' }} mb-3">
+                                                @if (!$isMe)
+                                                    <span class="avatar avatar-xs {{ $avatarClass }} me-2">
+                                                        <i class="fa fa-user-shield"></i>
+                                                    </span>
+                                                @endif
+
+                                                <div>
+                                                    <div class="{{ $bubbleClass }} rounded-3 px-3 py-2 shadow-sm">
+                                                        <div class="d-flex align-items-center mb-1">
+                                                            <span class="fw-bold">{{ $name }}</span>
+                                                            <span
+                                                                class="ms-2 small text-white-50">{{ $chat->formatted_date }}</span>
+                                                        </div>
+                                                        <div>
+                                                            @if ($chat->del == 0)
+                                                                <span>{{ $chat->message }}</span>
+
+                                                                {{-- Show attachment if exists --}}
+                                                                @if ($chat->attachment_path)
+                                                                    @php
+                                                                        // dd($chat->attachment_path);
+                                                                        $ext = pathinfo(
+                                                                            $chat->attachment_path,
+                                                                            PATHINFO_EXTENSION,
+                                                                        );
+                                                                        $imageExts = ['png', 'jpg', 'jpeg'];
+                                                                    @endphp
+
+                                                                    @if (in_array(strtolower($ext), $imageExts))
+                                                                        <div class="mt-2">
+                                                                            <a href="{{ route('transporter.chatfiledownload', $chat->id) }}"
+                                                                                target="_blank">
+                                                                                <div
+                                                                                    class="mt-2 d-flex align-items-center border rounded p-2">
+                                                                                    <i class="fa fa-circle-down me-2"></i>
+                                                                                    file {{ $chat->id }}
+                                                                                </div>
+
+                                                                            </a>
+                                                                        </div>
+                                                                    @else
+                                                                        <a href="{{ route('transporter.chatfiledownload', $chat->id) }}"
+                                                                            target="_blank" class="text-white">
+                                                                            <div
+                                                                                class="mt-2 d-flex align-items-center border rounded p-2">
+                                                                                <i class="fa fa-circle-down me-2"></i>
+                                                                                file {{ $chat->id }}
+                                                                            </div>
+                                                                        </a>
+                                                                    @endif
+                                                                @endif
+
+                                                                @if ($isMe)
+                                                                    <a href="{{ route('transporter.deletechat', ['id' => $chat->id]) }}"
+                                                                        class="ms-2 text-info small text-decoration-underline">delete</a>
+                                                                @endif
+                                                            @else
+                                                                <span class="fst-italic text-warning"><i
+                                                                        class="fa fa-ban"></i> Deleted message</span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                @if ($isMe)
+                                                    <span class="avatar avatar-xs {{ $avatarClass }} ms-2">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                @endif
+                                            </div>
                                         @endforeach
                                     </form>
                                 </div>
@@ -1862,7 +1960,7 @@
                     </div>
                 </div>
                 <div class="modal-footer border-0 pt-0">
-                    <form action="{{ route('transporter.sendchat', ['id' => $record->id]) }}" method="POST"
+                    {{-- <form action="{{ route('transporter.sendchat', ['id' => $record->id]) }}" method="POST"
                         class="w-100">
                         @csrf
                         <div class="input-group input-group-flat">
@@ -1872,7 +1970,36 @@
                                 <i class="fa fa-paper-plane"></i>
                             </button>
                         </div>
+                    </form> --}}
+
+                    <form action="{{ route('transporter.sendchat', ['id' => $record->id]) }}" method="POST"
+                        class="w-100" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="input-group input-group-outline mt-2">
+                                    <textarea type="text" name="message" class="form-control" placeholder="Type your message ..."></textarea>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group input-group-outline mt-1 mb-4 w-100">
+                                    {{-- <input type="file" class="form-control" placeholder="attach file" /> --}}
+                                    <label for="fileInput" class="file-labelex btn btn-outline-secondary w-100">
+                                        <i class="fa fa-arrow-up-from-bracket me-1"></i> Attach File
+                                    </label>
+                                    <span id="fileName" class="text-secondary small">No file attached</span>
+                                    <input type="file" id="fileInput" name="attachment"
+                                        class="file-uploadex dat_input">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <button type="submit" class="mt-1 btn btn-outline-info w-100">
+                                    Send Query <i class="fa fa-paper-plane ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
                     </form>
+
                 </div>
             </div>
         </div>
@@ -1915,6 +2042,15 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const fileName = document.getElementById('fileName');
+
+        fileInput.addEventListener('change', function() {
+            fileName.textContent = this.files.length ? this.files[0].name : "No file yet";
+        });
+    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

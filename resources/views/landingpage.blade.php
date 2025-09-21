@@ -94,12 +94,19 @@
                                                     <i class="bi bi-chevron-down toggle-dropdown"></i>
                                                 </a>
                                                 <ul class="sub-menu">
-                                                    <li><a
+                                                    {{-- <li><a
                                                             href="{{ route(Auth::user()->role . '.dashboard') }}">Dashboard</a>
                                                     </li>
                                                     <li><a
                                                             href="{{ route(Auth::user()->role . '.showProfile') }}">Profile</a>
+                                                    </li> --}}
+                                                    <li><a
+                                                            href="{{ route((Auth::user()->role === 'vendor' ? 'vendorz' : Auth::user()->role) . '.dashboard') }}">Dashboard</a>
                                                     </li>
+                                                    <li><a
+                                                            href="{{ route((Auth::user()->role === 'vendor' ? 'vendorz' : Auth::user()->role) . '.showProfile') }}">Profile</a>
+                                                    </li>
+
                                                     <form method="POST" action="{{ route('logout') }}">
                                                         @csrf
                                                         <li><a href="route('logout')"
@@ -558,7 +565,7 @@
                     <div class="col-lg-6">
                         <div class="copy-right-text text-lg-left text-center sm-mb-15px">
                             &copy; Orbeva {{ today()->format('Y') }},
-                            <a href="{{ route('vendor.login') }}"
+                            <a href="{{ route('vendorz.login') }}"
                                 class="text-decoration-none bg-transparent border-0 p-0 m-0"
                                 style="color: inherit; cursor: default; outline: none;">
                                 Designed

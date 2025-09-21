@@ -25,6 +25,7 @@ class chats extends Model
         'read',
         'message',
         'del',
+        'attachment_path',
     ];
 
     /**

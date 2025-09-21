@@ -178,9 +178,9 @@
 
                         </div>
                         <!-- <h4 class="subheader mt-4">#Leave</h4>
-                                                            <div class="list-group list-group-transparent">
-                                                                <a href="#" class="list-group-item list-group-item-action">Give Feedback</a>
-                                                            </div> -->
+                                                                                    <div class="list-group list-group-transparent">
+                                                                                        <a href="#" class="list-group-item list-group-item-action">Give Feedback</a>
+                                                                                    </div> -->
                     </div>
                 </div>
                 <div class="col-12 col-md-10 d-flex flex-column tab-content">
@@ -548,7 +548,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <form
-                                                        action="{{ route('vendor.updatedraft', ['id' => $record->id]) }}"
+                                                        action="{{ route('vendorz.updatedraft', ['id' => $record->id]) }}"
                                                         method="POST" enctype="multipart/form-data">
                                                         @csrf
 
@@ -760,9 +760,9 @@
 
                         </div>
                         <!-- <h4 class="subheader mt-4">#Leave</h4>
-                                                            <div class="list-group list-group-transparent">
-                                                                <a href="#" class="list-group-item list-group-item-action">Give Feedback</a>
-                                                            </div> -->
+                                                                                    <div class="list-group list-group-transparent">
+                                                                                        <a href="#" class="list-group-item list-group-item-action">Give Feedback</a>
+                                                                                    </div> -->
                     </div>
                 </div>
                 <div class="col-12 col-md-10 d-flex flex-column tab-content">
@@ -1007,7 +1007,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <form
-                                                        action="{{ route('vendor.updatedraft', ['id' => $record->id]) }}"
+                                                        action="{{ route('vendorz.updatedraft', ['id' => $record->id]) }}"
                                                         method="POST" enctype="multipart/form-data">
                                                         @csrf
 
@@ -1066,10 +1066,10 @@
                                                                 autocomplete="on" required />
 
                                                             <!-- <div class="col-12 col-md-6 mb-3">
-                                                                            <label class="form-label">Customer Reference No</label>
-                                                                            <input type="text" class="form-control" name="customer_ref"
-                                                                                value="{{ $invoice->customer_ref ?? '' }}" autocomplete="on" required />
-                                                                        </div> -->
+                                                                                                    <label class="form-label">Customer Reference No</label>
+                                                                                                    <input type="text" class="form-control" name="customer_ref"
+                                                                                                        value="{{ $invoice->customer_ref ?? '' }}" autocomplete="on" required />
+                                                                                                </div> -->
 
                                                             <!-- <label class="form-label">Customer Reference No</label> -->
                                                             <input type="hidden" class="form-control"
@@ -1174,7 +1174,7 @@
         @if ($record->status == 1 && Auth::user()->role == 'transporter')
             <div class="row">
                 <div class="col py-3 pt-5 text-end">
-                    <a href="{{ route(Auth::user()->role . '' . '.showApps') }}"
+                    <a href="{{ route((Auth::user()->role === 'vendor' ? 'vendorz' : Auth::user()->role) . '' . '.showApps') }}"
                         class="btn btn-outline-secondary">Cancel</a>
                     <button class="btn btn-primary" type="submit">Edit</button>
                 </div>
@@ -1191,7 +1191,7 @@
 
     @if ($record->status == 1)
         <!-- Modal -->
-        <form action="{{ route('vendor.process1', ['id' => $record->id]) }}" method="POST" class="d-inline">
+        <form action="{{ route('vendorz.process1', ['id' => $record->id]) }}" method="POST" class="d-inline">
             @csrf
             <div class="modal fade" id="a{{ $record->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -1225,7 +1225,7 @@
         </form>
     @elseif ($record->status == 2)
         <!-- Modal -->
-        <form action="{{ route('vendor.process2', ['id' => $record->id]) }}" method="POST"
+        <form action="{{ route('vendorz.process2', ['id' => $record->id]) }}" method="POST"
             enctype="multipart/form-data" class="d-inline">
             @csrf
             <div class="modal fade" id="b{{ $record->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -1318,8 +1318,8 @@
                             </div>
 
                             <!-- <div class="text-secondary">
-                                                        Do you want to proceed with the application ?
-                                                    </div> -->
+                                                                                Do you want to proceed with the application ?
+                                                                            </div> -->
                         </div>
                         <div class="modal-footer">
                             <div class="w-100">
@@ -1340,7 +1340,7 @@
         </form>
     @elseif ($record->status == 4)
         <!-- Modal -->
-        <form action="{{ route('vendor.process3', ['id' => $record->id]) }}" method="POST"
+        <form action="{{ route('vendorz.process3', ['id' => $record->id]) }}" method="POST"
             enctype="multipart/form-data" class="d-inline">
             @csrf
             <div class="modal fade" id="c{{ $record->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -1375,8 +1375,8 @@
                                 <input type="file" class="form-control" name="file" required />
                             </div>
                             <!-- <div class="text-secondary">
-                                                        Do you want to proceed with the application ?
-                                                    </div> -->
+                                                                                Do you want to proceed with the application ?
+                                                                            </div> -->
                         </div>
                         <div class="modal-footer">
                             <div class="w-100">
@@ -1406,7 +1406,7 @@
                 <div class="modal-header">
                     <h1 class="modal-title fs-3" id="exampleModalLabel">Queries</h1>
                     <span class="fs-5 ms-auto">
-                        <a href="{{ route('vendor.readchat', ['id' => $record->id]) }}">mark as read</a>
+                        <a href="{{ route('vendorz.readchat', ['id' => $record->id]) }}">mark as read</a>
                     </span>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -1415,11 +1415,18 @@
                         <div class="card-body scrollable" style="height: 300px; overflow-y: auto;">
                             <div class="chat">
                                 <div class="chat-bubbles">
-                                    <form action="{{ route('vendor.sendchat', ['id' => $record->id]) }}"
+                                    <form action="{{ route('vendorz.sendchat', ['id' => $record->id]) }}"
                                         method="POST">
                                         @csrf
 
                                         @foreach ($chats as $chat)
+                                            @php
+                                                $isMe = $chat->user_id == Auth::user()->id;
+                                                $bubbleClass = $isMe ? 'bg-primary text-white' : 'bg-info text-white';
+                                                $avatarClass = $isMe ? 'bg-primary text-white' : 'bg-info text-white';
+                                                $name = $isMe ? Auth::user()->name : 'Vendor';
+                                            @endphp
+
                                             @if ($chat->user_id == Auth::user()->id || $chat->user->role == Auth::user()->role)
                                                 <div class="chat-item mb-3">
                                                     <div class="row align-items-end justify-content-end">
@@ -1437,11 +1444,12 @@
                                                                     </div>
                                                                     <div class="chat-bubble-body">
                                                                         <p>{{ $chat->message }}</p>
+
                                                                     </div>
                                                                     @if ($chat->user->id == Auth::user()->id)
                                                                         <span class="fs-5">
                                                                             <a
-                                                                                href="{{ route('vendor.deletechat', ['id' => $chat->id]) }}">delete</a>
+                                                                                href="{{ route('vendorz.deletechat', ['id' => $chat->id]) }}">delete</a>
                                                                         </span>
                                                                     @endif
                                                                 @else
@@ -1489,6 +1497,44 @@
                                                                     <div class="chat-bubble-body">
                                                                         <p>{{ $chat->message }}</p>
                                                                     </div>
+
+
+                                                                    {{-- Show attachment if exists --}}
+                                                                    @if ($chat->attachment_path)
+                                                                        @php
+                                                                            // dd($chat->attachment_path);
+                                                                            $ext = pathinfo(
+                                                                                $chat->attachment_path,
+                                                                                PATHINFO_EXTENSION,
+                                                                            );
+                                                                            $imageExts = ['png', 'jpg', 'jpeg'];
+                                                                        @endphp
+
+                                                                        @if (in_array(strtolower($ext), $imageExts))
+                                                                            <div class="mt-2">
+                                                                                <a href="{{ route('vendorz.chatfiledownload', $chat->id) }}"
+                                                                                    target="_blank" download>
+                                                                                    <div
+                                                                                        class="mt-2 d-flex align-items-center border rounded p-2">
+                                                                                        <i
+                                                                                            class="fa fa-circle-down me-2"></i>
+                                                                                        file {{ $chat->id }}
+                                                                                    </div>
+
+                                                                                </a>
+                                                                            </div>
+                                                                        @else
+                                                                            <a href="{{ route('vendorz.chatfiledownload', $chat->id) }}"
+                                                                                target="_blank" class="text-white"
+                                                                                download>
+                                                                                <div
+                                                                                    class="mt-2 d-flex align-items-center border rounded p-2">
+                                                                                    <i class="fa fa-circle-down me-2"></i>
+                                                                                    file {{ $chat->id }}
+                                                                                </div>
+                                                                            </a>
+                                                                        @endif
+                                                                    @endif
                                                                 @else
                                                                     <div class="row">
                                                                         <div class="col">
@@ -1525,11 +1571,11 @@
                     </form>
                 </div>
                 <!-- <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">
-                                                    send <i class="fa fa-paper-plane ms-2"></i>
-                                                </button>
-                                            </div> -->
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                        <button type="button" class="btn btn-primary">
+                                                                            send <i class="fa fa-paper-plane ms-2"></i>
+                                                                        </button>
+                                                                    </div> -->
             </div>
         </div>
     </div>

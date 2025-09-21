@@ -148,7 +148,16 @@
                             class="img-fluid shadow border-radius-lg">
                     </a>
                 </div>
-                <a href="{{ route(Auth::user()->role . '.showApps') }}" class="">
+                {{-- <a href="{{ route(Auth::user()->role . '.showApps') }}" class="">
+                    <div class="card-body text-center">
+                        <h5 class="fs-6 mt-3">
+                            Show All Feri Entries
+                        </h5>
+                    </div>
+                </a> --}}
+
+                <a href="{{ route((Auth::user()->role === 'vendor' ? 'vendorz' : Auth::user()->role) . '.showApps') }}"
+                    class="">
                     <div class="card-body text-center">
                         <h5 class="fs-6 mt-3">
                             Show All Feri Entries
@@ -165,8 +174,8 @@
                             class="img-fluid shadow border-radius-lg">
                     </a>
                 </div>
-                <a href="{{ route(Auth::user()->role . '.applyferi') }}" class="" data-bs-toggle="modal"
-                    data-bs-target="#ask">
+                <a href="{{ route((Auth::user()->role === 'vendor' ? 'vendorz' : Auth::user()->role) . '.applyferi') }}"
+                    class="" data-bs-toggle="modal" data-bs-target="#ask">
                     <div class="card-body text-center">
                         <h5 class="fs-6 mt-3">
                             Apply for Feri
@@ -183,7 +192,8 @@
                             class="img-fluid shadow border-radius-lg">
                     </a>
                 </div>
-                <a href="{{ route(Auth::user()->role . '.sampcalculator') }}" class="">
+                <a href="{{ route((Auth::user()->role === 'vendor' ? 'vendorz' : Auth::user()->role) . '.sampcalculator') }}"
+                    class="">
                     <div class="card-body text-center">
                         <h5 class="fs-6 mt-3">
                             Orbeva Calculator

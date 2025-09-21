@@ -264,8 +264,14 @@
                 <ul class="navbar-nav text-white">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active bg-gradient-dark"
+                            {{-- <a class="nav-link active bg-gradient-dark"
                                 href="{{ route(Auth::user()->role . '' . '.dashboard') }}">
+                                <i class="fa fa-chart-line me-2 opacity-5"></i>
+                                <span class="nav-link-text ms-1">Dashboard</span>
+                            </a> --}}
+
+                            <a class="nav-link active bg-gradient-dark"
+                                href="{{ route((Auth::user()->role === 'vendor' ? 'vendorz' : Auth::user()->role) . '.dashboard') }}">
                                 <i class="fa fa-chart-line me-2 opacity-5"></i>
                                 <span class="nav-link-text ms-1">Dashboard</span>
                             </a>

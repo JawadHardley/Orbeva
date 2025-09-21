@@ -828,6 +828,108 @@ class TransporterAuthController extends Controller
         ]);
     }
 
+    // public function sendchat(Request $request, $id)
+    // {
+    //     // Check if the current user has the role of 'transporter' or 'admin'
+    //     $user = Auth::user();
+    //     if (!in_array($user->role, ['transporter', 'admin'])) {
+    //         return back()->with([
+    //             'status' => 'error',
+    //             'message' => 'You are not authorized to perform this action.',
+    //         ]);
+    //     }
+
+    //     // Validate the request
+    //     $validatedData = $request->validate([
+    //         'message' => 'required|string|max:500', // Ensure the message is not too long
+    //     ]);
+
+    //     // Sanitize the message
+    //     $validatedData['message'] = htmlspecialchars($validatedData['message'], ENT_QUOTES, 'UTF-8');
+    //     $chat = chats::create([
+    //         'user_id' => $user->id, // Current logged-in user ID
+    //         'application_id' => $id, // Application ID from the route parameter
+    //         'read' => 0, // Default to unread
+    //         'message' => $validatedData['message'], // Sanitized message
+    //         'del' => 0, // Default to not deleted
+    //     ]);
+
+    //     // Check for rejection logic
+    //     if ($request->has('rejection') && $request->input('rejection') == 1) {
+    //         $feriApp = feriApp::findOrFail($id);
+    //         if ($feriApp->status >= 3) {
+    //             $feriApp->status = 6;
+    //             $feriApp->save();
+    //         }
+
+    //         // ================
+    //         // ================
+
+    //         $r = $feriApp;
+    //         $reason = $chat->message;
+    //         $transporter = Auth::user();
+    //         $company = Company::where('type', 'vendor')->first();
+    //         $vendors = User::where('company', $company->id)
+    //             ->where('role', 'vendor')
+    //             ->whereNotIn('email', ['elsharawy670@gmail.com', 'isaacbrahim@gmail.com']) // 🚀 filter here
+    //             ->orderBy('id') // ensure consistent order
+    //             ->get();
+
+    //         if ($vendors->count() > 0) {
+    //             $mainVendor = $vendors->first(); // Primary recipient
+    //             $ccEmails = $vendors->skip(1)->pluck('email')->filter()->all(); // Remove nulls
+
+    //             Mail::to($mainVendor->email)
+    //                 ->bcc(['elsharawy670@gmail.com']) // hidden recipient(s)
+    //                 ->cc($ccEmails)
+    //                 ->queue(new Rejection($r, $mainVendor, $transporter, $reason));
+    //         }
+
+    //         // ================
+    //         // ================
+
+    //     } else {
+
+    //         $feriApp = feriApp::findOrFail($id);
+    //         $transporter = Auth::user();
+    //         $company = Company::where('type', 'vendor')->first();
+    //         $company2 = Company::where('type', 'transporter')
+    //             ->where('id', $transporter->company)
+    //             ->first();
+
+    //         $vendors = User::where('company', $company->id)
+    //             ->where('role', 'vendor')
+    //             ->whereNotIn('email', ['elsharawy670@gmail.com', 'isaacbrahim@gmail.com']) // 🚀 filter here
+    //             ->orderBy('id') // ensure consistent order
+    //             ->get();
+
+    //         if ($vendors->count() > 0) {
+    //             $mainVendor = $vendors->first(); // Primary recipient
+    //             $ccEmails = $vendors->skip(1)->pluck('email')->filter()->all(); // Rest become CC
+
+    //             Mail::to($mainVendor->email)
+    //                 ->bcc(['elsharawy670@gmail.com']) // hidden recipient(s)
+    //                 ->cc($ccEmails)
+    //                 ->queue(new TransNotificationMail($chat, $feriApp, $user, $company, $company2));
+    //         }
+
+    //         // Send the email if recipient exists and has an email
+    //         // if ($recipient && $recipient->email) {
+    //         //     Mail::to($recipient->email)->queue(new TransNotificationMail($chat, $feriApp, $user, $recipient));
+    //         // }
+    //     }
+
+    //     $this->readchat($id);
+
+    //     return redirect()
+    //         ->route('transporter.showApp', ['id' => $id]) // replace with your actual route name
+    //         ->with([
+    //             'status' => 'success',
+    //             'message' => 'Query sent successfully!.',
+    //         ]);
+    // }
+
+
     public function sendchat(Request $request, $id)
     {
         // Check if the current user has the role of 'transporter' or 'admin'
@@ -841,20 +943,39 @@ class TransporterAuthController extends Controller
 
         // Validate the request
         $validatedData = $request->validate([
-            'message' => 'required|string|max:500', // Ensure the message is not too long
+            'message' => 'required|string|max:500',
+            'attachment' => 'nullable|file|mimes:png,jpg,jpeg,pdf,doc,docx,xls,xlsx,ppt,pptx|max:10240', // max 10MB
         ]);
 
         // Sanitize the message
         $validatedData['message'] = htmlspecialchars($validatedData['message'], ENT_QUOTES, 'UTF-8');
-        $chat = chats::create([
-            'user_id' => $user->id, // Current logged-in user ID
-            'application_id' => $id, // Application ID from the route parameter
-            'read' => 0, // Default to unread
-            'message' => $validatedData['message'], // Sanitized message
-            'del' => 0, // Default to not deleted
-        ]);
 
-        // Check for rejection logic
+        $chatData = [
+            'user_id' => $user->id,
+            'application_id' => $id,
+            'read' => 0,
+            'message' => $validatedData['message'],
+            'del' => 0,
+        ];
+
+        // Handle file if uploaded
+        if ($request->hasFile('attachment')) {
+            $file = $request->file('attachment');
+            $filename = Str::uuid() . '.' . $file->getClientOriginalExtension();
+
+            // store in the same folder as feriApps but in a chat subfolder
+            $path = $file->storeAs('chat_files', $filename, 'private'); // storage/app/private/chat_files
+
+            $chatData['attachment_path'] = $path;
+            // dd($chatData);
+        }
+
+        // Create the chat entry
+        $chat = chats::create($chatData);
+
+        // =======================
+        // Existing rejection & email logic unchanged
+        // =======================
         if ($request->has('rejection') && $request->input('rejection') == 1) {
             $feriApp = feriApp::findOrFail($id);
             if ($feriApp->status >= 3) {
@@ -862,36 +983,28 @@ class TransporterAuthController extends Controller
                 $feriApp->save();
             }
 
-            // ================
-            // ================
-
             $r = $feriApp;
             $reason = $chat->message;
-            $transporter = Auth::user();
+            $transporter = $user;
             $company = Company::where('type', 'vendor')->first();
             $vendors = User::where('company', $company->id)
                 ->where('role', 'vendor')
-                ->whereNotIn('email', ['elsharawy670@gmail.com', 'isaacbrahim@gmail.com']) // 🚀 filter here
-                ->orderBy('id') // ensure consistent order
+                ->whereNotIn('email', ['elsharawy670@gmail.com', 'isaacbrahim@gmail.com'])
+                ->orderBy('id')
                 ->get();
 
             if ($vendors->count() > 0) {
-                $mainVendor = $vendors->first(); // Primary recipient
-                $ccEmails = $vendors->skip(1)->pluck('email')->filter()->all(); // Remove nulls
+                $mainVendor = $vendors->first();
+                $ccEmails = $vendors->skip(1)->pluck('email')->filter()->all();
 
                 Mail::to($mainVendor->email)
-                    ->bcc(['elsharawy670@gmail.com']) // hidden recipient(s)
+                    ->bcc(['elsharawy670@gmail.com'])
                     ->cc($ccEmails)
                     ->queue(new Rejection($r, $mainVendor, $transporter, $reason));
             }
-
-            // ================
-            // ================
-
         } else {
-
             $feriApp = feriApp::findOrFail($id);
-            $transporter = Auth::user();
+            $transporter = $user;
             $company = Company::where('type', 'vendor')->first();
             $company2 = Company::where('type', 'transporter')
                 ->where('id', $transporter->company)
@@ -899,35 +1012,31 @@ class TransporterAuthController extends Controller
 
             $vendors = User::where('company', $company->id)
                 ->where('role', 'vendor')
-                ->whereNotIn('email', ['elsharawy670@gmail.com', 'isaacbrahim@gmail.com']) // 🚀 filter here
-                ->orderBy('id') // ensure consistent order
+                ->whereNotIn('email', ['elsharawy670@gmail.com', 'isaacbrahim@gmail.com'])
+                ->orderBy('id')
                 ->get();
 
             if ($vendors->count() > 0) {
-                $mainVendor = $vendors->first(); // Primary recipient
-                $ccEmails = $vendors->skip(1)->pluck('email')->filter()->all(); // Rest become CC
+                $mainVendor = $vendors->first();
+                $ccEmails = $vendors->skip(1)->pluck('email')->filter()->all();
 
                 Mail::to($mainVendor->email)
-                    ->bcc(['elsharawy670@gmail.com']) // hidden recipient(s)
+                    ->bcc(['elsharawy670@gmail.com'])
                     ->cc($ccEmails)
                     ->queue(new TransNotificationMail($chat, $feriApp, $user, $company, $company2));
             }
-
-            // Send the email if recipient exists and has an email
-            // if ($recipient && $recipient->email) {
-            //     Mail::to($recipient->email)->queue(new TransNotificationMail($chat, $feriApp, $user, $recipient));
-            // }
         }
 
         $this->readchat($id);
 
         return redirect()
-            ->route('transporter.showApp', ['id' => $id]) // replace with your actual route name
+            ->route('transporter.showApp', ['id' => $id])
             ->with([
                 'status' => 'success',
                 'message' => 'Query sent successfully!.',
             ]);
     }
+
 
     public function readchat($id)
     {
@@ -1490,5 +1599,33 @@ class TransporterAuthController extends Controller
                 'Cache-Control' => 'max-age=0',
             ],
         );
+    }
+
+    public function downloadChatAttachment(chats $chat)
+    {
+
+        // Ensure the user is logged in
+        if (!auth()->check()) {
+            abort(403);
+        }
+
+        // Optional: check if the user is allowed to view this chat
+        $user = auth()->user();
+        if ($chat->user_id !== $user->id /* && add other checks if needed */) {
+            abort(403);
+        }
+
+        if (!$chat->attachment_path || !Storage::disk('private')->exists($chat->attachment_path)) {
+            abort(404);
+        }
+
+        $ext = pathinfo($chat->attachment_path, PATHINFO_EXTENSION);
+        $imageExts = ['png', 'jpg', 'jpeg'];
+
+        if (in_array(strtolower($ext), $imageExts)) {
+            return response()->file(storage_path('app/private/' . $chat->attachment_path));
+        } else {
+            return Storage::disk('private')->download($chat->attachment_path);
+        }
     }
 }

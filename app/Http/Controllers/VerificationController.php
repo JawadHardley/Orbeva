@@ -11,7 +11,7 @@ class VerificationController extends Controller
 {
     public function verify(Request  $request)
     {
-        
+
         $user = User::findOrFail($request->route('id'));
 
         if (!hash_equals((string) $request->route('hash'), sha1($user->getEmailForVerification()))) {
@@ -28,25 +28,22 @@ class VerificationController extends Controller
                 'status' => 'success',
                 'message' => 'Email verified successfully!.',
             ]);
-        
-        }elseif ($user->role == 'vendor') {
-            return redirect()->route('vendor.login')->with([
+        } elseif ($user->role == 'vendor') {
+            return redirect()->route('vendorz.login')->with([
                 'status' => 'success',
                 'message' => 'Email verified successfully!.',
             ]);
-        
-        }else {
+        } else {
             return redirect()->route('transporter.login')->with([
                 'status' => 'success',
                 'message' => 'Email verified successfully!.',
             ]);
-        
         }
 
         // return redirect('/login')->with([
         //     'status' => 'success',
         //     'message' => 'Email verified successfully!.',
         // ]);
-    
+
     }
 }

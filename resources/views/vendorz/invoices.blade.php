@@ -29,7 +29,7 @@
                             </div>
                             <div class="col-md-auto col-sm-12 d-flex">
                                 <div class="input-group mb-3">
-                                    <a href="{{ route('vendor.exportinvoices') }}" class="btn btn-outline-success">
+                                    <a href="{{ route('vendorz.exportinvoices') }}" class="btn btn-outline-success">
                                         <i class="fa fa-circle-down me-2"></i> Export
                                     </a>
                                 </div>
@@ -59,8 +59,8 @@
                             @foreach ($records as $record)
                                 <tr>
                                     <td><span class="text-secondary">{{ $record->id }}</span></td>
-                                    <td><a href="{{ route('vendor.showApp', ['id' => $record->appid]) }}" class="text-reset"
-                                            tabindex="-1">
+                                    <td><a href="{{ route('vendorz.showApp', ['id' => $record->appid]) }}"
+                                            class="text-reset" tabindex="-1">
                                             {{ $record->customer_ref }}
                                         </a></td>
                                     <td>
@@ -103,19 +103,19 @@
                                             </div>
                                         </div>
                                         <!-- <div class="dropdown">
-                                                                                <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport"
-                                                                                    data-bs-toggle="dropdown">Actions</button>
-                                                                                <div class="dropdown-menu dropdown-menu-start">
-                                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#mXX">
-                                                                                        <i class="fa fa-message pe-2"></i>Query
-                                                                                    </a>
-                                                                                    <a class="dropdown-item"
-                                                                                        href="{{ route('vendor.showApp', ['id' => $record->id]) }}">
-                                                                                        <i class="fa fa-eye pe-2"></i>View
-                                                                                    </a>
+                                                                                    <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport"
+                                                                                        data-bs-toggle="dropdown">Actions</button>
+                                                                                    <div class="dropdown-menu dropdown-menu-start">
+                                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#mXX">
+                                                                                            <i class="fa fa-message pe-2"></i>Query
+                                                                                        </a>
+                                                                                        <a class="dropdown-item"
+                                                                                            href="{{ route('vendorz.showApp', ['id' => $record->id]) }}">
+                                                                                            <i class="fa fa-eye pe-2"></i>View
+                                                                                        </a>
 
-                                                                                </div>
-                                                                            </div> -->
+                                                                                    </div>
+                                                                                </div> -->
                                     </td>
                                 </tr>
                             @endforeach

@@ -211,11 +211,13 @@ Route::prefix('transporter')
             ->middleware('role');
 
         Route::get('/feri/template/download', [TransporterAuthController::class, 'downloadFeriExcelTemplate'])->name('feri.template.download');
+
+        Route::get('/chat/attachment/{chat}', [TransporterAuthController::class, 'downloadChatAttachment'])->name('chatfiledownload');
     });
 
 // Vendor routes
-Route::prefix('vendor')
-    ->name('vendor.')
+Route::prefix('vendorz')
+    ->name('vendorz.')
     ->group(function () {
         // vendor himself
         Route::get('login', [VendorAuthController::class, 'showLoginForm'])->name('login');
@@ -307,6 +309,8 @@ Route::prefix('vendor')
             ->middleware('role');
 
         Route::get('/chat/messages/{id}', [VendorAuthController::class, 'fetchChatMessages'])->name('chat.fetch');
+
+        Route::get('/chat/attachment/{chat}', [VendorAuthController::class, 'downloadChatAttachment'])->name('chatfiledownload');
     });
 
 Route::get('/email', function () {

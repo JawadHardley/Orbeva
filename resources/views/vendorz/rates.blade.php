@@ -30,7 +30,7 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="{{ route('vendor.rateupdate', ['id' => $rate->id]) }}" method="POST">
+                                <form action="{{ route('vendorz.rateupdate', ['id' => $rate->id]) }}" method="POST">
                                     @csrf
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">New Amount</label>

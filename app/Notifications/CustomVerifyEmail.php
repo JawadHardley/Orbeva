@@ -43,7 +43,7 @@ class CustomVerifyEmail extends Notification implements ShouldQueue
         $verificationUrl = $this->verificationUrl($notifiable);
 
         return (new MailMessage())
-            ->markdown('vendor.notifications.email', [
+            ->markdown('vendorz.notifications.email', [
                 'user' => $notifiable,
                 'url' => $verificationUrl,
             ])

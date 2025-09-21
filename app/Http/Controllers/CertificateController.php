@@ -89,6 +89,38 @@ class CertificateController extends Controller
         return response()->download(storage_path('app/private/' . $filePath));
     }
 
+    // public function downloadfile($id, $type)
+    // {
+    //     // Fetch the feriApp record by ID
+    //     $feriApp = feriApp::findOrFail($id);
+
+    //     // Check if the logged-in user is the owner of the feriApp or has the role of 'vendor' or 'admin'
+    //     $user = auth()->user();
+
+    //     if (!$user || (!in_array($user->role, ['admin', 'vendor']) && !($user->role === 'transporter' && $feriApp->user_id == $user->id))) {
+    //         abort(403, 'Unauthorized access.');
+    //     }
+
+    //     // Decode the JSON column to get all file paths
+    //     $documents = json_decode($feriApp->documents_upload ?? '[]', true);
+
+    //     // Check if the requested type exists
+    //     if (!isset($documents[$type])) {
+    //         abort(404, 'Requested file type not found.');
+    //     }
+
+    //     $filePath = $documents[$type];
+
+    //     // Check if the file exists in storage
+    //     if (!Storage::disk('private')->exists($filePath)) {
+    //         \Log::error("File not found: $filePath for user {$user->id}");
+    //         abort(404, 'File not found.');
+    //     }
+
+    //     // Download the file
+    //     return response()->download(storage_path('app/private/' . $filePath));
+    // }
+
     public function downloadfile($id, $type)
     {
         // Fetch the feriApp record by ID
@@ -97,7 +129,11 @@ class CertificateController extends Controller
         // Check if the logged-in user is the owner of the feriApp or has the role of 'vendor' or 'admin'
         $user = auth()->user();
 
-        if (!$user || (!in_array($user->role, ['admin', 'vendor']) && !($user->role === 'transporter' && $feriApp->user_id == $user->id))) {
+        if (
+            !$user ||
+            (!in_array($user->role, ['admin', 'vendor']) &&
+                !($user->role === 'transporter' && $feriApp->user_id == $user->id))
+        ) {
             abort(403, 'Unauthorized access.');
         }
 
@@ -113,11 +149,21 @@ class CertificateController extends Controller
 
         // Check if the file exists in storage
         if (!Storage::disk('private')->exists($filePath)) {
+            \Log::error("File not found: $filePath for user {$user->id}");
             abort(404, 'File not found.');
         }
 
-        // Download the file
-        return response()->download(storage_path('app/private/' . $filePath));
+        $absolutePath = storage_path('app/private/' . $filePath);
+
+        // ✅ Add cache-busting headers so repeated downloads don’t break
+        $headers = [
+            'Cache-Control'       => 'no-store, no-cache, must-revalidate, max-age=0',
+            'Pragma'              => 'no-cache',
+            'Expires'             => '0',
+            'Content-Disposition' => 'attachment; filename="' . basename($absolutePath) . '"',
+        ];
+
+        return response()->download($absolutePath, basename($absolutePath), $headers);
     }
 
     public function downloadinvoice($id)

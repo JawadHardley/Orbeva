@@ -33,9 +33,9 @@ class VendorAuthController extends Controller
     public function showLoginForm()
     {
         if (Auth::check()) {
-            return redirect()->route('vendor.dashboard');
+            return redirect()->route('vendorz.dashboard');
         }
-        return view('vendor.login');
+        return view('vendorz.login');
     }
 
     // Show profile
@@ -85,7 +85,7 @@ class VendorAuthController extends Controller
                 return redirect()->back()->with('status', 'error')->with('message', 'You are not authorized to access the vendor panel.');
             }
 
-            return redirect()->route('vendor.dashboard');
+            return redirect()->route('vendorz.dashboard');
         }
 
         return redirect()->back()->with('status', 'error')->with('message', 'The provided credentials do not match our records.');
@@ -95,7 +95,7 @@ class VendorAuthController extends Controller
     public function showRegisterForm()
     {
         $records = Company::all();
-        return view('vendor.register', compact('records'));
+        return view('vendorz.register', compact('records'));
     }
 
     // Handle vendor registration
@@ -123,7 +123,7 @@ class VendorAuthController extends Controller
         // Auth::login($user);
 
         return redirect()
-            ->route('vendor.login')
+            ->route('vendorz.login')
             ->with([
                 'status' => 'success',
                 'message' => 'Registered successfully, check your email for verification link.',
@@ -170,7 +170,7 @@ class VendorAuthController extends Controller
         ]);
 
         return redirect()
-            ->route('vendor.showProfile')
+            ->route('vendorz.showProfile')
             ->with([
                 'status' => 'success',
                 'message' => 'Account Updated successfully.',
@@ -203,7 +203,7 @@ class VendorAuthController extends Controller
         ]);
 
         return redirect()
-            ->route('vendor.showProfile')
+            ->route('vendorz.showProfile')
             ->with('success', 'Password changed successfully!')
             ->with([
                 'status' => 'success',
@@ -223,7 +223,7 @@ class VendorAuthController extends Controller
     //         return $record;
     //     });
 
-    //     return view('vendor.applications', compact('records'));
+    //     return view('vendorz.applications', compact('records'));
     // }
 
     public function showApps()
@@ -272,7 +272,7 @@ class VendorAuthController extends Controller
                 return $chat;
             });
 
-        return view('vendor.applications', compact('records', 'chats'));
+        return view('vendorz.applications', compact('records', 'chats'));
     }
 
     public function showAppsCompleted()
@@ -321,7 +321,7 @@ class VendorAuthController extends Controller
                 return $chat;
             });
 
-        return view('vendor.completedapps', compact('records', 'chats'));
+        return view('vendorz.completedapps', compact('records', 'chats'));
     }
 
     public function showAppsRejected()
@@ -370,7 +370,7 @@ class VendorAuthController extends Controller
                 return $chat;
             });
 
-        return view('vendor.rejectedapps', compact('records', 'chats'));
+        return view('vendorz.rejectedapps', compact('records', 'chats'));
     }
 
     // Show single application
@@ -398,7 +398,7 @@ class VendorAuthController extends Controller
     //         $record->certificateFile = $latestCertificate->file ?? null;
     //     }
 
-    //     return view('vendor.viewapplication', compact('record'));
+    //     return view('vendorz.viewapplication', compact('record'));
     // }
 
     // Show single application
@@ -481,7 +481,7 @@ class VendorAuthController extends Controller
         // dd($rates->tz->amount);
 
         // Pass the record and chats to the view
-        return view('vendor.viewapplication', compact('record', 'chats', 'invoice', 'rates', 'companies'));
+        return view('vendorz.viewapplication', compact('record', 'chats', 'invoice', 'rates', 'companies'));
 
         // return view('transporter.viewapplication', compact('record'));
     }
@@ -971,7 +971,7 @@ class VendorAuthController extends Controller
         if ($feris->isEmpty()) {
             $feris = 0;
         }
-        return view('vendor.dashboard', compact('feris', 'companies', 'rates'));
+        return view('vendorz.dashboard', compact('feris', 'companies', 'rates'));
     }
 
     public function sampcalculator()
@@ -986,7 +986,7 @@ class VendorAuthController extends Controller
         ];
 
         // Pass both $records and $rates to the view
-        return view('vendor.calculator', compact('records', 'rates'));
+        return view('vendorz.calculator', compact('records', 'rates'));
     }
 
     public function rates()
@@ -1000,7 +1000,7 @@ class VendorAuthController extends Controller
         $records = Rate::all();
 
         // Pass the records to the view
-        return view('vendor.rates', compact('records'));
+        return view('vendorz.rates', compact('records'));
     }
 
     public function rateupdate(Request $request, $id)
@@ -1113,11 +1113,43 @@ class VendorAuthController extends Controller
             return $invoice;
         });
 
-        return view('vendor.invoices', ['records' => $approvedRecords]);
+        return view('vendorz.invoices', ['records' => $approvedRecords]);
     }
 
     public function showstatementgen()
     {
-        return view('vendor.stateform');
+        return view('vendorz.stateform');
+    }
+
+    public function downloadChatAttachment(chats $chat)
+    {
+        $user = auth()->user();
+
+        // Ensure the user is logged in
+        if (!$user) {
+            abort(403);
+        }
+
+        // Allow access if:
+        // 1. The user is the owner of the chat
+        // 2. OR the user is a vendor (or any other role you allow)
+        if ($chat->user_id !== $user->id && $user->role !== 'vendor') {
+            abort(403);
+        }
+
+        // Check that the attachment exists
+        if (!$chat->attachment_path || !Storage::disk('private')->exists($chat->attachment_path)) {
+            abort(404);
+        }
+
+        // Determine file type
+        $ext = pathinfo($chat->attachment_path, PATHINFO_EXTENSION);
+        $imageExts = ['png', 'jpg', 'jpeg'];
+
+        if (in_array(strtolower($ext), $imageExts)) {
+            return response()->file(storage_path('app/private/' . $chat->attachment_path));
+        } else {
+            return Storage::disk('private')->download($chat->attachment_path);
+        }
     }
 }

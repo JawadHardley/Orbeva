@@ -27,7 +27,12 @@
                                 </div>
 
                                 <div class="col-4">
-                                    <a href="{{ route(Auth::user()->role . '' . '.dashboard') }}"
+                                    {{-- <a href="{{ route(Auth::user()->role . '' . '.dashboard') }}"
+                                        class="btn btn-outline-secondary w-100">
+                                        Back
+                                    </a> --}}
+
+                                    <a href="{{ route((Auth::user()->role === 'vendor' ? 'vendorz' : Auth::user()->role) . '.dashboard') }}"
                                         class="btn btn-outline-secondary w-100">
                                         Back
                                     </a>
@@ -40,7 +45,7 @@
                 </div>
             </div>
             <!-- <div class="text-center text-secondary mt-3">Don't have account yet? <a href="./sign-up.html" tabindex="-1">Sign
-                    up</a></div> -->
+                        up</a></div> -->
         </div>
     </div>
 @endsection

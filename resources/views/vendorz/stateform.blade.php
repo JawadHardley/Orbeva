@@ -7,7 +7,7 @@
             <h1 class="">Statement Generator Form</h1>
             <p class="fs-5">Select Dates Range for invoices</p>
             <hr>
-            <form id="statementForm" action="{{ route('vendor.statement_download') }}" method="POST">
+            <form id="statementForm" action="{{ route('vendorz.statement_download') }}" method="POST">
                 @csrf
                 <div class="row">
                     <div class="col-12 col-md-6 mb-3">

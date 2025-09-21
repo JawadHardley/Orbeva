@@ -169,9 +169,8 @@ class AdminAuthController extends Controller
     // verify email
     public function verifyNotice()
     {
-        // dd(Auth::user()->email_verified_at);
         if (Auth::user()->email_verified_at) {
-            return redirect()->route(Auth::user()->role . '' . '.dashboard');
+            return redirect()->route((Auth::user()->role === 'vendor' ? 'vendorz' : Auth::user()->role) . '.dashboard');
         }
 
         return view('auth.verify-email');
@@ -379,7 +378,7 @@ class AdminAuthController extends Controller
                 ]);
         } elseif ($user->role == 'vendor') {
             return redirect()
-                ->route('vendor.login')
+                ->route('vendorz.login')
                 ->with([
                     'status' => 'success',
                     'message' => 'Your password has been successfully reset!.',

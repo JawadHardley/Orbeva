@@ -55,7 +55,7 @@
                             @foreach ($records as $record)
                                 <tr>
                                     <td><span class="text-secondary">{{ $record->id }}</span></td>
-                                    <td><a href="{{ route('vendor.showApp', ['id' => $record->id]) }}" class="text-reset"
+                                    <td><a href="{{ route('vendorz.showApp', ['id' => $record->id]) }}" class="text-reset"
                                             tabindex="-1">
                                             {{ ucfirst($record->company_ref) }}
                                         </a></td>
@@ -160,7 +160,7 @@
                                                             {{ ucfirst($record->company_ref) }}</h1>
                                                         <span class="fs-5 ms-auto">
                                                             <a
-                                                                href="{{ route('vendor.readchat', ['id' => $record->id]) }}">mark
+                                                                href="{{ route('vendorz.readchat', ['id' => $record->id]) }}">mark
                                                                 as read</a>
                                                         </span>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -173,7 +173,7 @@
                                                                 <div class="chat">
                                                                     <div class="chat-bubbles">
                                                                         <form
-                                                                            action="{{ route('vendor.sendchat', ['id' => $record->id]) }}"
+                                                                            action="{{ route('vendorz.sendchat', ['id' => $record->id]) }}"
                                                                             method="POST">
                                                                             @csrf
 
@@ -211,7 +211,7 @@
                                                                                                             <span
                                                                                                                 class="fs-5">
                                                                                                                 <a
-                                                                                                                    href="{{ route('vendor.deletechat', ['id' => $chat->id]) }}">delete</a>
+                                                                                                                    href="{{ route('vendorz.deletechat', ['id' => $chat->id]) }}">delete</a>
                                                                                                             </span>
                                                                                                         @endif
                                                                                                     @else
@@ -329,25 +329,25 @@
                                                     <i class="fa fa-comment-dots pe-2"></i>Query
                                                 </a>
                                                 <a class="dropdown-item"
-                                                    href="{{ route('vendor.showApp', ['id' => $record->id]) }}">
+                                                    href="{{ route('vendorz.showApp', ['id' => $record->id]) }}">
                                                     <i class="fa fa-eye pe-2"></i>View
                                                 </a>
                                             </div>
                                         </div>
                                         <!-- <div class="dropdown">
-                                        <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport"
-                                            data-bs-toggle="dropdown">Actions</button>
-                                        <div class="dropdown-menu dropdown-menu-start">
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#mXX">
-                                                <i class="fa fa-message pe-2"></i>Query
-                                            </a>
-                                            <a class="dropdown-item"
-                                                href="{{ route('vendor.showApp', ['id' => $record->id]) }}">
-                                                <i class="fa fa-eye pe-2"></i>View
-                                            </a>
+                                            <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport"
+                                                data-bs-toggle="dropdown">Actions</button>
+                                            <div class="dropdown-menu dropdown-menu-start">
+                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#mXX">
+                                                    <i class="fa fa-message pe-2"></i>Query
+                                                </a>
+                                                <a class="dropdown-item"
+                                                    href="{{ route('vendorz.showApp', ['id' => $record->id]) }}">
+                                                    <i class="fa fa-eye pe-2"></i>View
+                                                </a>
 
-                                        </div>
-                                    </div> -->
+                                            </div>
+                                        </div> -->
                                     </td>
                                 </tr>
                             @endforeach

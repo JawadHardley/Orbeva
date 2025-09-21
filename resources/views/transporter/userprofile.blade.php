@@ -27,7 +27,9 @@
                             {{-- this is for profile --}}
                             <div class="tab-pane fade show active border rounded mt-4 p-3" id="profile-tabs-simple"
                                 role="tabpanel">
-                                <form action="{{ route(Auth::user()->role . '.updateProfile') }}" method="POST">
+                                <form
+                                    action="{{ route((Auth::user()->role === 'vendor' ? 'vendorz' : Auth::user()->role) . '.updateProfile') }}"
+                                    method="POST">
                                     @csrf
                                     <div class="row align-items-center p-3 shadow-lg pt-0 rounded mb-4">
                                         <div class="col-md-1 text-center">
@@ -124,7 +126,9 @@
 
                             {{-- this is for password change --}}
                             <div class="tab-pane fade border rounded mt-4 p-3" id="dashboard-tabs-simple" role="tabpanel">
-                                <form action="{{ route(Auth::user()->role . '.changePassword') }}" method="POST">
+                                <form
+                                    action="{{ route((Auth::user()->role === 'vendor' ? 'vendorz' : Auth::user()->role) . '.changePassword') }}"
+                                    method="POST">
                                     @csrf
                                     <h4 class="mb-4">Change Password</h4>
                                     <h5 class="card-title">~</h5>
