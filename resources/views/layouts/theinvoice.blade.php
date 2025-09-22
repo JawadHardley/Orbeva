@@ -228,7 +228,7 @@
                                 <td colspan="2">Feri Cost Per ton/cbm</td>
                                 <td>{{ $feriQty }}</td>
                                 <td>{{ $feriAmount }} €</td>
-                                <td>${{ $euroRate * $feriAmount }}</td>
+                                <td>${{ number_format(floor($euroRate * $feriAmount * 100) / 100, 2, '.', '') }}</td>
                                 <td></td>
                             </tr>
                             <tr style="text-align: center; font-size: 10px;">
