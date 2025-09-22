@@ -136,6 +136,8 @@
                                             <span class="badge text-xxs text-success me-1">Complete</span>
                                         @elseif ($record->status == 6)
                                             <span class="badge text-xxs text-danger me-1">Rejected</span>
+                                        @elseif ($record->status == 7)
+                                            <span class="badge text-xxs bg-secondary me-1">Pending Edit</span>
                                         @endif
                                     </td>
                                     <td class="">

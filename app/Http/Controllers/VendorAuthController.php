@@ -518,6 +518,48 @@ class VendorAuthController extends Controller
         ]);
     }
 
+    public function process_rollback(Request $request, $id)
+    {
+        $feriApp = feriApp::findOrFail($id);
+
+        // Only vendor/admin can toggle
+        $user = Auth::user();
+        if (!in_array($user->role, ['vendor', 'admin'])) {
+            return back()->with([
+                'status' => 'error',
+                'message' => 'You are not authorized to perform this action.',
+            ]);
+        }
+
+        // Toggle logic
+        if ($feriApp->status != 7) {
+            // Set to editable status
+            $feriApp->update(['status' => 7]);
+            return back()->with([
+                'status' => 'success',
+                'message' => 'Application is now editable by the user.',
+            ]);
+        } else {
+            // Toggle back: check for draft/certificate/invoice
+            $draft = Certificate::where('application_id', $feriApp->id)->where('type', 'draft')->latest()->first();
+            $invoice = $draft ? Invoice::where('cert_id', $draft->id)->first() : null;
+
+            if ($draft && $invoice) {
+                $feriApp->update(['status' => 3]);
+                return back()->with([
+                    'status' => 'success',
+                    'message' => 'Application returned to Awaiting Approval (status 3).',
+                ]);
+            } else {
+                $feriApp->update(['status' => 2]);
+                return back()->with([
+                    'status' => 'success',
+                    'message' => 'Application returned to Process (status 2).',
+                ]);
+            }
+        }
+    }
+
     public function process2(Request $request, $id)
     {
         // Check if the current user has the role of 'vendor' or 'admin'

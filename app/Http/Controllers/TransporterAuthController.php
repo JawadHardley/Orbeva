@@ -652,8 +652,8 @@ class TransporterAuthController extends Controller
         // Find the specific feriApp record
         $feriApp = feriApp::where('id', $id)->where('user_id', Auth::id())->firstOrFail();
 
-        // Only allow editing if status is 1
-        if ($feriApp->status != 1 || $user->id != $feriApp->user_id) {
+        // Only allow editing if status is 1 (New Entry) or 7 (Editing Enabled)
+        if (!in_array($feriApp->status, [1, 7]) || $user->id != $feriApp->user_id) {
             return back()->with([
                 'status' => 'error',
                 'message' => 'You cannot edit this application because its status does not allow editing.',

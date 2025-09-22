@@ -30,12 +30,103 @@
                         <span class="status-dot status-dot-animated status-green me-1"></span> Complete
                     @elseif ($record->status == 6)
                         <span class="status-dot status-dot-animated status-danger me-1"></span> Rejected
+                    @elseif ($record->status == 7)
+                        <span class="status-dot status-dot-animated status-purple me-1"></span>
+
+                        @php
+                            $hasDraft = isset($record->applicationFile); // or use your actual draft check logic
+                            $hasInvoice = isset($invoice); // or use your actual invoice check logic
+                        @endphp
+
+                        @if ($hasDraft && $hasInvoice)
+                            Awaiting Approval <span class="text-primary ms-1">(editable)</span>
+                        @elseif ($hasDraft)
+                            Process <span class="text-primary ms-1">(editable)</span>
+                        @else
+                            Process <span class="text-primary ms-1">(editable)</span>
+                        @endif
                     @endif
 
                 </div>
                 <div class="col py-2 text-muted">
-                    <i class="fa fa-earth-americas me-1"></i> {{ Str::title($record->feri_type) }} Feri
+                    <div class="row">
+                        <div class="col-3 py-1">
+                            <span class="">
+                                <i class="fa fa-earth-americas me-1"></i> {{ Str::title($record->feri_type) }} Feri
+                            </span>
+                        </div>
+                        <div class="col-3">
+                            @if (in_array($record->status, [2, 3, 4, 6, 7]))
+                                <button type="button" class="btn btn-md btn-outline-warning" data-bs-toggle="modal"
+                                    data-bs-target="#rollback">
+                                    {{ $record->status == 7 ? 'Lock Editing' : 'Allow Editing' }}
+                                </button>
+                            @endif
+                        </div>
+                    </div>
                 </div>
+
+                {{-- rollback modal start here --}}
+                {{-- rollback modal start here --}}
+                {{-- rollback modal start here --}}
+                {{-- rollback modal start here --}}
+                {{-- rollback modal start here --}}
+
+                @if ($record->status > 1)
+                    <div class="modal fade" id="rollback" tabindex="-1">
+                        <form action="{{ route('vendorz.process_rollback', ['id' => $record->id]) }}" method="POST"
+                            class="d-inline">
+                            @csrf
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                    <div class="modal-status bg-warning"></div>
+                                    <div class="modal-body text-center py-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-warning icon-lg"
+                                            width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                            stroke="currentColor" fill="none" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M12 9v2m0 4v.01" />
+                                            <path
+                                                d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
+                                        </svg>
+                                        <h3>Rollback Alert !</h3>
+                                        <div class="text-secondary">
+                                            You are about to rollback this application to the previous stage to
+                                            {{ $record->status == 7 ? 'Lock it from editing' : 'Allow Transporter to edit' }}
+
+                                            the entry.
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="w-100">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <a href="#" class="btn w-100" data-bs-dismiss="modal"> Cancel </a>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-outline-warning w-100" type="submit"
+                                                        data-bs-dismiss="modal">
+                                                        {{ $record->status == 7 ? 'Lock Editing' : 'Allow Editing' }}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                @endif
+
+
+                {{-- rollback modal end here --}}
+                {{-- rollback modal end here --}}
+                {{-- rollback modal end here --}}
+                {{-- rollback modal end here --}}
+                {{-- rollback modal end here --}}
 
                 <div class="col text-end">
 
@@ -178,9 +269,9 @@
 
                         </div>
                         <!-- <h4 class="subheader mt-4">#Leave</h4>
-                                                                                        <div class="list-group list-group-transparent">
-                                                                                            <a href="#" class="list-group-item list-group-item-action">Give Feedback</a>
-                                                                                        </div> -->
+                                                                                                                                                                                                                                                                                                <div class="list-group list-group-transparent">
+                                                                                                                                                                                                                                                                                                    <a href="#" class="list-group-item list-group-item-action">Give Feedback</a>
+                                                                                                                                                                                                                                                                                                </div> -->
                     </div>
                 </div>
                 <div class="col-12 col-md-10 d-flex flex-column tab-content">
@@ -760,9 +851,9 @@
 
                         </div>
                         <!-- <h4 class="subheader mt-4">#Leave</h4>
-                                                                                        <div class="list-group list-group-transparent">
-                                                                                            <a href="#" class="list-group-item list-group-item-action">Give Feedback</a>
-                                                                                        </div> -->
+                                                                                                                                                                                                                                                                                                <div class="list-group list-group-transparent">
+                                                                                                                                                                                                                                                                                                    <a href="#" class="list-group-item list-group-item-action">Give Feedback</a>
+                                                                                                                                                                                                                                                                                                </div> -->
                     </div>
                 </div>
                 <div class="col-12 col-md-10 d-flex flex-column tab-content">
@@ -1066,10 +1157,10 @@
                                                                 autocomplete="on" required />
 
                                                             <!-- <div class="col-12 col-md-6 mb-3">
-                                                                                                        <label class="form-label">Customer Reference No</label>
-                                                                                                        <input type="text" class="form-control" name="customer_ref"
-                                                                                                            value="{{ $invoice->customer_ref ?? '' }}" autocomplete="on" required />
-                                                                                                    </div> -->
+                                                                                                                                                                                                                                                                                                                <label class="form-label">Customer Reference No</label>
+                                                                                                                                                                                                                                                                                                                <input type="text" class="form-control" name="customer_ref"
+                                                                                                                                                                                                                                                                                                                    value="{{ $invoice->customer_ref ?? '' }}" autocomplete="on" required />
+                                                                                                                                                                                                                                                                                                            </div> -->
 
                                                             <!-- <label class="form-label">Customer Reference No</label> -->
                                                             <input type="hidden" class="form-control"
@@ -1197,7 +1288,8 @@
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                         <div class="modal-status bg-primary"></div>
                         <div class="modal-body text-center py-4">
                             <i class="fa fa-spinner text-primary display-2 pb-5"></i>
@@ -1213,7 +1305,7 @@
                                         <a href="#" class="btn w-100" data-bs-dismiss="modal"> Cancel </a>
                                     </div>
                                     <div class="col">
-                                        <button type="submit" class="btn btn-primary w-100" data-bs-dismiss="modal">
+                                        <button type="submit" data-bs-dismiss="modal" class="btn btn-primary w-100">
                                             Save </button>
                                     </div>
                                 </div>
@@ -1318,8 +1410,8 @@
                             </div>
 
                             <!-- <div class="text-secondary">
-                                                                                    Do you want to proceed with the application ?
-                                                                                </div> -->
+                                                                                                                                                                                                                                                                                            Do you want to proceed with the application ?
+                                                                                                                                                                                                                                                                                        </div> -->
                         </div>
                         <div class="modal-footer">
                             <div class="w-100">
@@ -1375,8 +1467,8 @@
                                 <input type="file" class="form-control" name="file" required />
                             </div>
                             <!-- <div class="text-secondary">
-                                                                                    Do you want to proceed with the application ?
-                                                                                </div> -->
+                                                                                                                                                                                                                                                                                            Do you want to proceed with the application ?
+                                                                                                                                                                                                                                                                                        </div> -->
                         </div>
                         <div class="modal-footer">
                             <div class="w-100">
@@ -1572,11 +1664,11 @@
                     </form>
                 </div>
                 <!-- <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                            <button type="button" class="btn btn-primary">
-                                                                                send <i class="fa fa-paper-plane ms-2"></i>
-                                                                            </button>
-                                                                        </div> -->
+                                                                                                                                                                                                                                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                                                                                                                                                                                                                    <button type="button" class="btn btn-primary">
+                                                                                                                                                                                                                                                                                        send <i class="fa fa-paper-plane ms-2"></i>
+                                                                                                                                                                                                                                                                                    </button>
+                                                                                                                                                                                                                                                                                </div> -->
             </div>
         </div>
     </div>

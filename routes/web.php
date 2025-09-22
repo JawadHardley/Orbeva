@@ -311,6 +311,10 @@ Route::prefix('vendorz')
         Route::get('/chat/messages/{id}', [VendorAuthController::class, 'fetchChatMessages'])->name('chat.fetch');
 
         Route::get('/chat/attachment/{chat}', [VendorAuthController::class, 'downloadChatAttachment'])->name('chatfiledownload');
+
+
+        Route::post('applications/rollback/{id}/', [VendorAuthController::class, 'process_rollback'])
+            ->name('process_rollback');
     });
 
 Route::get('/email', function () {
