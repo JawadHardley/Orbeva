@@ -200,66 +200,72 @@
                 </tr>
                 <tr>
                     <td colspan="2" style="padding: 0;">
-                        <table>
-                            <tr style="text-align: center; background-color: #9f9f9fff; font-size: 10px;">
-                                <td>Date</td>
-                                <td>Invoice Number</td>
-                                <td>Certificate Number</td>
-                                <td>File Ref Number</td>
-                                <td>PO Number</td>
-                                <td>Amount(USD)</td>
-                                <td>Balance</td>
-                            </tr>
-                            @foreach ($invoice->chunk(18) as $chunk)
-                                @foreach ($chunk as $record)
-                                    <tr style="text-align: center; font-size: 8px;">
-                                        <td style="padding: 3px;">
-                                            {{ \Carbon\Carbon::parse($record->invoice_date)->format('j.n.Y') }}</td>
-                                        <td style="padding: 3px;">MKH-M-{{ $record->id }}</td>
-                                        <td style="padding: 3px;">{{ $record->certificate_no }}</td>
-                                        <td style="padding: 3px;">{{ $record->customer_ref }}</td>
-                                        <td style="padding: 3px;">{{ $record->po }}</td>
+                        @php
+                            $chunked = $invoice->chunk(15);
+                            $tatal = 0;
+                        @endphp
+
+                        @foreach ($chunked as $chunkIndex => $chunk)
+                            <table style="width: 100%; border:1px solid black; margin: 0; page-break-inside: avoid;">
+                                <tbody>
+                                    <tr style="text-align: center; background-color: #9f9f9fff; font-size: 10px;">
+                                        <td>Date</td>
+                                        <td>Invoice Number</td>
+                                        <td>Certificate Number</td>
+                                        <td>File Ref Number</td>
+                                        <td>PO Number</td>
+                                        <td>Amount(USD)</td>
+                                        <td>Balance</td>
+                                    </tr>
+                                    @foreach ($chunk as $record)
                                         @php
                                             $amount = (float) str_replace(',', '', $record->amount);
                                             $rate = (float) str_replace(',', '', $record->tz_rate);
                                             $tzamountRaw = $amount * $rate;
                                             $tzamount = number_format($tzamountRaw, 2, '.', ',');
+                                            $tatal += $amount;
                                         @endphp
-                                        <td class="hrr">${{ $amount }}</td>
-                                        @php
-                                            $tatal = ($tatal ?? 0) + $amount;
-                                        @endphp
-                                        <td style="padding: 3px;"></td>
-                                    </tr>
-                                @endforeach
-                                <div style="page-break-after: always;"></div>
-                            @endforeach
-                            <tr style="text-align: center; font-size: 8px;">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                                        <tr style="text-align: center; font-size: 8px;">
+                                            <td style="padding: 3px;">
+                                                {{ \Carbon\Carbon::parse($record->invoice_date)->format('j.n.Y') }}</td>
+                                            <td style="padding: 3px;">MKH-M-{{ $record->id }}</td>
+                                            <td style="padding: 3px;">{{ $record->certificate_no }}</td>
+                                            <td style="padding: 3px;">{{ $record->customer_ref }}</td>
+                                            <td style="padding: 3px;">{{ $record->po }}</td>
+                                            <td class="hrr">${{ $amount }}</td>
+                                            <td style="padding: 3px;"></td>
+                                        </tr>
+                                    @endforeach
 
-                            <tr style="text-align: center; background-color: #9f9f9fff; font-size: 11px;">
-                                <td colspan="3">120+ Days</td>
-                                <td>90 Days</td>
-                                <td>60 Days</td>
-                                <td>30 Days</td>
-                                <td>${{ number_format($tatal, 2) }}</td>
-                            </tr>
-                            <tr class="bol" style="font-size: 13px; text-align: right;">
-                                <td colspan="6" style="text-align: right;">Total amount Due:</td>
-                                <td class="bol" style="text-align: left;">${{ number_format($tatal, 2) }}</td>
-                            </tr>
-                            <tr class="bol" style="font-size: 13px;">
-                                <td class="bol" colspan="6" style="text-align: right;">Amount Overdue:</td>
-                                <td></td>
-                            </tr>
-                        </table>
+                                    @if ($loop->last)
+                                        <!-- Only on the last chunk, show totals -->
+                                        <tr style="text-align: center; font-size: 8px;">
+                                            <td colspan="7"></td>
+                                        </tr>
+                                        <tr style="text-align: center; background-color: #9f9f9fff; font-size: 11px;">
+                                            <td colspan="3">120+ Days</td>
+                                            <td>90 Days</td>
+                                            <td>60 Days</td>
+                                            <td>30 Days</td>
+                                            <td>${{ number_format($tatal, 2) }}</td>
+                                        </tr>
+                                        <tr class="bol" style="font-size: 13px; text-align: right;">
+                                            <td colspan="6" style="text-align: right;">Total amount Due:</td>
+                                            <td class="bol" style="text-align: left;">${{ number_format($tatal, 2) }}
+                                            </td>
+                                        </tr>
+                                        <tr class="bol" style="font-size: 13px;">
+                                            <td class="bol" colspan="6" style="text-align: right;">Amount Overdue:
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                    @endif
+                                </tbody>
+                            </table>
+                            @if (!$loop->last)
+                                <div style="page-break-after: always;"></div>
+                            @endif
+                        @endforeach
                     </td>
                 </tr>
             </tbody>
