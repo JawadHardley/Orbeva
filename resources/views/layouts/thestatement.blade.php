@@ -210,26 +210,28 @@
                                 <td>Amount(USD)</td>
                                 <td>Balance</td>
                             </tr>
-                            @foreach ($invoice as $record)
-                                <tr style="text-align: center; font-size: 8px;">
-                                    <td style="padding: 3px;">
-                                        {{ \Carbon\Carbon::parse($record->invoice_date)->format('j.n.Y') }}</td>
-                                    <td style="padding: 3px;">MKH-M-{{ $record->id }}</td>
-                                    <td style="padding: 3px;">{{ $record->certificate_no }}</td>
-                                    <td style="padding: 3px;">{{ $record->customer_ref }}</td>
-                                    <td style="padding: 3px;">{{ $record->po }}</td>
-                                    @php
-                                        $amount = (float) str_replace(',', '', $record->amount);
-                                        $rate = (float) str_replace(',', '', $record->tz_rate);
-                                        $tzamountRaw = $amount * $rate;
-                                        $tzamount = number_format($tzamountRaw, 2, '.', ',');
-                                    @endphp
-                                    <td class="hrr">${{ $amount }}</td>
-                                    @php
-                                        $tatal = ($tatal ?? 0) + $amount;
-                                    @endphp
-                                    <td style="padding: 3px;"></td>
-                                </tr>
+                            @foreach ($invoice->chunk(18) as $chunk)
+                                @foreach ($chunk as $record)
+                                    <tr style="text-align: center; font-size: 8px;">
+                                        <td style="padding: 3px;">
+                                            {{ \Carbon\Carbon::parse($record->invoice_date)->format('j.n.Y') }}</td>
+                                        <td style="padding: 3px;">MKH-M-{{ $record->id }}</td>
+                                        <td style="padding: 3px;">{{ $record->certificate_no }}</td>
+                                        <td style="padding: 3px;">{{ $record->customer_ref }}</td>
+                                        <td style="padding: 3px;">{{ $record->po }}</td>
+                                        @php
+                                            $amount = (float) str_replace(',', '', $record->amount);
+                                            $rate = (float) str_replace(',', '', $record->tz_rate);
+                                            $tzamountRaw = $amount * $rate;
+                                            $tzamount = number_format($tzamountRaw, 2, '.', ',');
+                                        @endphp
+                                        <td class="hrr">${{ $amount }}</td>
+                                        @php
+                                            $tatal = ($tatal ?? 0) + $amount;
+                                        @endphp
+                                        <td style="padding: 3px;"></td>
+                                    </tr>
+                                @endforeach
                             @endforeach
                             <tr style="text-align: center; font-size: 8px;">
                                 <td></td>
