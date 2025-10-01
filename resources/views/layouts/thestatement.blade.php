@@ -201,7 +201,7 @@
                 <tr>
                     <td colspan="2" style="padding: 0;">
                         @php
-                            $chunked = $invoice->chunk(15);
+                            $chunked = $invoice->chunk(20);
                             $tatal = 0;
                         @endphp
 
