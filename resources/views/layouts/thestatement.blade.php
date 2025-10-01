@@ -71,6 +71,7 @@
             width: 100%;
             border-collapse: collapse;
             table-layout: fixed;
+            page-break-inside: auto;
             /* force equal width columns */
         }
 
@@ -80,6 +81,15 @@
             padding: 8px;
             text-align: left;
         }
+
+
+        /* thead {
+            display: table-header-group;
+        } */
+
+        /* tfoot {
+            display: table-footer-group;
+        } */
     </style>
 </head>
 
@@ -191,7 +201,7 @@
                                 <td class="bol" style="padding: 0;">First National Bank</td>
                             </tr>
                         </table>
-                    </td>
+                    </td>c
                 </tr>
                 <tr>
                     <td colspan="2" style="text-align: center; padding: 0;">
