@@ -227,7 +227,7 @@
                             <tr style="text-align: center; font-size: 10px;">
                                 <td colspan="2">Feri Cost Per ton/cbm</td>
                                 <td>{{ $feriQty }}</td>
-                                <td>{{ $feriAmount }} €</td>
+                                <td>{{ number_format($feriAmount, 2, '.', ',') }} €</td>
                                 <td>${{ number_format(floor($euroRate * $feriAmount * 100) / 100, 2, '.', '') }}</td>
                                 <td></td>
                             </tr>
@@ -250,7 +250,8 @@
                                 <td>90 Days</td>
                                 <td>60 Days</td>
                                 <td>30 Days</td>
-                                <td>${{ number_format($grandTotal, 2, '.', ',') }}</td>
+                                {{-- <td>${{ number_format($grandTotal, 2, '.', ',') }}</td> --}}
+                                <td>${{ number_format(floor($grandTotal * 100) / 100, 2) }}</td>
                             </tr>
                             <tr class="bol" style="font-size: 13px; text-align: right; color: green;">
                                 <td colspan="5" style="text-align: right;">Discount Applied:</td>
@@ -259,8 +260,10 @@
                             </tr>
                             <tr class="bol" style="font-size: 13px; text-align: right;">
                                 <td colspan="5" style="text-align: right;">Total amount Due:</td>
+                                {{-- <td class="bol" style="text-align: right;">
+                                    ${{ number_format($grandTotal, 2, '.', ',') }}</td> --}}
                                 <td class="bol" style="text-align: right;">
-                                    ${{ number_format($grandTotal, 2, '.', ',') }}</td>
+                                    ${{ number_format(floor($grandTotal * 100) / 100, 2) }}</td>
                             </tr>
                             <tr class="bol" style="font-size: 13px;">
                                 <td class="bol" colspan="5" style="text-align: right;">Amount Overdue:</td>

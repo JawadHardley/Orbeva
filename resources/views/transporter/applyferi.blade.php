@@ -414,11 +414,25 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-12 col-lg-12 mb-3">
+                                    <div class="col-12 col-lg-4 mb-3">
                                         <div class="input-group input-group-static mb-4">
-                                            <label>Quantity</label>
+                                            <label>Quantity (PKG)</label>
                                             <input type="number" class="form-control" name="quantity"
                                                 value="{{ old('quantity') }}" autocomplete="on" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-4 mb-3">
+                                        <div class="input-group input-group-static mb-4">
+                                            <label>Weight (Gross)Kg</label>
+                                            <input type="number" class="form-control" name="weight"
+                                                value="{{ old('weight') }}" autocomplete="on" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-4 mb-3">
+                                        <div class="input-group input-group-static mb-4">
+                                            <label>Volume (Net Weight)T</label>
+                                            <input type="number" class="form-control" name="volume"
+                                                value="{{ old('volume') }}" autocomplete="on" required />
                                         </div>
                                     </div>
                                 </div>

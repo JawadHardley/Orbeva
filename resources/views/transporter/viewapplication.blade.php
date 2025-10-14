@@ -606,11 +606,27 @@
                                                     {{ $record->status > 1 && $record->status != 7 ? 'disabled' : '' }}>
                                             </div>
                                         </div>
-                                        <div class="col-12 mb-3 col-lg-12">
+                                        <div class="col-12 mb-3 col-lg-4">
                                             <div class="input-group input-group-static mb-4">
-                                                <label>Quantity</label>
+                                                <label>Quantity (PKG)</label>
                                                 <input type="text" name="quantity" class="form-control"
                                                     value="{{ $record->quantity }}"
+                                                    {{ $record->status > 1 && $record->status != 7 ? 'disabled' : '' }}>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mb-3 col-lg-4">
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Weight (Gross)kg</label>
+                                                <input type="text" name="weight" class="form-control"
+                                                    value="{{ $record->weight }}"
+                                                    {{ $record->status > 1 && $record->status != 7 ? 'disabled' : '' }}>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mb-3 col-lg-4">
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Volume (Net Weight)T</label>
+                                                <input type="text" name="volume" class="form-control"
+                                                    value="{{ $record->volume }}"
                                                     {{ $record->status > 1 && $record->status != 7 ? 'disabled' : '' }}>
                                             </div>
                                         </div>

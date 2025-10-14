@@ -125,7 +125,7 @@
                     </td>
                     <td>
                         <div>
-                            VAT:  4750279434
+                            VAT: 4750279434
                         </div>
                     </td>
                 </tr>
@@ -156,7 +156,7 @@
                     <td style="padding: 0;">
                         <table>
                             <tr class="bol" style="font-size: 13px;">
-                                <td style="background-color: #5c5c5cff; padding: 2px;">INVOICE DATE</td>
+                                <td style="background-color: #5c5c5cff; padding: 2px;">STATEMENT DATE</td>
                                 <td style="text-align: right; padding: 0;">{{ date('d.m.Y') }}</td>
                             </tr>
                             {{-- <tr class="bol">
@@ -195,7 +195,7 @@
                 </tr>
                 <tr>
                     <td colspan="2" style="text-align: center; padding: 0;">
-                        <h3 style="margin: 25px;">STATEMENT</h3>
+                        <h3 style="margin: 25px;">{{ strtoupper($invoice->month) }} STATEMENT</h3>
                     </td>
                 </tr>
                 <tr>
@@ -247,11 +247,14 @@
                                             <td>90 Days</td>
                                             <td>60 Days</td>
                                             <td>30 Days</td>
-                                            <td>${{ number_format($tatal, 2) }}</td>
+                                            {{-- <td>${{ number_format($tatal, 2) }}</td> --}}
+                                            <td>${{ number_format(floor($tatal * 100) / 100, 2) }}</td>
                                         </tr>
                                         <tr class="bol" style="font-size: 13px; text-align: right;">
                                             <td colspan="6" style="text-align: right;">Total amount Due:</td>
-                                            <td class="bol" style="text-align: left;">${{ number_format($tatal, 2) }}
+                                            <td class="bol" style="text-align: left;">
+                                                {{-- ${{ number_format($tatal, 2) }} --}}
+                                                ${{ number_format(floor($tatal * 100) / 100, 2) }}
                                             </td>
                                         </tr>
                                         <tr class="bol" style="font-size: 13px;">
