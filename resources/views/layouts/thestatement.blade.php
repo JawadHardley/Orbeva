@@ -132,16 +132,19 @@
                 <tr style="font-size: 13px;">
                     <td>
                         <div>
-                            ALISTAIR GROUP
+                            ALISTAIR JAMES COMPANY Ltd
                         </div>
                         <div>
-                            ALM TRANSPORT (MAURITIUS) LTD
+                            P.O. Box 4543
                         </div>
                         <div>
-                            Sovereign Trust (Mauritius) Limited
+                            Kurasini
                         </div>
                         <div>
-                            Unit 21, Circle Square Business Park, Forbach, Mauritius.
+                            Temeke
+                        </div>
+                        <div>
+                            Dar es salaam
                         </div>
                         {{-- <div style="font-weight: bold; font-size: 16px; margin-top: 8px;">
                             Isaac Ibrahim
@@ -195,7 +198,7 @@
                 </tr>
                 <tr>
                     <td colspan="2" style="text-align: center; padding: 0;">
-                        <h3 style="margin: 25px;">{{ strtoupper($invoice->month) }} STATEMENT</h3>
+                        <h3 style="margin: 25px;">{{ strtoupper($invoice->month) }} - STATEMENT</h3>
                     </td>
                 </tr>
                 <tr>
