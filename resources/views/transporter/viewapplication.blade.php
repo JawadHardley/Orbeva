@@ -482,6 +482,10 @@
                                                         African
                                                         Logistics
                                                     </option>
+                                                    <option value="OLA"
+                                                        {{ $record->cf_agent == 'OLA' ? 'selected' : '' }}>
+                                                        OLA
+                                                    </option>
                                                     <option value="Afritac"
                                                         {{ $record->cf_agent == 'Afritac' ? 'selected' : '' }}>
                                                         Afritac
@@ -1341,6 +1345,10 @@
                                                     <option value="African Logistics"
                                                         {{ $record->cf_agent == 'African Logistics' ? 'selected' : '' }}>
                                                         African Logistics
+                                                    </option>
+                                                    <option value="OLA"
+                                                        {{ $record->cf_agent == 'OLA' ? 'selected' : '' }}>
+                                                        OLA
                                                     </option>
                                                     <option value="Afritac"
                                                         {{ $record->cf_agent == 'Afritac' ? 'selected' : '' }}>
