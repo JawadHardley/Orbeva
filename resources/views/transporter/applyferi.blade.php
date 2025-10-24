@@ -297,6 +297,9 @@
                                                     CONNEX
                                                 </option>
                                                 <option value="African Logistics"
+                                                    {{ old('cf_agent') == 'OLA' ? 'selected' : '' }}>OLA
+                                                </option>
+                                                <option value="African Logistics"
                                                     {{ old('cf_agent') == 'African Logistics' ? 'selected' : '' }}>African
                                                     Logistics
                                                 </option>
