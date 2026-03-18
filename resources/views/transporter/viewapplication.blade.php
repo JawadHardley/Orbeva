@@ -526,6 +526,10 @@
                                                         {{ $record->cf_agent == 'DCG' ? 'selected' : '' }}>
                                                         DCG
                                                     </option>
+                                                    <option value="DOUANE EXPRESS CUSTOMS"
+                                                        {{ $record->cf_agent == 'DOUANE EXPRESS CUSTOMS' ? 'selected' : '' }}>
+                                                        DOUANE EXPRESS CUSTOMS
+                                                    </option>
                                                     <option value="Evele & Co"
                                                         {{ $record->cf_agent == 'Evele & Co' ? 'selected' : '' }}>
                                                         Evele &
@@ -1387,6 +1391,10 @@
                                                     </option>
                                                     <option value="DCG"
                                                         {{ $record->cf_agent == 'DCG' ? 'selected' : '' }}>DCG
+                                                    </option>
+                                                    <option value="DOUANE EXPRESS CUSTOMS"
+                                                        {{ $record->cf_agent == 'DOUANE EXPRESS CUSTOMS' ? 'selected' : '' }}>
+                                                        DOUANE EXPRESS CUSTOMS
                                                     </option>
                                                     <option value="Evele & Co"
                                                         {{ $record->cf_agent == 'Evele & Co' ? 'selected' : '' }}>
